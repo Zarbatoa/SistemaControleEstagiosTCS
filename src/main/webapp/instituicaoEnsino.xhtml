@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./principal.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <script type="text/javascript">
+        PrimeFaces.locales['pt'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Data Atual',
+                ampm: false,
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText : 'Todo Dia'
+            };
+    </script>
+    
+    <ui:define name="conteudo">
+        
+        <p:panel id="painel_conteudo" header="Instituição de Ensino Header">
+            <p:tabView id="tab_view" activeIndex="#{instituciaoC.aba}">
+                
+                <p:ajax event="tabChange" listener="#{instituciaoC.onTabChange}"/>
+                <p:ajax event="tabClose" listener="#{instituciaoC.onTabClose}"/>
+                
+                <p:tab title="Pesquisa">
+                    <h:form id="form_pesquisa">
+                        <p:panelGrid columns="3" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
+                                    contentStyleClass="ui-fluid">
+                            <p:commandButton value="Pesquisar todos" update="tabela"
+                                             action="#{instituciaoC.pesquisarTodos()}"
+                                             style="margin-left: 300%" />
+                        </p:panelGrid>
+
+
+                        <p:dataTable id="tabela" var="instituicao" value="#{instituciaoC.modelInstituicoes}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
+                         rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
+
+                            <p:column headerText="Razão Social">
+                                <h:outputText value="#{instituicao.razaoSocial}" />
+                            </p:column>
+
+                            <p:column headerText="CNPJ">
+                                <h:outputFormat value="#{instituicao.cnpj}">
+                                <f:convertNumber pattern="00000000000000"/>
+                                </h:outputFormat>
+                            </p:column>
+                            
+                            <p:column headerText="E-mail">
+                                <h:outputText value="#{instituicao.email}" />
+                            </p:column>
+                            
+                            <p:column headerText="Representante">
+                                <h:outputText value="#{instituicao.representante}" />
+                            </p:column>
+                            
+                            <p:column headerText="Telefone">
+                                <h:outputText value="#{instituicao.telefoneFixo}" />
+                            </p:column>
+
+                            <p:column headerText="Ação">
+                                <p:commandButton icon="pi pi-pencil" title="Alterar" process="@this"
+                                                 actionListener="#{instituciaoC.prepararAlterar}" update="@all"
+                                                 style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
+                                <p:commandButton icon="pi pi-trash" title="Excluir" process="@this"
+                                                 actionListener="#{instituciaoC.excluir}" update="tabela"
+                                                 styleClass="rounded-button ui-button-danger ui-button-outlined" >
+                                    <p:confirm header="Confirmação" message="Deseja relamente excluir?" icon="pi pi-info-circle"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                        
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+                        </p:confirmDialog>
+                        
+                    </h:form>
+                </p:tab>
+                
+                <!--aba para cadastrar e alterar-->
+                <p:tab title="Novo">
+                    <h:form id="form_novo">
+                        <p:panelGrid columns="4" layout="flex"
+                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4,
+                                     p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+                                     contentStyleClass="p-align-baseline ui-fluid">
+                            
+                            <p:outputLabel for="razaoSocial" value="Razão social:" />
+                            <p:inputText id="razaoSocial" value="#{instituciaoC.instituicaoEnsino.razaoSocial}"
+                                         required="true" requiredMessage="Razão Social é obrigatória!" />
+
+                            <p:outputLabel for="cnpj" value="CNPJ:" />
+                            <p:inputMask id="cnpj" value="#{instituciaoC.instituicaoEnsino.cnpj}"
+                                         mask="99.999.999/9999-99"
+                                         required="true" requiredMessage="CNPJ é obrigatório!"/>
+
+							<p:outputLabel for="email" value="E-mail:" />
+                            <p:inputText id="email" value="#{instituciaoC.instituicaoEnsino.email}"
+                                         required="true" requiredMessage="E-mail é obrigatório!" />
+
+							<p:outputLabel for="representante" value="Representante:" />
+                            <p:inputText id="representante" value="#{instituciaoC.instituicaoEnsino.representante}"
+                                         required="true" requiredMessage="Representante é obrigatório!" />
+
+                            <p:outputLabel for="tel" value="Telefone fixo:" />
+                            <p:inputMask id="tel" value="#{instituciaoC.instituicaoEnsino.telefoneFixo}" mask="(99)9999-9999"
+                                             required="true" requiredMessage="Telefone fixo é obrigatório!" />
+                                             
+                            <p:outputLabel for="cel" value="Telefone celular:" />
+                            <p:inputMask id="cel" value="#{instituciaoC.instituicaoEnsino.telefoneCel}" mask="(99)99999-9999"
+                                             required="false" />
+                                             
+                            <p:outputLabel for="infoRelevante" value="Informações relevantes:" />
+                            <p:inputText id="infoRelevante" value="#{instituciaoC.instituicaoEnsino.infoRelevante}"
+                                         required="false" />
+                                         
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+
+                            <p:outputLabel for="cep" value="CEP:" />
+                            <p:inputMask id="cep" value="#{instituciaoC.instituicaoEnsino.endCep}"
+                                         mask="99999-999" size="10"
+                                         required="true" requiredMessage="CEP é obrigatório!">
+                                <p:ajax listener="#{instituciaoC.buscarCep}" event="blur" update="rua bairro cidade uf"/>
+                            </p:inputMask>
+
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+
+                            <p:outputLabel for="rua" value="Rua:" />
+                            <p:inputText id="rua" value="#{instituciaoC.instituicaoEnsino.endRua}"
+                                         required="true" requiredMessage="Rua é obrigatória!" />
+
+                            <p:outputLabel for="numero" value="Número:" />
+                            <p:inputText id="numero" value="#{instituciaoC.instituicaoEnsino.endNumero}"
+                                         required="true" requiredMessage="Número é obrigatório!" />
+
+                            <p:outputLabel for="bairro" value="Bairro:" />
+                            <p:inputText id="bairro" value="#{instituciaoC.instituicaoEnsino.endBairro}"
+                                         required="true" requiredMessage="Bairro é obrigatório!" />
+
+                            <p:outputLabel for="cidade" value="Cidade:" />
+                            <p:inputText id="cidade" value="#{instituciaoC.instituicaoEnsino.endCidade}"
+                                         required="true" requiredMessage="Cidade é obrigatória!" />
+
+                            <p:outputLabel for="uf" value="Estado:" />
+                            <p:inputText id="uf" value="#{instituciaoC.instituicaoEnsino.endSiglaEstado}"
+                                         required="true" requiredMessage="Estado é obrigatório!" />
+
+                            <p:outputLabel for="complemento" value="Complemento" />
+                            <p:inputText id="complemento" value="#{instituciaoC.instituicaoEnsino.endComplemento}"
+                                         required="true" requiredMessage="Complemento é obrigatório!" />
+                            
+                            
+                            <!--coluna 1-->
+                            <p:commandButton value="Salvar" actionListener="#{instituciaoC.salvar()}"
+                                             update="@all"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+        </p:panel>
+        
+    </ui:define>
+
+</ui:composition>

@@ -30,6 +30,7 @@ public class HibernateUtil {
             
             // estagios:
             cfg.addAnnotatedClass(Usuario.class);
+            cfg.addAnnotatedClass(InstituicaoEnsino.class);
 
             cfg.configure("/META-INF/hibernate.cfg.xml");
             StandardServiceRegistryBuilder build = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
