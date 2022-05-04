@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./principal.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <script type="text/javascript">
+        PrimeFaces.locales['pt'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Data Atual',
+                ampm: false,
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText : 'Todo Dia'
+            };
+    </script>
+    
+    <ui:define name="conteudo">
+        
+        <p:panel id="painel_conteudo" header="Consulta Header">
+            <p:tabView id="tab_view" activeIndex="#{consultaC.aba}">
+                
+                <p:ajax event="tabChange" listener="#{consultaC.onTabChange}" 
+                        update="tab_view:form_novo:animal"/>
+                <p:ajax event="tabClose" listener="#{consultaC.onTabClose}"/>
+                
+                <p:tab title="Pesquisa">
+                    <h:form id="form_pesquisa">
+                        <p:panelGrid columns="3" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
+                                    contentStyleClass="ui-fluid">
+                            <p:outputLabel for="consulta" value="Dia da Consulta:" />
+                            <p:datePicker id="consulta" value="#{consultaC.consulta.dia}" locale="pt" monthNavigator="true"
+                                          readonlyInput="true" pattern="dd/MM/yyyy"
+                                          required="true" requiredMessage="Dia é obrigatório!"/>
+                            <p:commandButton value="Pesquisar" update="tabela consulta"
+                                             action="#{consultaC.pesquisarPorData()}" />
+                        </p:panelGrid>
+
+
+                        <p:dataTable id="tabela" var="consulta" value="#{consultaC.modelConsultas}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
+                         rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
+
+                            <p:column headerText="Dia">
+                                <h:outputText value="#{consulta.dia}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column headerText="Valor">
+                                <h:outputText value="#{consulta.valor}" />
+                            </p:column>
+                            
+                            <p:column headerText="Animal">
+                                <h:outputText value="#{consulta.animal.nome}" />
+                            </p:column>
+
+                        </p:dataTable>
+                        
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+                        </p:confirmDialog>
+                        
+                    </h:form>
+                </p:tab>
+                
+                <!--aba para cadastrar e alterar-->
+                <p:tab title="Novo">
+                    <h:form id="form_novo">
+                        <p:panelGrid columns="4" layout="flex"
+                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4,
+                                     p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+                                     contentStyleClass="p-align-baseline ui-fluid">
+                            
+                            <p:outputLabel for="dia" value="Dia da consulta:" />
+                            <p:datePicker id="dia" value="#{consultaC.consulta.dia}" locale="pt" monthNavigator="true"
+                                          readonlyInput="true" pattern="dd/MM/yyyy"
+                                          required="true" requiredMessage="Dia da consulta é obrigatório!"/>
+                            
+                            
+                            <p:outputLabel for="valor" value="Valor" />
+                            <p:inputText id="valor" value="#{consultaC.consulta.valor}"
+                                         required="true" requiredMessage="Valor é obrigatório!" />
+                            
+                            
+                            <p:outputLabel for="animal" value="Animal:" />
+                            <p:selectOneMenu id="animal" value="#{consultaC.animal.id}" required="true"
+                                             requiredMessage="Animal é obrigatório!"
+                                             filter="true" filterMatchMode="startsWith" >
+                                <f:selectItem itemLabel="Escolha um Animal..." itemValue=""/>
+                                <f:selectItems value="#{consultaC.comboAnimais}"/>
+                            </p:selectOneMenu>
+                            
+                            <!--coluna 1-->
+                            <p:commandButton value="Salvar" actionListener="#{consultaC.salvar()}"
+                                             update="@all"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+        </p:panel>
+        
+    </ui:define>
+
+</ui:composition>
