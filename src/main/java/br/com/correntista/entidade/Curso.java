@@ -1,6 +1,7 @@
 package br.com.correntista.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,6 +37,9 @@ public class Curso implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_instituicao_ensino")
     private InstituicaoEnsino instituicaoEnsino;
+    
+    @OneToMany(mappedBy = "curso")
+    private List<Estagiario> estagiarios;
     
     
     public Curso() {
@@ -88,6 +93,14 @@ public class Curso implements Serializable {
 
 	public void setInstituicaoEnsino(InstituicaoEnsino instituicaoEnsino) {
 		this.instituicaoEnsino = instituicaoEnsino;
+	}
+
+	public List<Estagiario> getEstagiarios() {
+		return estagiarios;
+	}
+
+	public void setEstagiarios(List<Estagiario> estagiarios) {
+		this.estagiarios = estagiarios;
 	}
 
 	@Override
