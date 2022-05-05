@@ -1,5 +1,6 @@
 package br.com.correntista.controle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -8,15 +9,22 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 
+import br.com.correntista.dao.DonoDao;
+import br.com.correntista.dao.DonoDaoImpl;
 import br.com.correntista.dao.HibernateUtil;
+import br.com.correntista.dao.InstituicaoEnsinoDao;
+import br.com.correntista.dao.InstituicaoEnsinoDaoImpl;
 import br.com.correntista.dao.UsuarioDao;
 import br.com.correntista.dao.UsuarioDaoImpl;
+import br.com.correntista.entidade.Dono;
+import br.com.correntista.entidade.InstituicaoEnsino;
 import br.com.correntista.entidade.Usuario;
 
 /**
@@ -31,12 +39,10 @@ public class UsuarioControle {
 	private UsuarioDao usuarioDao;
 
 	// verificarei o que é necessário:
-//  private Comportamento comportamento;
-//  private Dono dono;
+	private InstituicaoEnsino instituicaoEnsino;
 	private Session sessao;
     private List<Usuario> usuarios;
-//  private List<SelectItem> comboComportamentos;
-//  private List<SelectItem> comboDonos;
+    private List<SelectItem> comboInstituicoes;
     private DataModel<Usuario> modelUsuarios;
     private int aba;
 	
@@ -57,11 +63,27 @@ public class UsuarioControle {
         }
 	}
 	
+	public void carregarComboInstituicoes() {
+		sessao = HibernateUtil.abrirSessao();
+        InstituicaoEnsinoDao instituicaoDao = new InstituicaoEnsinoDaoImpl();
+        try {
+            List<InstituicaoEnsino> instituicoes = instituicaoDao.pesquisarTodos(sessao);
+            comboInstituicoes = new ArrayList<>();
+            for (InstituicaoEnsino instituicao : instituicoes) {
+            	comboInstituicoes.add(new SelectItem(instituicao.getId(), instituicao.getRazaoSocial()));
+            }
+        } catch (HibernateException e) {
+            System.out.println("Erro ao carregar combobox instituicoes " + e.getMessage());
+        } finally {
+            sessao.close();
+        }
+	}
+	
 	public void onTabChange(TabChangeEvent event) {
         //event.getTab().getTitle()
         if(event.getTab().getTitle().equals("Novo")) {
-            // aqui seria feita a carga dos combo box xcaso necessario
-        	usuario = null;
+        	//usuario = null;
+        	carregarComboInstituicoes();
         }
     }
 
@@ -71,6 +93,7 @@ public class UsuarioControle {
 	public void salvar(){
         sessao = HibernateUtil.abrirSessao();
         try {
+        	usuario.setInstituicaoEnsino(instituicaoEnsino);
 		    usuarioDao.salvarOuAlterar(usuario, sessao);
 		    usuario = null;
 		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -102,6 +125,7 @@ public class UsuarioControle {
 	
 	public void prepararAlterar() {
 		usuario = modelUsuarios.getRowData();
+		instituicaoEnsino = usuario.getInstituicaoEnsino();
 		aba = 1;
 	}
 
@@ -121,6 +145,23 @@ public class UsuarioControle {
 	}
 
 	
+	
+	
+	public InstituicaoEnsino getInstituicaoEnsino() {
+		if(instituicaoEnsino == null) {
+			instituicaoEnsino = new InstituicaoEnsino();
+		}
+		return instituicaoEnsino;
+	}
+
+	public void setInstituicaoEnsino(InstituicaoEnsino instituicaoEnsino) {
+		this.instituicaoEnsino = instituicaoEnsino;
+	}
+
+	public List<SelectItem> getComboInstituicoes() {
+		return comboInstituicoes;
+	}
+
 	public DataModel<Usuario> getModelUsuarios() {
 		return modelUsuarios;
 	}

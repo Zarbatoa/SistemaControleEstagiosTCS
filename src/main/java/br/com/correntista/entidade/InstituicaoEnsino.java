@@ -1,6 +1,7 @@
 package br.com.correntista.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -51,6 +53,9 @@ public class InstituicaoEnsino implements Serializable {
     private String endCidade;
     @Column(nullable = false, length = 2)
     private String endSiglaEstado;
+    
+    @OneToMany(mappedBy = "instituicaoEnsino")
+    private List<Usuario> usuarios;
     
     
     public InstituicaoEnsino() {
@@ -226,6 +231,16 @@ public class InstituicaoEnsino implements Serializable {
 
 	public void setEndSiglaEstado(String endSiglaEstado) {
 		this.endSiglaEstado = endSiglaEstado;
+	}
+
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 
