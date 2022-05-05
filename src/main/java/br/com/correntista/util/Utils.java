@@ -4,7 +4,7 @@ public class Utils {
 
 	/**
 	 * @param cnpj, texto com 14 digitos numéricos para formatar
-	 * @return texto com a mascara de cpf
+	 * @return texto com a mascara de cnpj
 	 * */
 	public static String formatarCnpj(String cnpj) {
 		String formattedCnpj = null;
@@ -15,7 +15,7 @@ public class Utils {
 	}
 	
 	/**
-	 * @param cnpj, texto com a mascara de cpf (##.###.###/####-##)
+	 * @param cnpj, texto com a mascara de cnpj (##.###.###/####-##)
 	 * @return texto não formatado com 14 digitos numéricos
 	 * */
 	public static String desformatarCnpj(String cnpj) {
