@@ -57,6 +57,9 @@ public class InstituicaoEnsino implements Serializable {
     @OneToMany(mappedBy = "instituicaoEnsino")
     private List<Usuario> usuarios;
     
+    @OneToMany(mappedBy = "instituicaoEnsino")
+    private List<Curso> cursos;
+    
     
     public InstituicaoEnsino() {
     }
@@ -241,6 +244,16 @@ public class InstituicaoEnsino implements Serializable {
 
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
 	}
 
 
