@@ -39,7 +39,7 @@ public class Estagiario implements Serializable {
     private String cpf;
     @Column(nullable = false)
     private String telefoneFixo;
-    @Column(nullable = false)
+    @Column
     private String telefoneCel;
     
     @Column(nullable = false)
