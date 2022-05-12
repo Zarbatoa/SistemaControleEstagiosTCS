@@ -73,7 +73,9 @@
                             </p:column>
                             
                             <p:column headerText="CPF">
-                                <h:outputText value="#{estagiario.cpf}" />
+                                <h:outputFormat value="#{estagiario.cpf}">
+                                	<f:converter converterId="cpfConverter" />
+                                </h:outputFormat>
                             </p:column>
                             
                             <p:column headerText="Telefone Fixo">
