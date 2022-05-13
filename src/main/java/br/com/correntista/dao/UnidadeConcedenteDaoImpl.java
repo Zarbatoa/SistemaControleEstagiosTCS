@@ -18,15 +18,15 @@ public class UnidadeConcedenteDaoImpl extends BaseDaoImpl<UnidadeConcedente, Lon
 	}
 
 	@Override
-	public List<Estagiario> pesquisarTodos(Session sessao) throws HibernateException {
-		Query consulta = sessao.createQuery("from UnidadadeConcedente");
+	public List<UnidadeConcedente> pesquisarTodos(Session sessao) throws HibernateException {
+		Query consulta = sessao.createQuery("from UnidadeConcedente");
         return consulta.list();
 	}
 
 	@Override
-	public List<Estagiario> pesquisarPorRazaoSocial(String razaoSocial, Session sessao) throws HibernateException {
+	public List<UnidadeConcedente> pesquisarPorRazaoSocial(String razaoSocial, Session sessao) throws HibernateException {
 		Query consulta = sessao.createQuery("from UnidadeConcedente u where u.razaoSocial like :razaoSocial");
-        consulta.setParameter("razaoSocial", "%" + razaoSocial + "%");
+        consulta.setParameter("razaoSocial", razaoSocial + "%");
         return consulta.list();
 	}
 
