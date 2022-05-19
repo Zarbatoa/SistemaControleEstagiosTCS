@@ -19,13 +19,7 @@ public class HibernateUtil {
     static {
         try {
             Configuration cfg = new Configuration();
-            // petshop:
-            cfg.addAnnotatedClass(Comportamento.class);
-            cfg.addAnnotatedClass(Dono.class);
-            cfg.addAnnotatedClass(Animal.class);
-            cfg.addAnnotatedClass(Gato.class);
-            cfg.addAnnotatedClass(Cachorro.class);
-            cfg.addAnnotatedClass(Consulta.class);
+            // legado, usado pela API
             cfg.addAnnotatedClass(Endereco.class);
             
             // estagios:

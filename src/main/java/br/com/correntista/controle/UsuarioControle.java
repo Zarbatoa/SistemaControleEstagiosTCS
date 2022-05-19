@@ -16,14 +16,11 @@ import org.hibernate.Session;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 
-import br.com.correntista.dao.DonoDao;
-import br.com.correntista.dao.DonoDaoImpl;
 import br.com.correntista.dao.HibernateUtil;
 import br.com.correntista.dao.InstituicaoEnsinoDao;
 import br.com.correntista.dao.InstituicaoEnsinoDaoImpl;
 import br.com.correntista.dao.UsuarioDao;
 import br.com.correntista.dao.UsuarioDaoImpl;
-import br.com.correntista.entidade.Dono;
 import br.com.correntista.entidade.InstituicaoEnsino;
 import br.com.correntista.entidade.Usuario;
 

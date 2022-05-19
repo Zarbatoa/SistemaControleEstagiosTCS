@@ -35,10 +35,6 @@ public class Endereco implements Serializable {
     @Column(nullable = false, unique = true)
     private String cep;
     
-    @OneToOne
-    @JoinColumn(name = "id_dono")
-    private Dono dono;
-    
 
     public Endereco() {
     }
@@ -117,14 +113,6 @@ public class Endereco implements Serializable {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public Dono getDono() {
-        return dono;
-    }
-
-    public void setDono(Dono dono) {
-        this.dono = dono;
     }
 
     
