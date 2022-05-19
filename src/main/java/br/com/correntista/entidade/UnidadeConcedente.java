@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 /**
 *
 * @author Lucas Z
@@ -41,6 +43,7 @@ public class UnidadeConcedente {
     @Column
     private String infoRelevantes;
     @Column(nullable = false)
+    @ColumnDefault(value = "0")
     private Boolean ehAgenciaIntegradora;
     
     @Column(nullable = false)
