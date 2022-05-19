@@ -125,6 +125,7 @@ public class UsuarioControle {
 	
 	public void prepararAlterar() {
 		usuario = modelUsuarios.getRowData();
+		carregarComboInstituicoes();
 		instituicaoEnsino = usuario.getInstituicaoEnsino();
 		aba = 1;
 	}

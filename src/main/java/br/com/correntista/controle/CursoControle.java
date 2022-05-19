@@ -119,6 +119,7 @@ public class CursoControle {
     
     public void prepararAlterar() {
 		curso = modelCursos.getRowData();
+		carregarComboInstituicoes();
 		instituicaoEnsino = curso.getInstituicaoEnsino();
 		aba = 1;
 	}

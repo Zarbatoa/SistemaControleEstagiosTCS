@@ -170,6 +170,7 @@ public class EstagiarioControle {
     
     public void prepararAlterar() {
 		estagiario = modelEstagiarios.getRowData();
+		carregarComboCursos();
 		curso = estagiario.getCurso();
 		aba = 1;
 	}
