@@ -1,5 +1,5 @@
--- drop database dbsisestagios;
--- create database dbsisestagios;
+-- drop database dbestagios;
+-- create database dbestagios;
 
 USE PETSHOP;
 

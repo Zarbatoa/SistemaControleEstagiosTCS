@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class GeradorTabelaBanco {
     
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("dbsisestagios_PU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("dbestagios_PU");
         emf.close();
     }
 }
