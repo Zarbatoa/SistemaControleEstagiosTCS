@@ -2,6 +2,7 @@ package br.com.correntista.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -75,6 +77,9 @@ public class Estagiario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_curso")
     private Curso curso;
+    
+    @OneToMany(mappedBy = "estagiario")
+    private List<Estagio> estagios;
     
     public Estagiario() {
     }
@@ -315,6 +320,15 @@ public class Estagiario implements Serializable {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+
+	public List<Estagio> getEstagios() {
+		return estagios;
+	}
+
+
+	public void setEstagios(List<Estagio> estagios) {
+		this.estagios = estagios;
 	}
 
 

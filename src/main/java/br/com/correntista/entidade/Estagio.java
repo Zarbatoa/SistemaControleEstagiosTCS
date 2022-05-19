@@ -11,6 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -99,6 +101,13 @@ public class Estagio implements Serializable {
     @Column(nullable = false)
     @ColumnDefault(value = "0")
     private Boolean rQuadrimestral6;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_estagiario")
+    private Estagiario estagiario;
+    @ManyToOne
+    @JoinColumn(name = "id_unidade_concedente")
+    private UnidadeConcedente unidadeConcedente;
     
     public Estagio() {
     }
@@ -354,6 +363,22 @@ public class Estagio implements Serializable {
 
 	public void setrQuadrimestral6(Boolean rQuadrimestral6) {
 		this.rQuadrimestral6 = rQuadrimestral6;
+	}
+
+	public Estagiario getEstagiario() {
+		return estagiario;
+	}
+
+	public void setEstagiario(Estagiario estagiario) {
+		this.estagiario = estagiario;
+	}
+
+	public UnidadeConcedente getUnidadeConcedente() {
+		return unidadeConcedente;
+	}
+
+	public void setUnidadeConcedente(UnidadeConcedente unidadeConcedente) {
+		this.unidadeConcedente = unidadeConcedente;
 	}
 
 	@Override

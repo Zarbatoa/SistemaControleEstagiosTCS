@@ -1,5 +1,6 @@
 package br.com.correntista.entidade;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -60,6 +62,9 @@ public class UnidadeConcedente {
     private String endCidade;
     @Column(nullable = false, length = 2)
     private String endSiglaEstado;
+    
+    @OneToMany(mappedBy = "estagiario")
+    private List<Estagio> estagios;
     
     public UnidadeConcedente(){
     }
@@ -231,6 +236,14 @@ public class UnidadeConcedente {
 
 	public void setEndSiglaEstado(String endSiglaEstado) {
 		this.endSiglaEstado = endSiglaEstado;
+	}
+
+	public List<Estagio> getEstagios() {
+		return estagios;
+	}
+
+	public void setEstagios(List<Estagio> estagios) {
+		this.estagios = estagios;
 	}
 
 	@Override
