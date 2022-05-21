@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 /**
 *
 * @author Lucas Z
@@ -30,7 +32,8 @@ public class Usuario implements Serializable{
     private String senha;
     @Column
     private String email;
-    @Column
+    @Column(nullable = false)
+    @ColumnDefault(value = "1")
     private Boolean ativo;
     
     @ManyToOne
