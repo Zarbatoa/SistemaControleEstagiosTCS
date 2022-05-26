@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 /**
 *
@@ -25,6 +26,7 @@ import org.hibernate.annotations.ColumnDefault;
 */
 @Entity
 @Table(name = "estagio")
+@DynamicInsert
 public class Estagio implements Serializable {
 
 	private static final long serialVersionUID = 1L;

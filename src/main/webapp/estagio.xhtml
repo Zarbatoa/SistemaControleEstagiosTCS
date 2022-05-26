@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./principal.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <script type="text/javascript">
+        PrimeFaces.locales['pt'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Data Atual',
+                ampm: false,
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText : 'Todo Dia'
+            };
+    </script>
+    
+    <ui:define name="conteudo">
+        
+        <p:panel id="painel_conteudo" header="Estágio Header">
+            <p:tabView id="tab_view" activeIndex="#{estagioC.aba}">
+                
+                <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
+                <p:ajax event="tabChange" listener="#{estagioC.onTabChange}" 
+                        update="tab_view:form_novo:unidadeConcedente tab_view:form_novo:estagiario"/>
+                <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
+                
+                <!--aba 0, para pesquisa de estagios ativos-->
+                <p:tab title="Ativos">
+                    <h:form id="form_pesquisa_ativos">
+                        <p:panelGrid columns="3" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
+                                    contentStyleClass="ui-fluid">
+                            
+                            <p:commandButton id="pesquisarAtivos" value="Pesquisar" update="tabela_ativos"
+                                             action="#{estagioC.pesquisarAtivos()}" />
+                        </p:panelGrid>
+
+
+                        <p:dataTable id="tabela_ativos" var="estagio" value="#{estagioC.modelEstagiosAtivos}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
+                         rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
+
+                            <p:column headerText="Nome estagiário">
+                                <h:outputText value="#{estagio.estagiario.nome}" />
+                            </p:column>
+                            
+                            <p:column headerText="Empresa">
+                                <h:outputText value="#{estagio.unidadeConcedente.razaoSocial}" />
+                            </p:column>
+                            
+                            <p:column headerText="Data início">
+                                <h:outputText value="#{estagio.dataInicio}" />
+                            </p:column>
+                            
+                            <p:column headerText="Data termino">
+                                <h:outputText value="#{estagio.dataTermino}" />
+                            </p:column>
+                            
+                            <p:column headerText="Ação">
+                                <p:commandButton icon="pi pi-pencil" title="Alterar" process="@this"
+                                                 actionListener="#{estagioC.prepararAlterarAtivo}" update="@all"
+                                                 style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
+                            </p:column>
+                        </p:dataTable>
+                        
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+                        </p:confirmDialog>
+                        
+                    </h:form>
+                </p:tab>
+                
+                <!--aba 1, para pesquisa de estagios inativos-->
+                <p:tab title="Inativos">
+                    <h:form id="form_pesquisa_inativos">
+                        <p:panelGrid columns="3" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
+                                    contentStyleClass="ui-fluid">
+                            
+                            <p:commandButton id="pesquisarInativos" value="Pesquisar" update="form_pesquisa_inativos"
+                                             action="#{estagioC.pesquisarInativos()}" />
+                        </p:panelGrid>
+
+
+                        <p:dataTable id="tabela_inativos" var="estagio" value="#{estagioC.modelEstagiosInativos}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
+                         rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
+
+                            <p:column headerText="Nome estagiário">
+                                <h:outputText value="#{estagio.estagiario.nome}" />
+                            </p:column>
+                            
+                            <p:column headerText="Empresa">
+                                <h:outputText value="#{estagio.unidadeConcedente.razaoSocial}" />
+                            </p:column>
+                            
+                            <p:column headerText="Data início">
+                                <h:outputText value="#{estagio.dataInicio}" />
+                            </p:column>
+                            
+                            <p:column headerText="Data termino">
+                                <h:outputText value="#{estagio.dataTermino}" />
+                            </p:column>
+                            
+                            <p:column headerText="Ação">
+                                <p:commandButton icon="pi pi-pencil" title="Visualizar" process="@this"
+                                                 actionListener="#{estagioC.prepararVisualizarInativo}" update="@all"
+                                                 style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
+                            </p:column>
+                        </p:dataTable>
+                        
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+                        </p:confirmDialog>
+                        
+                    </h:form>
+                </p:tab>
+                
+                <!--aba 2, para cadastrar e alterar-->
+                <p:tab title="Novo">
+                    <h:form id="form_novo">
+                        <p:panelGrid columns="2" layout="flex"
+                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+                                     contentStyleClass="p-align-baseline ui-fluid">
+                            
+                            <p:outputLabel for="estagiario" value="Estagiário:" />
+                            <p:selectOneMenu id="estagiario" value="#{estagioC.estagiario.id}" required="true"
+                                             requiredMessage="Estagiário é obrigatório!"
+                                             filter="true" filterMatchMode="contains" >
+                                <p:ajax event="change" listener="#{estagioC.subjectSelectionChanged}" 
+                        				update="tab_view:form_novo:instituicaoEnsino tab_view:form_novo:nomeCurso
+                        						tab_view:form_novo:turno tab_view:form_novo:modalidade"/>
+                                <f:selectItem itemLabel="Escolha um estagiário..." itemValue=""/>
+                                <f:selectItems value="#{estagioC.comboEstagiarios}"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+                            
+                            <h:outputLabel value="Dados da Unidade Concedente de Estágio" style="font-weight: bold;"/>
+                            <h:outputLabel value="" />
+                            
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+                            
+                            <p:outputLabel for="unidadeConcedente" value="Empresa Concedente:" />
+                            <p:selectOneMenu id="unidadeConcedente" value="#{estagioC.unidadeConcedente.id}" required="true"
+                                             requiredMessage="Empresa Concedente é obrigatória!"
+                                             filter="true" filterMatchMode="contains" >
+                                <f:selectItem itemLabel="Escolha uma unidade concedente..." itemValue=""/>
+                                <f:selectItems value="#{estagioC.comboUnidadesConcedentes}"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+                            
+                            <p:outputLabel for="supervisor" value="Supervisor do Estágio:" />
+                            <p:inputText id="supervisor" value="#{estagioC.estagio.supervisor}"
+                                         required="true" requiredMessage="Supervisor é obrigatório!" />
+                            
+                            
+                            <p:outputLabel for="cargoSupervisor" value="Cargo do Supervisor:" />
+                            <p:inputText id="cargoSupervisor" value="#{estagioC.estagio.cargoSupervisor}"
+                                         requiredMessage="Cargo do Supervisor é obrigatório!"/>
+                                         
+                           	<p:outputLabel for="formacaoAcademica" value="Formação Acadêmica:" />
+                            <p:inputText id="formacaoAcademica" value="#{estagioC.estagio.formacaoAcademica}"
+                                         requiredMessage="Formação Acadêmica é obrigatório!"/>
+                            
+                            <p:outputLabel for="tempoExperiencia" value="Tempo de Experiência:" />
+                            <p:inputText id="tempoExperiencia" value="#{estagioC.estagio.tempoExperiencia}"
+                                         requiredMessage="Tempo de Experiência é obrigatória!"/>
+                            
+                            <h:outputLabel value="Dados Instituição de Ensino" style="font-weight: bold;"/>
+                            <h:outputLabel value="" />
+                            
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+                            
+                            <p:outputLabel for="instituicaoEnsino" value="Instituição de Ensino:" />
+                            <p:inputText id="instituicaoEnsino" value="#{estagioC.instituicaoEnsino.razaoSocial}"
+                            			 disabled="true"/>
+                            
+                            <p:outputLabel for="professor" value="Professor:" />
+                            <p:inputText id="professor" value="#{estagioC.estagio.professor}"
+                                         required="true" requiredMessage="Professor é obrigatório!" />
+                            
+                            <h:outputLabel value="Informações sobre o estágio" style="font-weight: bold;" />
+                            <h:outputLabel value="" />
+                            
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+                            
+                            <p:outputLabel for="nomeCurso" value="Curso:" />
+                            <p:inputText id="nomeCurso" value="#{estagioC.curso.nome}"
+                            			 disabled="true"/>
+                            
+                            <p:outputLabel for="anoOuFase" value="Ano ou Fase:" />
+                            <p:inputText id="anoOuFase" value="#{estagioC.estagio.anoFase}"
+                                         required="true" requiredMessage="Campo Ano ou Fase é obrigatório!" />
+                            
+                            <p:outputLabel for="turno" value="Turno:" />
+                            <p:inputText id="turno" value="#{estagioC.curso.turno}"
+                            			 disabled="true"/>
+                            
+                            <p:outputLabel for="modalidade" value="Modalidade:" />
+                            <p:inputText id="modalidade" value="#{estagioC.curso.modalidade}"
+                            			 disabled="true"/>
+                            
+                            <p:outputLabel for="horarioEstagio" value="Horário do Estágio:" />
+                            <p:inputText id="horarioEstagio" value="#{estagioC.estagio.horarioEstagio}"
+                                         required="true" requiredMessage="Horário do Estágio é obrigatório!" />
+                            
+                            <p:outputLabel for="jornada" value="Jornada Semanal"/>
+		                	<p:inputNumber id="jornada" value="#{estagioC.estagio.jornadaSemanal}"
+		                                 emptyValue="always" requiredMessage="Jornada Semanal é obrigatória!" />
+                            
+                            <p:outputLabel for="cargaHoraria" value="Carga Horária Total:"/>
+		                	<p:inputNumber id="cargaHoraria" value="#{estagioC.estagio.cargaHorariaTotal}"
+		                                 emptyValue="always" requiredMessage="Carga Horária Total é obrigatória!" />
+                            
+                            <p:outputLabel for="remuneracao" value="Remuneração:"/>
+		                	<p:inputNumber id="remuneracao" value="#{estagioC.estagio.remuneracao}" symbol="R$ "
+		                                 emptyValue="always" requiredMessage="Remuneração é obrigatória!" />
+                            
+                            <p:outputLabel for="valeTransporte" value="Valor do Vale Transporte:"/>
+		                	<p:inputNumber id="valeTransporte" value="#{estagioC.estagio.valorValeTransporte}" symbol="R$ "
+		                                 emptyValue="always" requiredMessage="Valor do Vale Transporte é obrigatório!" />
+                            
+                            <h:outputLabel value="Unidade (?):" />
+                            <h:outputLabel value="Em testes..." />
+                            
+                            <p:outputLabel for="dataInicio" value="Data de início:" />
+                            <p:datePicker id="dataInicio" value="#{estagioC.estagio.dataInicio}" locale="pt" 
+                            			  monthNavigator="true" yearNavigator="true"
+                                          readonlyInput="true" pattern="dd/MM/yyyy"
+                                          required="true" requiredMessage="Data de início do estágio é obrigatória!"/>
+							
+							<p:outputLabel for="dataTermino" value="Data de término:" />
+                            <p:datePicker id="dataTermino" value="#{estagioC.estagio.dataTermino}" locale="pt" 
+                            			  monthNavigator="true" yearNavigator="true"
+                                          readonlyInput="true" pattern="dd/MM/yyyy"
+                                          required="true" requiredMessage="Data de término do estágio é obrigatória!"/>
+							
+                            <p:outputLabel for="setorArea" value="Setor / Área do Estágio:" />
+                            <p:inputText id="setorArea" value="#{estagioC.estagio.setorOuArea}"
+                                         required="true" requiredMessage="Campo Setor / Área do Estágio é obrigatório!" />
+                            
+                            <p:outputLabel for="municipio" value="Município:" />
+                            <p:inputText id="municipio" value="#{estagioC.estagio.municipio}"
+                                         required="true" requiredMessage="Município é obrigatório!" />
+                            
+                            <p:outputLabel for="apoliceSeguro" value="Apólice de Seguros Nº:" />
+                            <p:inputText id="apoliceSeguro" value="#{estagioC.estagio.numApoliceSeguro}"/>
+                            
+                            <p:outputLabel for="tipoEstagio" value="Tipo de Estágio:" />
+                            <p:inputText id="tipoEstagio" value="#{estagioC.estagio.tipoEstagio}"
+                                         required="true" requiredMessage="Tipo de Estágio é obrigatório!" />
+                            
+                            <p:outputLabel for="temAgenteInt" value="Tem Agente de Integração:" />
+                            <p:selectOneRadio id="temAgenteInt" value="#{estagioC.estagio.temAgenteIntegracao}" unselectable="true"
+                                              required="true" requiredMessage="Campo Tem Agente de Integração é obrigatório!">
+                                <f:selectItem itemLabel="Sim" itemValue="true"/>
+                                <f:selectItem itemLabel="Não" itemValue="false"/>
+                            </p:selectOneRadio>
+                            
+                            <p:outputLabel for="nomeAgenteInt" value="Nome do Agente de Integração:" />
+                            <p:inputText id="nomeAgenteInt" value="#{estagioC.estagio.nomeAgenteIntegracao}"/>
+                            
+                            
+                            <!--coluna 1-->
+                            <p:commandButton value="Salvar" actionListener="#{estagioC.salvar()}"
+                                             update="@all"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+        </p:panel>
+        
+    </ui:define>
+
+</ui:composition>

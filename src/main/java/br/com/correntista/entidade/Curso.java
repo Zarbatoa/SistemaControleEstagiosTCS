@@ -120,6 +120,12 @@ public class Curso implements Serializable {
 		return Objects.equals(id, other.id) && Objects.equals(modalidade, other.modalidade)
 				&& Objects.equals(nome, other.nome) && Objects.equals(turno, other.turno);
 	}
+
+	@Override
+	public String toString() {
+		return "Curso [id=" + id + ", nome=" + nome + ", turno=" + turno + ", modalidade=" + modalidade
+				+ ", instituicaoEnsino=" + instituicaoEnsino + ", estagiarios=" + estagiarios + "]";
+	}
     
     
 	

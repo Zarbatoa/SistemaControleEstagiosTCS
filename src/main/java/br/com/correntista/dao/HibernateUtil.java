@@ -1,6 +1,9 @@
 package br.com.correntista.dao;
 
 import br.com.correntista.entidade.*;
+
+import java.util.Properties;
+
 import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
