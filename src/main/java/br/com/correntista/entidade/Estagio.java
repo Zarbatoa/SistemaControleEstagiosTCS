@@ -26,7 +26,7 @@ import org.hibernate.annotations.DynamicInsert;
 */
 @Entity
 @Table(name = "estagio")
-@DynamicInsert
+@DynamicInsert(value = true)
 public class Estagio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -76,33 +76,33 @@ public class Estagio implements Serializable {
     
     @Column(nullable = false)//, columnDefinition = "BIT(1) DEFAULT 0")
     @ColumnDefault(value = "0")
-    private Boolean temAgenteIntegracao;
+    private Boolean temAgenteIntegracao = false;
     @Column
     private String nomeAgenteIntegracao;
     @Column(nullable = false)
     @ColumnDefault(value = "'ATIVO'")
     @Enumerated(EnumType.STRING)
-    private StatusEstagio status;
+    private StatusEstagio status = StatusEstagio.ATIVO;
     
     
     @Column(nullable = false)
     @ColumnDefault(value = "0")
-    private Boolean rQuadrimestral1;
+    private Boolean rQuadrimestral1 = false;
     @Column(nullable = false)
     @ColumnDefault(value = "0")
-    private Boolean rQuadrimestral2;
+    private Boolean rQuadrimestral2 = false;
     @Column(nullable = false)
     @ColumnDefault(value = "0")
-    private Boolean rQuadrimestral3;
+    private Boolean rQuadrimestral3 = false;
     @Column(nullable = false)
     @ColumnDefault(value = "0")
-    private Boolean rQuadrimestral4;
+    private Boolean rQuadrimestral4 = false;
     @Column(nullable = false)
     @ColumnDefault(value = "0")
-    private Boolean rQuadrimestral5;
+    private Boolean rQuadrimestral5 = false;
     @Column(nullable = false)
     @ColumnDefault(value = "0")
-    private Boolean rQuadrimestral6;
+    private Boolean rQuadrimestral6 = false;
     
     @ManyToOne
     @JoinColumn(name = "id_estagiario")

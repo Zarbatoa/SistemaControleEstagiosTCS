@@ -26,15 +26,15 @@ public class EstagioDaoImpl extends BaseDaoImpl<Estagio, Long> implements Estagi
 	@Override
 	public List<Estagio> pesquisarAtivos(Session sessao) throws HibernateException {
 		Query consulta = sessao.createQuery("from Estagio e where e.status = :status");
-        consulta.setParameter("status", StatusEstagio.ATIVO.toString());
+        consulta.setParameter("status", StatusEstagio.ATIVO);
         return consulta.list();
 	}
 
 	@Override
 	public List<Estagio> pesquisarInativos(Session sessao) throws HibernateException {
 		Query consulta = sessao.createQuery("from Estagio e where e.status in (:status1, :status2)");
-        consulta.setParameter("status1", StatusEstagio.ATIVO.toString());
-        consulta.setParameter("status2", StatusEstagio.RECINDIDO.toString());
+        consulta.setParameter("status1", StatusEstagio.ATIVO);
+        consulta.setParameter("status2", StatusEstagio.RECINDIDO);
         return consulta.list();
 	}
 

@@ -105,7 +105,7 @@ public class EstagioControle {
 		try {
 			estagios = estagioDao.pesquisarInativos(sessao);
 			modelEstagios = new ListDataModel<>(estagios);
-			aba = 0;
+			aba = 1;
 		} catch (HibernateException e) {
             System.out.println("Erro ao pesquisar " + e.getMessage());
         } finally {

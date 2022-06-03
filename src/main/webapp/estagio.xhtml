@@ -53,30 +53,31 @@
                                     contentStyleClass="ui-fluid">
                             
                             <p:commandButton id="pesquisarAtivos" value="Pesquisar" update="tabela_ativos"
-                                             action="#{estagioC.pesquisarAtivos()}" />
+                                             action="#{estagioC.pesquisarAtivos()}"
+                                             style="margin-left: 300%" />
                         </p:panelGrid>
 
 
-                        <p:dataTable id="tabela_ativos" var="estagio" value="#{estagioC.modelEstagiosAtivos}" rows="10"
+                        <p:dataTable id="tabela_ativos" var="ativo" value="#{estagioC.modelEstagiosAtivos}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
 
                             <p:column headerText="Nome estagiário">
-                                <h:outputText value="#{estagio.estagiario.nome}" />
+                                <h:outputText value="#{ativo.estagiario.nome}" />
                             </p:column>
                             
                             <p:column headerText="Empresa">
-                                <h:outputText value="#{estagio.unidadeConcedente.razaoSocial}" />
+                                <h:outputText value="#{ativo.unidadeConcedente.razaoSocial}" />
                             </p:column>
                             
                             <p:column headerText="Data início">
-                                <h:outputText value="#{estagio.dataInicio}" />
+                                <h:outputText value="#{ativo.dataInicio}" />
                             </p:column>
                             
                             <p:column headerText="Data termino">
-                                <h:outputText value="#{estagio.dataTermino}" />
+                                <h:outputText value="#{ativo.dataTermino}" />
                             </p:column>
                             
                             <p:column headerText="Ação">
@@ -239,11 +240,11 @@
                                          required="true" requiredMessage="Horário do Estágio é obrigatório!" />
                             
                             <p:outputLabel for="jornada" value="Jornada Semanal"/>
-		                	<p:inputNumber id="jornada" value="#{estagioC.estagio.jornadaSemanal}"
+		                	<p:inputNumber id="jornada" value="#{estagioC.estagio.jornadaSemanal}" symbol="h" symbolPosition="s"
 		                                 emptyValue="always" requiredMessage="Jornada Semanal é obrigatória!" />
                             
                             <p:outputLabel for="cargaHoraria" value="Carga Horária Total:"/>
-		                	<p:inputNumber id="cargaHoraria" value="#{estagioC.estagio.cargaHorariaTotal}"
+		                	<p:inputNumber id="cargaHoraria" value="#{estagioC.estagio.cargaHorariaTotal}" symbol="h" symbolPosition="s"
 		                                 emptyValue="always" requiredMessage="Carga Horária Total é obrigatória!" />
                             
                             <p:outputLabel for="remuneracao" value="Remuneração:"/>
