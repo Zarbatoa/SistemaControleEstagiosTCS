@@ -90,8 +90,8 @@ public class EstagioControle {
     public void pesquisarAtivos() {
 		sessao = HibernateUtil.abrirSessao();
 		try {
-			estagios = estagioDao.pesquisarAtivos(sessao);
-			modelEstagios = new ListDataModel<>(estagios);
+			estagiosAtivos = estagioDao.pesquisarAtivos(sessao);
+			modelEstagiosAtivos = new ListDataModel<>(estagiosAtivos);
 			aba = 0;
 		} catch (HibernateException e) {
             System.out.println("Erro ao pesquisar " + e.getMessage());
@@ -103,8 +103,8 @@ public class EstagioControle {
     public void pesquisarInativos() {
 		sessao = HibernateUtil.abrirSessao();
 		try {
-			estagios = estagioDao.pesquisarInativos(sessao);
-			modelEstagios = new ListDataModel<>(estagios);
+			estagiosInativos = estagioDao.pesquisarInativos(sessao);
+			modelEstagiosInativos = new ListDataModel<>(estagiosInativos);
 			aba = 1;
 		} catch (HibernateException e) {
             System.out.println("Erro ao pesquisar " + e.getMessage());
