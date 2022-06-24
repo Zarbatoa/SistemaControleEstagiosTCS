@@ -119,7 +119,7 @@
                             
                             <p:outputLabel for="email" value="E-mail" />
                             <p:inputText id="email" value="#{estagiarioC.estagiario.email}"
-                                         requiredMessage="E-mail é obrigatório!"/>
+                                         required="true" requiredMessage="E-mail é obrigatório!"/>
                             
                             
                             <p:outputLabel for="dataNascimento" value="Data de nascimento:" />
@@ -199,8 +199,7 @@
                                          required="true" requiredMessage="Estado é obrigatório!" />
 
                             <p:outputLabel for="complemento" value="Complemento" />
-                            <p:inputText id="complemento" value="#{estagiarioC.estagiario.endComplemento}"
-                                         required="true" requiredMessage="Complemento é obrigatório!" />
+                            <p:inputText id="complemento" value="#{estagiarioC.estagiario.endComplemento}" />
                             
                             
                             

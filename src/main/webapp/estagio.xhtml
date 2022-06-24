@@ -231,12 +231,20 @@
                                          required="true" requiredMessage="Campo Ano ou Fase é obrigatório!" />
                             
                             <p:outputLabel for="turno" value="Turno:" />
-                            <p:inputText id="turno" value="#{estagioC.estagio.turno}"
-                            			 required="true" requiredMessage="Turno é obrigatório!"/>
+                            <p:selectOneMenu id="turno" value="#{estagioC.estagio.turno}" required="true"
+                                             requiredMessage="Turno é obrigatório!"
+                                             filter="true" filterMatchMode="contains" >
+                                <f:selectItem itemLabel="Escolha um turno..." itemValue=""/>
+                                <f:selectItems value="#{estagioC.comboTurno}"/>
+                            </p:selectOneMenu>
                             
                             <p:outputLabel for="modalidade" value="Modalidade:" />
-                            <p:inputText id="modalidade" value="#{estagioC.estagio.modalidade}"
-                            			 required="true" requiredMessage="Modalidade é obrigatória!"/>
+                            <p:selectOneMenu id="modalidade" value="#{estagioC.estagio.modalidade}" required="true"
+                                             requiredMessage="Modalidade é obrigatória!"
+                                             filter="true" filterMatchMode="contains" >
+                                <f:selectItem itemLabel="Escolha uma modalidade..." itemValue=""/>
+                                <f:selectItems value="#{estagioC.comboModalidade}"/>
+                            </p:selectOneMenu>
                             
                             <p:outputLabel for="horarioEstagio" value="Horário do Estágio:" />
                             <p:inputText id="horarioEstagio" value="#{estagioC.estagio.horarioEstagio}"
@@ -290,8 +298,12 @@
                             <p:inputText id="apoliceSeguro" value="#{estagioC.estagio.numApoliceSeguro}"/>
                             
                             <p:outputLabel for="tipoEstagio" value="Tipo de Estágio:" />
-                            <p:inputText id="tipoEstagio" value="#{estagioC.estagio.tipoEstagio}"
-                                         required="true" requiredMessage="Tipo de Estágio é obrigatório!" />
+                            <p:selectOneMenu id="tipoEstagio" value="#{estagioC.estagio.tipoEstagio}" required="true"
+                                             requiredMessage="Tipo de Estágio é obrigatório!"
+                                             filter="true" filterMatchMode="contains" >
+                                <f:selectItem itemLabel="Escolha um tipo de estágio..." itemValue=""/>
+                                <f:selectItems value="#{estagioC.comboTipoEstagio}"/>
+                            </p:selectOneMenu>
                             
                             <p:outputLabel for="temAgenteInt" value="Tem Agente de Integração:" />
                             <p:selectOneRadio id="temAgenteInt" value="#{estagioC.estagio.temAgenteIntegracao}" unselectable="true"
