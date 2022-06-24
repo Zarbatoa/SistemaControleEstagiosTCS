@@ -21,10 +21,13 @@ import br.com.correntista.dao.EstagiarioDaoImpl;
 import br.com.correntista.dao.EstagioDao;
 import br.com.correntista.dao.EstagioDaoImpl;
 import br.com.correntista.dao.HibernateUtil;
+import br.com.correntista.dao.InstituicaoEnsinoDao;
+import br.com.correntista.dao.InstituicaoEnsinoDaoImpl;
 import br.com.correntista.dao.UnidadeConcedenteDao;
 import br.com.correntista.dao.UnidadeConcedenteDaoImpl;
 import br.com.correntista.entidade.Estagiario;
 import br.com.correntista.entidade.Estagio;
+import br.com.correntista.entidade.InstituicaoEnsino;
 import br.com.correntista.entidade.UnidadeConcedente;
 import br.com.correntista.util.Utils;
 
@@ -46,8 +49,10 @@ public class EstagioControle {
 	private UnidadeConcedente unidadeConcedente;
     private List<SelectItem> comboUnidadesConcedentes;
 
-    // Criar atributos para as duas combobox de instituicao_ensino aqui!
-    // TODO
+    // Atributos para as duas combobox de instituicao_ensino de estagio
+    private InstituicaoEnsino instituicaoEnsino;
+    private InstituicaoEnsino instituicaoEnsinoVinculada;
+    private List<SelectItem> comboInstituicoesEnsino;
     
     // Atributos para as telas de pesquisa
     private Session sessao;
@@ -139,37 +144,40 @@ public class EstagioControle {
         }
 	}
     
+    public void carregarComboInstituicoesEnsino() {
+		sessao = HibernateUtil.abrirSessao();
+        InstituicaoEnsinoDao instituicaoEnsinoDao = new InstituicaoEnsinoDaoImpl();
+        try {
+            List<InstituicaoEnsino> instituicoesEnsino = instituicaoEnsinoDao.pesquisarTodos(sessao);
+            comboInstituicoesEnsino = new ArrayList<>();
+            for (InstituicaoEnsino instituicao: instituicoesEnsino) {
+            	comboInstituicoesEnsino.add(new SelectItem(instituicao.getId(), instituicao.getRazaoSocial()));
+            }
+        } catch (HibernateException e) {
+            System.out.println("Erro ao carregar combobox instituições ensino " + e.getMessage());
+        } finally {
+            sessao.close();
+        }
+	}
+    
     public void onTabChange(TabChangeEvent event) {
         if(event.getTab().getTitle().equals("Novo")) {
         	carregarComboEstagiarios();
         	carregarComboUnidadesConcedentes();
+        	carregarComboInstituicoesEnsino();
         }
     }
 
     public void onTabClose(TabCloseEvent event) {
     }
     
-//    public void subjectSelectionChanged(final AjaxBehaviorEvent event) {
-//    	sessao = HibernateUtil.abrirSessao();
-//        try {
-//	    	EstagiarioDao estagiarioDao = new EstagiarioDaoImpl();
-//	    	estagiario = estagiarioDao.pesquisarPorId(estagiario.getId(), sessao);
-//	    	
-//	    	curso = estagiario.getCurso();
-//	    	instituicaoEnsino = curso.getInstituicaoEnsino();
-//        } catch (HibernateException e) {
-//	            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-//	                    "Erro ao carregar informações do estagiário do comboBox", ""));
-//	        } finally {
-//	            sessao.close();
-//	    }
-//    }
-    
     public void salvar(){
         sessao = HibernateUtil.abrirSessao();
         try {
         	estagio.setUnidadeConcedente(unidadeConcedente);
         	estagio.setEstagiario(estagiario);
+        	estagio.setInstituicaoEnsino(instituicaoEnsino);
+        	estagio.setInstituicaoEnsinoVinculada(instituicaoEnsinoVinculada);
 		    estagioDao.salvarOuAlterar(estagio, sessao);
 		    estagio = null;
 		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -177,6 +185,8 @@ public class EstagioControle {
 		    modelEstagiosAtivos = null;
 		    estagiario = null;
 		    unidadeConcedente = null;
+		    instituicaoEnsino = null;
+		    instituicaoEnsinoVinculada = null;
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Erro ao salvar", ""));
@@ -189,8 +199,11 @@ public class EstagioControle {
 		estagio = modelEstagiosAtivos.getRowData();
 		carregarComboEstagiarios();
 		carregarComboUnidadesConcedentes();
+		carregarComboInstituicoesEnsino();
 		estagiario = estagio.getEstagiario();
 		unidadeConcedente = estagio.getUnidadeConcedente();
+		instituicaoEnsino = estagio.getInstituicaoEnsino();
+		instituicaoEnsinoVinculada = estagio.getInstituicaoEnsinoVinculada();
 		aba = 2;
 	}
     
@@ -198,8 +211,11 @@ public class EstagioControle {
 		estagio = modelEstagiosInativos.getRowData();
 		carregarComboEstagiarios();
 		carregarComboUnidadesConcedentes();
+		carregarComboInstituicoesEnsino();
 		estagiario = estagio.getEstagiario();
 		unidadeConcedente = estagio.getUnidadeConcedente();
+		instituicaoEnsino = estagio.getInstituicaoEnsino();
+		instituicaoEnsinoVinculada = estagio.getInstituicaoEnsinoVinculada();
 		aba = 2;
 	}
 
@@ -273,6 +289,33 @@ public class EstagioControle {
 
 	public int getAba() {
 		return aba;
+	}
+
+	
+	public InstituicaoEnsino getInstituicaoEnsino() {
+		if(instituicaoEnsino == null) {
+			instituicaoEnsino = new InstituicaoEnsino();
+		}
+		return instituicaoEnsino;
+	}
+
+	public void setInstituicaoEnsino(InstituicaoEnsino instituicaoEnsino) {
+		this.instituicaoEnsino = instituicaoEnsino;
+	}
+
+	public InstituicaoEnsino getInstituicaoEnsinoVinculada() {
+		if(instituicaoEnsinoVinculada == null) {
+			instituicaoEnsinoVinculada = new InstituicaoEnsino();
+		}
+		return instituicaoEnsinoVinculada;
+	}
+
+	public void setInstituicaoEnsinoVinculada(InstituicaoEnsino instituicaoEnsinoVinculada) {
+		this.instituicaoEnsinoVinculada = instituicaoEnsinoVinculada;
+	}
+
+	public List<SelectItem> getComboInstituicoesEnsino() {
+		return comboInstituicoesEnsino;
 	}
 
 	

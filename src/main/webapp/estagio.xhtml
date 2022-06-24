@@ -42,7 +42,8 @@
                 
                 <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
                 <p:ajax event="tabChange" listener="#{estagioC.onTabChange}" 
-                        update="tab_view:form_novo:unidadeConcedente tab_view:form_novo:estagiario"/>
+                        update="tab_view:form_novo:unidadeConcedente tab_view:form_novo:estagiario
+                        tab_view:form_novo:instituicaoEnsino tab_view:form_novo:instituicaoEnsinoVinculada"/>
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
                 
                 <!--aba 0, para pesquisa de estagios ativos-->
@@ -187,15 +188,15 @@
                             
                             <p:outputLabel for="cargoSupervisor" value="Cargo do Supervisor:" />
                             <p:inputText id="cargoSupervisor" value="#{estagioC.estagio.cargoSupervisor}"
-                                         requiredMessage="Cargo do Supervisor é obrigatório!"/>
+                                         required="true" requiredMessage="Cargo do Supervisor é obrigatório!"/>
                                          
                            	<p:outputLabel for="formacaoAcademica" value="Formação Acadêmica:" />
                             <p:inputText id="formacaoAcademica" value="#{estagioC.estagio.formacaoAcademica}"
-                                         requiredMessage="Formação Acadêmica é obrigatório!"/>
+                                         required="true" requiredMessage="Formação Acadêmica é obrigatório!"/>
                             
                             <p:outputLabel for="tempoExperiencia" value="Tempo de Experiência:" />
                             <p:inputText id="tempoExperiencia" value="#{estagioC.estagio.tempoExperiencia}"
-                                         requiredMessage="Tempo de Experiência é obrigatória!"/>
+                                         required="true" requiredMessage="Tempo de Experiência é obrigatória!"/>
                             
                             <h:outputLabel value="Dados Instituição de Ensino" style="font-weight: bold;"/>
                             <h:outputLabel value="" />
@@ -204,8 +205,12 @@
                             <h:outputLabel value="" />
                             
                             <p:outputLabel for="instituicaoEnsino" value="Instituição de Ensino:" />
-                            <p:inputText id="instituicaoEnsino" value="#{estagioC.estagio.instituicaoEnsino}"
-                            			 required="true" requiredMessage="Instituição de Ensino é obrigatória!"/>
+                            <p:selectOneMenu id="instituicaoEnsino" value="#{estagioC.instituicaoEnsino.id}" required="true"
+                                             requiredMessage="Instituição de Ensino é obrigatória!"
+                                             filter="true" filterMatchMode="contains" >
+                                <f:selectItem itemLabel="Escolha uma instituição de ensino..." itemValue=""/>
+                                <f:selectItems value="#{estagioC.comboInstituicoesEnsino}"/>
+                            </p:selectOneMenu>
                             
                             <p:outputLabel for="professor" value="Professor:" />
                             <p:inputText id="professor" value="#{estagioC.estagio.professor}"
@@ -252,9 +257,14 @@
                             <p:outputLabel for="valeTransporte" value="Valor do Vale Transporte:"/>
 		                	<p:inputNumber id="valeTransporte" value="#{estagioC.estagio.valorValeTransporte}" symbol="R$ "
 		                                 emptyValue="always" requiredMessage="Valor do Vale Transporte é obrigatório!" />
-                            
-                            <h:outputLabel value="Unidade (?):" />
-                            <h:outputLabel value="Em testes..." />
+		                    
+                            <p:outputLabel for="instituicaoEnsinoVinculada" value="Unidade Vinculdada:" />
+                            <p:selectOneMenu id="instituicaoEnsinoVinculada" value="#{estagioC.instituicaoEnsinoVinculada.id}" required="true"
+                                             requiredMessage="Unidade Vinculdada é obrigatória!"
+                                             filter="true" filterMatchMode="contains" >
+                                <f:selectItem itemLabel="Escolha uma instituição de ensino..." itemValue=""/>
+                                <f:selectItems value="#{estagioC.comboInstituicoesEnsino}"/>
+                            </p:selectOneMenu>
                             
                             <p:outputLabel for="dataInicio" value="Data de início:" />
                             <p:datePicker id="dataInicio" value="#{estagioC.estagio.dataInicio}" locale="pt" 
