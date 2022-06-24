@@ -28,7 +28,6 @@ public class HibernateUtil {
             // estagios:
             cfg.addAnnotatedClass(Usuario.class);
             cfg.addAnnotatedClass(InstituicaoEnsino.class);
-            cfg.addAnnotatedClass(Curso.class);
             cfg.addAnnotatedClass(Estagiario.class);
             cfg.addAnnotatedClass(UnidadeConcedente.class);
             cfg.addAnnotatedClass(Estagio.class);

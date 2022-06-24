@@ -7,7 +7,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -17,8 +16,6 @@ import org.hibernate.Session;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 
-import br.com.correntista.dao.CursoDao;
-import br.com.correntista.dao.CursoDaoImpl;
 import br.com.correntista.dao.EstagiarioDao;
 import br.com.correntista.dao.EstagiarioDaoImpl;
 import br.com.correntista.dao.EstagioDao;
@@ -26,11 +23,8 @@ import br.com.correntista.dao.EstagioDaoImpl;
 import br.com.correntista.dao.HibernateUtil;
 import br.com.correntista.dao.UnidadeConcedenteDao;
 import br.com.correntista.dao.UnidadeConcedenteDaoImpl;
-import br.com.correntista.entidade.Curso;
 import br.com.correntista.entidade.Estagiario;
 import br.com.correntista.entidade.Estagio;
-import br.com.correntista.entidade.InstituicaoEnsino;
-import br.com.correntista.entidade.StatusEstagio;
 import br.com.correntista.entidade.UnidadeConcedente;
 import br.com.correntista.util.Utils;
 
@@ -52,9 +46,8 @@ public class EstagioControle {
 	private UnidadeConcedente unidadeConcedente;
     private List<SelectItem> comboUnidadesConcedentes;
 
-    // Atributos para carregar no evento da escolha do estagiario no combobox
-    private InstituicaoEnsino instituicaoEnsino;
-    private Curso curso;
+    // Criar atributos para as duas combobox de instituicao_ensino aqui!
+    // TODO
     
     // Atributos para as telas de pesquisa
     private Session sessao;
@@ -156,21 +149,21 @@ public class EstagioControle {
     public void onTabClose(TabCloseEvent event) {
     }
     
-    public void subjectSelectionChanged(final AjaxBehaviorEvent event) {
-    	sessao = HibernateUtil.abrirSessao();
-        try {
-	    	EstagiarioDao estagiarioDao = new EstagiarioDaoImpl();
-	    	estagiario = estagiarioDao.pesquisarPorId(estagiario.getId(), sessao);
-	    	
-	    	curso = estagiario.getCurso();
-	    	instituicaoEnsino = curso.getInstituicaoEnsino();
-        } catch (HibernateException e) {
-	            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-	                    "Erro ao carregar informações do estagiário do comboBox", ""));
-	        } finally {
-	            sessao.close();
-	    }
-    }
+//    public void subjectSelectionChanged(final AjaxBehaviorEvent event) {
+//    	sessao = HibernateUtil.abrirSessao();
+//        try {
+//	    	EstagiarioDao estagiarioDao = new EstagiarioDaoImpl();
+//	    	estagiario = estagiarioDao.pesquisarPorId(estagiario.getId(), sessao);
+//	    	
+//	    	curso = estagiario.getCurso();
+//	    	instituicaoEnsino = curso.getInstituicaoEnsino();
+//        } catch (HibernateException e) {
+//	            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+//	                    "Erro ao carregar informações do estagiário do comboBox", ""));
+//	        } finally {
+//	            sessao.close();
+//	    }
+//    }
     
     public void salvar(){
         sessao = HibernateUtil.abrirSessao();
@@ -282,26 +275,5 @@ public class EstagioControle {
 		return aba;
 	}
 
-	public InstituicaoEnsino getInstituicaoEnsino() {
-		if(instituicaoEnsino == null){
-			instituicaoEnsino = new InstituicaoEnsino();
-		}
-		return instituicaoEnsino;
-	}
-
-	public void setInstituicaoEnsino(InstituicaoEnsino instituicaoEnsino) {
-		this.instituicaoEnsino = instituicaoEnsino;
-	}
-
-	public Curso getCurso() {
-		if(curso == null) {
-			curso = new Curso();
-		}
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
 	
 }

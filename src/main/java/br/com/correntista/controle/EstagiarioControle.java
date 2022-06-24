@@ -1,6 +1,5 @@
 package br.com.correntista.controle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -9,24 +8,17 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.faces.model.SelectItem;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 
-import br.com.correntista.dao.CursoDao;
-import br.com.correntista.dao.CursoDaoImpl;
 import br.com.correntista.dao.EstagiarioDao;
 import br.com.correntista.dao.EstagiarioDaoImpl;
 import br.com.correntista.dao.HibernateUtil;
-import br.com.correntista.dao.InstituicaoEnsinoDao;
-import br.com.correntista.dao.InstituicaoEnsinoDaoImpl;
-import br.com.correntista.entidade.Curso;
 import br.com.correntista.entidade.Endereco;
 import br.com.correntista.entidade.Estagiario;
-import br.com.correntista.entidade.InstituicaoEnsino;
 import br.com.correntista.util.Utils;
 import br.com.correntista.webservice.WebServiceEndereco;
 
@@ -41,10 +33,8 @@ public class EstagiarioControle {
 	private Estagiario estagiario;
 	private EstagiarioDao estagiarioDao;
 	
-	private Curso curso;
 	private Session sessao;
     private List<Estagiario> estagiarios;
-    private List<SelectItem> comboCursos;
     private DataModel<Estagiario> modelEstagiarios;
     private int aba;
     
@@ -87,23 +77,6 @@ public class EstagiarioControle {
     	}
     }
     
-    
-    public void carregarComboCursos() {
-		sessao = HibernateUtil.abrirSessao();
-        CursoDao cursoDao = new CursoDaoImpl();
-        try {
-            List<Curso> cursos = cursoDao.pesquisarTodos(sessao);
-            comboCursos = new ArrayList<>();
-            for (Curso curso : cursos) {
-            	comboCursos.add(new SelectItem(curso.getId(), curso.getNome()));
-            }
-        } catch (HibernateException e) {
-            System.out.println("Erro ao carregar combobox cursos " + e.getMessage());
-        } finally {
-            sessao.close();
-        }
-	}
-    
     public void buscarCep() {
         WebServiceEndereco webService = new WebServiceEndereco();
         //se nao encontrar cep retorna null
@@ -124,7 +97,6 @@ public class EstagiarioControle {
     
     public void onTabChange(TabChangeEvent event) {
         if(event.getTab().getTitle().equals("Novo")) {
-        	carregarComboCursos();
         }
     }
 
@@ -135,13 +107,11 @@ public class EstagiarioControle {
         sessao = HibernateUtil.abrirSessao();
         try {
         	estagiario.setCpf(Utils.desformatarCpf(estagiario.getCpf()));
-        	estagiario.setCurso(curso);
 		    estagiarioDao.salvarOuAlterar(estagiario, sessao);
 		    estagiario = null;
 		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 		            "Salvo com sucesso", null));
 		    modelEstagiarios = null;
-		    curso = null;
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Erro ao salvar", ""));
@@ -170,8 +140,6 @@ public class EstagiarioControle {
     
     public void prepararAlterar() {
 		estagiario = modelEstagiarios.getRowData();
-		carregarComboCursos();
-		curso = estagiario.getCurso();
 		aba = 1;
 	}
     
@@ -188,23 +156,8 @@ public class EstagiarioControle {
 		this.estagiario = estagiario;
 	}
 
-	public Curso getCurso() {
-		if(curso == null) {
-			curso = new Curso();
-		}
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
-
 	public List<Estagiario> getEstagiarios() {
 		return estagiarios;
-	}
-
-	public List<SelectItem> getComboCursos() {
-		return comboCursos;
 	}
 
 	public DataModel<Estagiario> getModelEstagiarios() {

@@ -56,9 +56,11 @@ public class InstituicaoEnsino implements Serializable {
     
     @OneToMany(mappedBy = "instituicaoEnsino")
     private List<Usuario> usuarios;
-    
     @OneToMany(mappedBy = "instituicaoEnsino")
-    private List<Curso> cursos;
+    private List<Estagio> estagiosInstituicao;
+    @OneToMany(mappedBy = "instituicaoEnsinoVinculada")
+    private List<Estagio> estagiosUnidadeVinculada;
+    
     
     
     public InstituicaoEnsino() {
@@ -245,15 +247,24 @@ public class InstituicaoEnsino implements Serializable {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
 
-	public List<Curso> getCursos() {
-		return cursos;
+	public List<Estagio> getEstagiosInstituicao() {
+		return estagiosInstituicao;
 	}
 
 
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
+	public void setEstagiosInstituicao(List<Estagio> estagiosInstituicao) {
+		this.estagiosInstituicao = estagiosInstituicao;
+	}
+
+
+	public List<Estagio> getEstagiosUnidadeVinculada() {
+		return estagiosUnidadeVinculada;
+	}
+
+
+	public void setEstagiosUnidadeVinculada(List<Estagio> estagiosUnidadeVinculada) {
+		this.estagiosUnidadeVinculada = estagiosUnidadeVinculada;
 	}
 
 

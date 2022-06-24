@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -73,10 +71,6 @@ public class Estagiario implements Serializable {
     @Column(nullable = false, length = 2)
     private String endSiglaEstado;
     
-    
-    @ManyToOne
-    @JoinColumn(name = "id_curso")
-    private Curso curso;
     
     @OneToMany(mappedBy = "estagiario")
     private List<Estagio> estagios;
@@ -311,16 +305,7 @@ public class Estagiario implements Serializable {
 	public void setEndSiglaEstado(String endSiglaEstado) {
 		this.endSiglaEstado = endSiglaEstado;
 	}
-
-
-	public Curso getCurso() {
-		return curso;
-	}
-
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
+	
 
 	public List<Estagio> getEstagios() {
 		return estagios;

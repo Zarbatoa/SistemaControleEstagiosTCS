@@ -42,7 +42,7 @@
                 
                 <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
                 <p:ajax event="tabChange" listener="#{estagiarioC.onTabChange}" 
-                        update="tab_view:form_novo:curso"/>
+                        update=""/>
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
                 
                 <p:tab title="Pesquisa">
@@ -80,10 +80,6 @@
                             
                             <p:column headerText="Telefone Fixo">
                                 <h:outputText value="#{estagiario.telefoneFixo}" />
-                            </p:column>
-                            
-                            <p:column headerText="Curso">
-                                <h:outputText value="#{estagiario.curso.nome}" />
                             </p:column>
                             
                             <p:column headerText="Nº Matrícula">
@@ -171,17 +167,6 @@
                             <p:outputLabel for="rgRepLegal" value="RG do representante legal:" />
                             <p:inputText id="rgRepLegal" value="#{estagiarioC.estagiario.rgRepLegal}"
                                          required="false"/>
-                                
-							<p:outputLabel for="curso" value="Curso:" />
-                            <p:selectOneMenu id="curso" value="#{estagiarioC.curso.id}" required="true"
-                                             requiredMessage="Curso é obrigatório!"
-                                             filter="true" filterMatchMode="startsWith" >
-                                <f:selectItem itemLabel="Escolha um curso..." itemValue=""/>
-                                <f:selectItems value="#{estagiarioC.comboCursos}"/>
-                            </p:selectOneMenu>
-                            
-                            <h:outputLabel value="" />
-                            <h:outputLabel value="" />
                             
                             <p:outputLabel for="cep" value="CEP:" />
                             <p:inputMask id="cep" value="#{estagiarioC.estagiario.endCep}"

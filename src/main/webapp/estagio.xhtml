@@ -156,9 +156,6 @@
                             <p:selectOneMenu id="estagiario" value="#{estagioC.estagiario.id}" required="true"
                                              requiredMessage="Estagiário é obrigatório!"
                                              filter="true" filterMatchMode="contains" >
-                                <p:ajax event="change" listener="#{estagioC.subjectSelectionChanged}" 
-                        				update="tab_view:form_novo:instituicaoEnsino tab_view:form_novo:nomeCurso
-                        						tab_view:form_novo:turno tab_view:form_novo:modalidade"/>
                                 <f:selectItem itemLabel="Escolha um estagiário..." itemValue=""/>
                                 <f:selectItems value="#{estagioC.comboEstagiarios}"/>
                             </p:selectOneMenu>
@@ -207,8 +204,8 @@
                             <h:outputLabel value="" />
                             
                             <p:outputLabel for="instituicaoEnsino" value="Instituição de Ensino:" />
-                            <p:inputText id="instituicaoEnsino" value="#{estagioC.instituicaoEnsino.razaoSocial}"
-                            			 disabled="true"/>
+                            <p:inputText id="instituicaoEnsino" value="#{estagioC.estagio.instituicaoEnsino}"
+                            			 required="true" requiredMessage="Instituição de Ensino é obrigatória!"/>
                             
                             <p:outputLabel for="professor" value="Professor:" />
                             <p:inputText id="professor" value="#{estagioC.estagio.professor}"
@@ -221,20 +218,20 @@
                             <h:outputLabel value="" />
                             
                             <p:outputLabel for="nomeCurso" value="Curso:" />
-                            <p:inputText id="nomeCurso" value="#{estagioC.curso.nome}"
-                            			 disabled="true"/>
+                            <p:inputText id="nomeCurso" value="#{estagioC.estagio.curso}"
+                            			 required="true" requiredMessage="Curso é obrigatório!"/>
                             
                             <p:outputLabel for="anoOuFase" value="Ano ou Fase:" />
                             <p:inputText id="anoOuFase" value="#{estagioC.estagio.anoFase}"
                                          required="true" requiredMessage="Campo Ano ou Fase é obrigatório!" />
                             
                             <p:outputLabel for="turno" value="Turno:" />
-                            <p:inputText id="turno" value="#{estagioC.curso.turno}"
-                            			 disabled="true"/>
+                            <p:inputText id="turno" value="#{estagioC.estagio.turno}"
+                            			 required="true" requiredMessage="Turno é obrigatório!"/>
                             
                             <p:outputLabel for="modalidade" value="Modalidade:" />
-                            <p:inputText id="modalidade" value="#{estagioC.curso.modalidade}"
-                            			 disabled="true"/>
+                            <p:inputText id="modalidade" value="#{estagioC.estagio.modalidade}"
+                            			 required="true" requiredMessage="Modalidade é obrigatória!"/>
                             
                             <p:outputLabel for="horarioEstagio" value="Horário do Estágio:" />
                             <p:inputText id="horarioEstagio" value="#{estagioC.estagio.horarioEstagio}"
