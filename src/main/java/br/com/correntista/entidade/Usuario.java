@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -35,10 +33,6 @@ public class Usuario implements Serializable{
     @Column(nullable = false)
     @ColumnDefault(value = "1")
     private Boolean ativo;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_instituicao_ensino")
-    private InstituicaoEnsino instituicaoEnsino;
     
     public Usuario() {
     	
@@ -91,14 +85,6 @@ public class Usuario implements Serializable{
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public InstituicaoEnsino getInstituicaoEnsino() {
-		return instituicaoEnsino;
-	}
-
-	public void setInstituicaoEnsino(InstituicaoEnsino instituicaoEnsino) {
-		this.instituicaoEnsino = instituicaoEnsino;
 	}
 
 	@Override

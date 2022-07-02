@@ -36,10 +36,8 @@ public class UsuarioControle {
 	private UsuarioDao usuarioDao;
 
 	// verificarei o que é necessário:
-	private InstituicaoEnsino instituicaoEnsino;
 	private Session sessao;
     private List<Usuario> usuarios;
-    private List<SelectItem> comboInstituicoes;
     private DataModel<Usuario> modelUsuarios;
     private int aba;
 	
@@ -60,27 +58,10 @@ public class UsuarioControle {
         }
 	}
 	
-	public void carregarComboInstituicoes() {
-		sessao = HibernateUtil.abrirSessao();
-        InstituicaoEnsinoDao instituicaoDao = new InstituicaoEnsinoDaoImpl();
-        try {
-            List<InstituicaoEnsino> instituicoes = instituicaoDao.pesquisarTodos(sessao);
-            comboInstituicoes = new ArrayList<>();
-            for (InstituicaoEnsino instituicao : instituicoes) {
-            	comboInstituicoes.add(new SelectItem(instituicao.getId(), instituicao.getRazaoSocial()));
-            }
-        } catch (HibernateException e) {
-            System.out.println("Erro ao carregar combobox instituicoes " + e.getMessage());
-        } finally {
-            sessao.close();
-        }
-	}
-	
 	public void onTabChange(TabChangeEvent event) {
         //event.getTab().getTitle()
         if(event.getTab().getTitle().equals("Novo")) {
         	//usuario = null;
-        	carregarComboInstituicoes();
         }
     }
 
@@ -90,7 +71,6 @@ public class UsuarioControle {
 	public void salvar(){
         sessao = HibernateUtil.abrirSessao();
         try {
-        	usuario.setInstituicaoEnsino(instituicaoEnsino);
 		    usuarioDao.salvarOuAlterar(usuario, sessao);
 		    usuario = null;
 		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -122,8 +102,6 @@ public class UsuarioControle {
 	
 	public void prepararAlterar() {
 		usuario = modelUsuarios.getRowData();
-		carregarComboInstituicoes();
-		instituicaoEnsino = usuario.getInstituicaoEnsino();
 		aba = 1;
 	}
 
@@ -142,23 +120,6 @@ public class UsuarioControle {
 		this.usuario = usuario;
 	}
 
-	
-	
-	
-	public InstituicaoEnsino getInstituicaoEnsino() {
-		if(instituicaoEnsino == null) {
-			instituicaoEnsino = new InstituicaoEnsino();
-		}
-		return instituicaoEnsino;
-	}
-
-	public void setInstituicaoEnsino(InstituicaoEnsino instituicaoEnsino) {
-		this.instituicaoEnsino = instituicaoEnsino;
-	}
-
-	public List<SelectItem> getComboInstituicoes() {
-		return comboInstituicoes;
-	}
 
 	public DataModel<Usuario> getModelUsuarios() {
 		return modelUsuarios;

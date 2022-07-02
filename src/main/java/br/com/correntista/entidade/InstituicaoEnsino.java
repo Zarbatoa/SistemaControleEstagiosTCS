@@ -55,8 +55,6 @@ public class InstituicaoEnsino implements Serializable {
     private String endSiglaEstado;
     
     @OneToMany(mappedBy = "instituicaoEnsino")
-    private List<Usuario> usuarios;
-    @OneToMany(mappedBy = "instituicaoEnsino")
     private List<Estagio> estagiosInstituicao;
     @OneToMany(mappedBy = "instituicaoEnsinoVinculada")
     private List<Estagio> estagiosUnidadeVinculada;
@@ -237,16 +235,7 @@ public class InstituicaoEnsino implements Serializable {
 	public void setEndSiglaEstado(String endSiglaEstado) {
 		this.endSiglaEstado = endSiglaEstado;
 	}
-
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+	
 
 	public List<Estagio> getEstagiosInstituicao() {
 		return estagiosInstituicao;

@@ -41,8 +41,8 @@
             <p:tabView id="tab_view" activeIndex="#{usuarioC.aba}">
                 
                 <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
-                <p:ajax event="tabChange" listener="#{usuarioC.onTabChange}" 
-                        update="tab_view:form_novo:instituicao"/>
+                <!-- <p:ajax event="tabChange" listener="#{usuarioC.onTabChange}" 
+                        update="tab_view:form_novo:instituicao"/> -->
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
                 
                 <p:tab title="Pesquisa">
@@ -69,10 +69,6 @@
 
                             <p:column headerText="Email">
                                 <h:outputText value="#{usuario.email}" />
-                            </p:column>
-                            
-                            <p:column headerText="Instituição de Ensino">
-                                <h:outputText value="#{usuario.instituicaoEnsino.razaoSocial}" />
                             </p:column>
                             
                             <p:column headerText="Ativo">
@@ -115,15 +111,6 @@
 										required="true" promptLabel="Insira sua senha" weakLabel="Fraca"
 							            goodLabel="Boa" strongLabel="Forte"
 							            toggleMask="true" redisplay="true"/>
-							                   
-							                   
-							<p:outputLabel for="instituicao" value="Instituição de Ensino:" />
-                            <p:selectOneMenu id="instituicao" value="#{usuarioC.instituicaoEnsino.id}" required="true"
-                                             requiredMessage="Instituição de Ensino é obrigatória!"
-                                             filter="true" filterMatchMode="contains" >
-                                <f:selectItem itemLabel="Escolha uma instituição..." itemValue=""/>
-                                <f:selectItems value="#{usuarioC.comboInstituicoes}"/>
-                            </p:selectOneMenu> 
                             
                             
                             <p:outputLabel for="ativo" value="Ativo: " />

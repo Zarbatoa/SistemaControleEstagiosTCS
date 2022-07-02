@@ -110,6 +110,10 @@ public class Estagio implements Serializable {
     @ColumnDefault(value = "0")
     private Boolean rQuadrimestral6 = false;
     
+    @Column(nullable = false)
+    private String planoAtividades;
+    
+    
     @ManyToOne
     @JoinColumn(name = "id_estagiario")
     private Estagiario estagiario;
@@ -132,7 +136,7 @@ public class Estagio implements Serializable {
 			Double valorValeTransporte, Date dataInicio, Date dataTermino, String setorOuArea, String municipio,
 			String numApoliceSeguro, String tipoEstagio, Boolean temAgenteIntegracao, String nomeAgenteIntegracao,
 			StatusEstagio status, Boolean rQuadrimestral1, Boolean rQuadrimestral2, Boolean rQuadrimestral3,
-			Boolean rQuadrimestral4, Boolean rQuadrimestral5, Boolean rQuadrimestral6) {
+			Boolean rQuadrimestral4, Boolean rQuadrimestral5, Boolean rQuadrimestral6, String planoAtividades) {
 		super();
 		this.id = id;
 		this.supervisor = supervisor;
@@ -164,6 +168,7 @@ public class Estagio implements Serializable {
 		this.rQuadrimestral4 = rQuadrimestral4;
 		this.rQuadrimestral5 = rQuadrimestral5;
 		this.rQuadrimestral6 = rQuadrimestral6;
+		this.planoAtividades = planoAtividades;
 	}
 
 	public Long getId() {
@@ -438,13 +443,21 @@ public class Estagio implements Serializable {
 		this.instituicaoEnsinoVinculada = instituicaoEnsinoVinculada;
 	}
 
+	public String getPlanoAtividades() {
+		return planoAtividades;
+	}
+
+	public void setPlanoAtividades(String planoAtividades) {
+		this.planoAtividades = planoAtividades;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(anoFase, cargaHorariaTotal, cargoSupervisor, curso, dataInicio, dataTermino, estagiario,
 				formacaoAcademica, horarioEstagio, id, instituicaoEnsino, instituicaoEnsinoVinculada, jornadaSemanal,
-				modalidade, municipio, nomeAgenteIntegracao, numApoliceSeguro, professor, rQuadrimestral1,
-				rQuadrimestral2, rQuadrimestral3, rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, remuneracao,
-				setorOuArea, status, supervisor, temAgenteIntegracao, tempoExperiencia, tipoEstagio, turno,
+				modalidade, municipio, nomeAgenteIntegracao, numApoliceSeguro, planoAtividades, professor,
+				rQuadrimestral1, rQuadrimestral2, rQuadrimestral3, rQuadrimestral4, rQuadrimestral5, rQuadrimestral6,
+				remuneracao, setorOuArea, status, supervisor, temAgenteIntegracao, tempoExperiencia, tipoEstagio, turno,
 				unidadeConcedente, valorValeTransporte);
 	}
 
@@ -469,7 +482,8 @@ public class Estagio implements Serializable {
 				&& Objects.equals(municipio, other.municipio)
 				&& Objects.equals(nomeAgenteIntegracao, other.nomeAgenteIntegracao)
 				&& Objects.equals(numApoliceSeguro, other.numApoliceSeguro)
-				&& Objects.equals(professor, other.professor) && Objects.equals(rQuadrimestral1, other.rQuadrimestral1)
+				&& Objects.equals(planoAtividades, other.planoAtividades) && Objects.equals(professor, other.professor)
+				&& Objects.equals(rQuadrimestral1, other.rQuadrimestral1)
 				&& Objects.equals(rQuadrimestral2, other.rQuadrimestral2)
 				&& Objects.equals(rQuadrimestral3, other.rQuadrimestral3)
 				&& Objects.equals(rQuadrimestral4, other.rQuadrimestral4)
@@ -497,8 +511,9 @@ public class Estagio implements Serializable {
 				+ nomeAgenteIntegracao + ", status=" + status + ", rQuadrimestral1=" + rQuadrimestral1
 				+ ", rQuadrimestral2=" + rQuadrimestral2 + ", rQuadrimestral3=" + rQuadrimestral3 + ", rQuadrimestral4="
 				+ rQuadrimestral4 + ", rQuadrimestral5=" + rQuadrimestral5 + ", rQuadrimestral6=" + rQuadrimestral6
-				+ ", estagiario=" + estagiario + ", unidadeConcedente=" + unidadeConcedente + ", instituicaoEnsino="
-				+ instituicaoEnsino + ", instituicaoEnsinoVinculada=" + instituicaoEnsinoVinculada + "]";
+				+ ", planoAtividades=" + planoAtividades + ", estagiario=" + estagiario + ", unidadeConcedente="
+				+ unidadeConcedente + ", instituicaoEnsino=" + instituicaoEnsino + ", instituicaoEnsinoVinculada="
+				+ instituicaoEnsinoVinculada + "]";
 	}
 	
 	

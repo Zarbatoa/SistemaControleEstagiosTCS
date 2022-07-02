@@ -86,6 +86,9 @@
                                 <p:commandButton icon="pi pi-pencil" title="Alterar" process="@this"
                                                  actionListener="#{estagioC.prepararAlterarAtivo}" update="@all"
                                                  style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
+                                <p:commandButton icon="pi pi-file" title="Documentos" process="@this"
+                                                 actionListener="#{estagioC.prepararAlterarAtivo}" update="@all"
+                                                 styleClass="rounded-button ui-button-secondary ui-button-outlined"/>
                             </p:column>
                         </p:dataTable>
                         
@@ -316,6 +319,12 @@
                             <p:outputLabel for="nomeAgenteInt" value="Nome do Agente de Integração:" />
                             <p:inputText id="nomeAgenteInt" value="#{estagioC.estagio.nomeAgenteIntegracao}"/>
                             
+                            <p:outputLabel for="planoAtividades" value="Plano de Atividades:" />
+                            <p:inputTextarea id="planoAtividades" value="#{estagioC.estagio.planoAtividades}"
+                                         required="true" requiredMessage="Plano de Atividades é obrigatório!" />
+                            
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
                             
                             <!--coluna 1-->
                             <p:commandButton value="Salvar" actionListener="#{estagioC.salvar()}"
@@ -326,7 +335,7 @@
                 
                 
                 <!--aba 3, para geracao de documentos / relatorios -->
-                <p:tab title="Documentos">
+                <p:tab title="Documentos" disabled="true">
                 	<h:form id="form_relatorios">
                 		<p:panelGrid columns="1" layout="flex"
                                     columnClasses="p-col-5"

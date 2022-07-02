@@ -15,10 +15,10 @@ INSERT INTO INSTITUICAO_ENSINO (ID, RAZAOSOCIAL, CNPJ, EMAIL, REPRESENTANTE, TEL
 		'Rua João Pereira dos Santos', '303', NULL, 'Pte. do Imaruim', '88130-475', 'Palhoça', 'SC' );
 
 
-INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA, ID_INSTITUICAO_ENSINO)
-	VALUES (1, 'lucas@lucas.com', 'lucas', 'lucas', 1);
-INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA, ID_INSTITUICAO_ENSINO)
-	VALUES (2, 'matheus@matheus.com', 'matheus', 'matheus', 2);
+INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)
+	VALUES (1, 'lucas@lucas.com', 'lucas', 'lucas');
+INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)
+	VALUES (2, 'matheus@matheus.com', 'matheus', 'matheus');
 
 /*INSERT INTO CURSO (ID, MODALIDADE, NOME, TURNO, ID_INSTITUICAO_ENSINO)
 	VALUES (1, 'mod1', 'Análise e Desenvolvimento de Sistemas', 'Noturno', 1);

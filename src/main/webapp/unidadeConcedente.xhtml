@@ -149,13 +149,9 @@
                             <p:outputLabel for="infoRelevantes" value="Informações relevantes:" />
                             <p:inputText id="infoRelevantes" value="#{empresaC.unidadeConcedente.infoRelevantes}"
                                          required="false" />
-                                         
-                            <p:outputLabel for="agenciaIntegracao" value="É agência de integração:" />
-                            <p:selectOneRadio id="agenciaIntegracao" value="#{empresaC.unidadeConcedente.ehAgenciaIntegradora}" unselectable="true"
-                                              required="true" requiredMessage="Campo agência de integração é obrigatório!">
-                                <f:selectItem itemLabel="Sim" itemValue="true"/>
-                                <f:selectItem itemLabel="Não" itemValue="false"/>
-                            </p:selectOneRadio>
+                            
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
 
                             <p:outputLabel for="cep" value="CEP:" />
                             <p:inputMask id="cep" value="#{empresaC.unidadeConcedente.endCep}"
