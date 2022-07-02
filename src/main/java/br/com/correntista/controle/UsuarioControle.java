@@ -59,9 +59,9 @@ public class UsuarioControle {
 	}
 	
 	public void onTabChange(TabChangeEvent event) {
-        //event.getTab().getTitle()
         if(event.getTab().getTitle().equals("Novo")) {
-        	//usuario = null;
+        } else {
+        	usuario = null;
         }
     }
 

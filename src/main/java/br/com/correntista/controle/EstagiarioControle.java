@@ -97,6 +97,8 @@ public class EstagiarioControle {
     
     public void onTabChange(TabChangeEvent event) {
         if(event.getTab().getTitle().equals("Novo")) {
+        } else {
+        	estagiario = null;
         }
     }
 

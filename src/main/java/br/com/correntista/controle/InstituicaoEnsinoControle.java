@@ -75,9 +75,10 @@ public class InstituicaoEnsinoControle {
     }
 	
 	public void onTabChange(TabChangeEvent event) {
-        //event.getTab().getTitle()
-//        if(event.getTab().getTitle().equals("Novo")) {
-//        }
+        if(event.getTab().getTitle().equals("Novo")) {
+        } else {
+        	instituicaoEnsino = null;
+        }
     }
 
     public void onTabClose(TabCloseEvent event) {

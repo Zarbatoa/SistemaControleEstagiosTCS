@@ -40,7 +40,8 @@
         <p:panel id="painel_conteudo" header="Instituição de Ensino Header">
             <p:tabView id="tab_view" activeIndex="#{instituciaoC.aba}">
                 
-                <p:ajax event="tabChange" listener="#{instituciaoC.onTabChange}"/>
+                <p:ajax event="tabChange" listener="#{instituciaoC.onTabChange}"
+                	update="tab_view:form_novo"/>
                 <p:ajax event="tabClose" listener="#{instituciaoC.onTabClose}"/>
                 
                 <p:tab title="Pesquisa">

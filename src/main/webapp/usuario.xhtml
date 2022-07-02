@@ -41,8 +41,8 @@
             <p:tabView id="tab_view" activeIndex="#{usuarioC.aba}">
                 
                 <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
-                <!-- <p:ajax event="tabChange" listener="#{usuarioC.onTabChange}" 
-                        update="tab_view:form_novo:instituicao"/> -->
+                <p:ajax event="tabChange" listener="#{usuarioC.onTabChange}" 
+                        update="tab_view:form_novo"/>
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
                 
                 <p:tab title="Pesquisa">

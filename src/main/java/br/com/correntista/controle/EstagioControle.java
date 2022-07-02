@@ -196,6 +196,12 @@ public class EstagioControle {
         	carregarComboEstagiarios();
         	carregarComboUnidadesConcedentes();
         	carregarComboInstituicoesEnsino();
+        } else {
+        	estagio = null;
+        	estagiario = null;
+        	unidadeConcedente = null;
+        	instituicaoEnsino = null;
+        	instituicaoEnsinoVinculada = null;
         }
     }
 

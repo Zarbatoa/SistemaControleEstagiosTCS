@@ -97,6 +97,10 @@ public class UnidadeConcedenteControle {
 	    }
 	    
 	    public void onTabChange(TabChangeEvent event) {
+	    	if(event.getTab().getTitle().equals("Novo")) {
+	        } else {
+	        	unidadeConcedente = null;
+	        }
 	    }
 
 	    public void onTabClose(TabCloseEvent event) {
