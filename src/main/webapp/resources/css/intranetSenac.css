@@ -1,0 +1,221 @@
+body {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background-image: url(../imagens/senac01.jpg);
+    background-color: #003060;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-attachment: fixed;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+table, th, td
+{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+tr
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    font-weight: normal;
+}
+
+th, td
+{   font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+/*
+ * formularios
+ */
+table#tformulario {
+    width: 90%;
+}
+table#tformulario thead th {
+    background-color: #004171;
+    padding: 4px;
+    color: white;
+    font-weight: bold;
+}
+table#tformulario tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+table#tformulario tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#tformulario tbody td {
+    padding: 4px;
+    /*text-align: left;*/
+}
+table#tformulario tfoot td {
+    background-color: #004171;
+    padding: 4px;
+    color: white;
+    font-weight: bold;
+}
+/*
+ * formularios
+ */
+
+
+a:link
+{
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover
+{
+    text-decoration: underline;
+    color: #000000;
+}
+
+a:visited
+{
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active
+{
+    text-decoration: none;
+    color: #000000;
+}
+
+textarea
+{
+    font-family: verdana, Arial, geneva;
+    font-size:8pt;
+    border-style: solid;
+    border-width: 1;
+    border-color: #E5E5E5;
+}
+
+input
+{
+    font-family: verdana, Arial, geneva;
+    font-size: 10px;
+    border-style: solid;
+    border-width: 1;
+    border-color: #E5E5E5;
+}
+
+select
+{
+    font-family: verdana, Arial, geneva;
+    font-size:8pt;
+    border-style: solid;
+    border-width: 1;
+    border-color: #E5E5E5;
+}
+
+
+.tabela
+{
+    border-collapse: collapse;
+    mso-border-insidev: 2.0pt solid white;
+    size:550px;
+}
+
+.menu {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.cabecalho
+{
+    top:15px;
+    height:40px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    background-image: url(/imagens/layout/formulario_semimagem.jpg);
+    /*	background-repeat:no-repeat;*/
+    background-repeat: repeat-x;
+    text-align:right;
+    text-transform:uppercase;
+}
+
+.obrigatorio {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color:#FF0000;
+}
+
+.informacao {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color:#000000;
+}
+
+.noticias {
+    position: relative;
+}
+
+.noticiaDiv {
+    /*width: 506px;*/
+    width: 230px;
+    border: 10px solid #fff;
+    background: #FFF;
+    padding: 10px;
+    float: left;
+    /*position: absolute;*/
+}
+
+.noticiaTexto {
+    background: #EEF2F5;
+    padding: 10px;
+    /*    width: 460px;
+        margin-left: 12px;*/
+    width: 207px;
+    margin-left: 2px;
+}
+
+.botaoCadastrar {
+    background-color: #004171;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    height: 30px;
+    padding: 4px 17px;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.botaoExcluir {
+    background-color: #d34f00;
+    border: medium none;
+    height: 30px;
+    cursor: pointer;
+    padding: 4px 17px;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.formularioTitulo {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+}
+.formularioSubTitulo {
+    color: #1F3C9A;
+    font-size: 11px;
+    font-weight: bold;
+}
+.formularioObjetivo {
+    color: #000000;
+    font-size: 10px;
+    font-weight: normal;
+}
+

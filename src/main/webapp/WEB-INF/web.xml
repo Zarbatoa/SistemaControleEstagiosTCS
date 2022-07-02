@@ -17,4 +17,13 @@
     <welcome-file-list>
         <welcome-file>principal.faces</welcome-file>
     </welcome-file-list>
+    
+    <mime-mapping>
+	    <extension>xhtml</extension>
+	    <mime-type>application/xml</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+	    <extension>jsp</extension>
+	    <mime-type>application/xml</mime-type>
+	</mime-mapping>
 </web-app>

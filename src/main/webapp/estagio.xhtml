@@ -43,7 +43,8 @@
                 <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
                 <p:ajax event="tabChange" listener="#{estagioC.onTabChange}" 
                         update="tab_view:form_novo:unidadeConcedente tab_view:form_novo:estagiario
-                        tab_view:form_novo:instituicaoEnsino tab_view:form_novo:instituicaoEnsinoVinculada"/>
+                        tab_view:form_novo:instituicaoEnsino tab_view:form_novo:instituicaoEnsinoVinculada
+                        "/>
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
                 
                 <!--aba 0, para pesquisa de estagios ativos-->
@@ -322,6 +323,92 @@
                         </p:panelGrid>
                     </h:form>
                 </p:tab>
+                
+                
+                <!--aba 3, para geracao de documentos / relatorios -->
+                <p:tab title="Documentos">
+                	<h:form id="form_relatorios">
+                		<p:panelGrid columns="1" layout="flex"
+                                    columnClasses="p-col-5"
+                                    contentStyleClass="ui-fluid">
+                                    
+                           	<h:outputLink value="reportPages/relatorioDesligamento.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Relatório de Desligamento</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/termoDeConvenio.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Termo de Convênio</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/termoCompromissoNaoObrigatorio.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Termo de Compromisso não Obrigatório</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/termoCompromissoObrigatorio.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Termo de Compromisso Obrigatório</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Relatório Quadrimestral 1</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Relatório Quadrimestral 2</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Relatório Quadrimestral 3</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Relatório Quadrimestral 4</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Relatório Quadrimestral 5</span>
+							</h:outputLink>
+							
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							    target="_blank">
+							    <span class="ui-button-text">Relatório Quadrimestral 6</span>
+							</h:outputLink>
+							
+                    	</p:panelGrid>
+                	</h:form>
+                </p:tab>
+                
+                
+                <!--aba 3, para notificações -->
+                <p:tab>
+                	<!-- overrides title on tab-->
+			        <f:facet name="title">
+			            <i id="iconeNotif" class="pi pi-bell" style="color: red;"></i>
+			        </f:facet>
+			
+			        <h:panelGrid>
+			            <!-- tab content -->
+			        </h:panelGrid>
+                </p:tab>
+                
             </p:tabView>
         </p:panel>
         

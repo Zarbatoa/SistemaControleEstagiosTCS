@@ -67,9 +67,40 @@ public class EstagioControle {
     
     private int aba;
     
+    private int teste=10;
+    
+    public int getTeste() {
+		return teste;
+	}
+
+	public void setTeste(int teste) {
+		this.teste = teste;
+	}
+
+	// Combo Boxes fixos
+    private List<SelectItem> comboModalidade;
+    private List<SelectItem> comboTurno;
+    private List<SelectItem> comboTipoEstagio;
+    
     
     public EstagioControle() {
     	estagioDao = new EstagioDaoImpl();
+    	comboModalidade = new ArrayList<>();
+    	comboTurno = new ArrayList<>();
+    	comboTipoEstagio = new ArrayList<>();
+    	
+    	comboModalidade.add(new SelectItem("Ensino Médio Regular"));
+    	comboModalidade.add(new SelectItem("Formação Inicial e Continuada"));
+    	comboModalidade.add(new SelectItem("Educação Técnica"));
+    	comboModalidade.add(new SelectItem("Educação Superior"));
+    	
+    	comboTurno.add(new SelectItem("Matutino"));
+    	comboTurno.add(new SelectItem("Vespertino"));
+    	comboTurno.add(new SelectItem("Noturno"));
+    	comboTurno.add(new SelectItem("Integral"));
+    	
+    	comboTipoEstagio.add(new SelectItem("Obrigatório"));
+    	comboTipoEstagio.add(new SelectItem("Não Obrigatório"));
     }
     
     public void pesquisarTodos() {
@@ -218,6 +249,11 @@ public class EstagioControle {
 		instituicaoEnsinoVinculada = estagio.getInstituicaoEnsinoVinculada();
 		aba = 2;
 	}
+    
+    
+    public String direcinarRelatorioDesligamento() {
+    	return "relatorioDesligamento.htm";
+    }
 
     
     // getters e setters
@@ -318,5 +354,16 @@ public class EstagioControle {
 		return comboInstituicoesEnsino;
 	}
 
+	public List<SelectItem> getComboModalidade() {
+		return comboModalidade;
+	}
+
+	public List<SelectItem> getComboTurno() {
+		return comboTurno;
+	}
+
+	public List<SelectItem> getComboTipoEstagio() {
+		return comboTipoEstagio;
+	}
 	
 }
