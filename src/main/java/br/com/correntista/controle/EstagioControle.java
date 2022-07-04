@@ -66,16 +66,6 @@ public class EstagioControle {
     private DataModel<Estagio> modelEstagiosInativos;
     
     private int aba;
-    
-    private int teste=10;
-    
-    public int getTeste() {
-		return teste;
-	}
-
-	public void setTeste(int teste) {
-		this.teste = teste;
-	}
 
 	// Combo Boxes fixos
     private List<SelectItem> comboModalidade;
@@ -255,6 +245,11 @@ public class EstagioControle {
 		instituicaoEnsinoVinculada = estagio.getInstituicaoEnsinoVinculada();
 		aba = 2;
 	}
+    
+    public void prepararAbaDocumentos() {
+    	estagio = modelEstagiosAtivos.getRowData();
+    	aba = 3;
+    }
     
     
     public String direcinarRelatorioDesligamento() {

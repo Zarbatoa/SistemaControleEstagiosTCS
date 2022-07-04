@@ -85,7 +85,7 @@
                                                  actionListener="#{estagioC.prepararAlterarAtivo}" update="@all"
                                                  style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
                                 <p:commandButton icon="pi pi-file" title="Documentos" process="@this"
-                                                 actionListener="#{estagioC.prepararAlterarAtivo}" update="@all"
+                                                 actionListener="#{estagioC.prepararAbaDocumentos}" update="@all"
                                                  styleClass="rounded-button ui-button-secondary ui-button-outlined"/>
                             </p:column>
                         </p:dataTable>
@@ -338,62 +338,66 @@
                 		<p:panelGrid columns="1" layout="flex"
                                     columnClasses="p-col-5"
                                     contentStyleClass="ui-fluid">
-                                    
-                           	<h:outputLink value="reportPages/relatorioDesligamento.htm"
+                            
+                            
+                            <h:outputLabel value="Selecionado o estágio de #{estagioC.estagio.estagiario.nome} na empresa #{estagioC.estagio.unidadeConcedente.razaoSocial}" />
+                            <h:outputLabel value="" />
+                            
+                           	<h:outputLink value="reportPages/relatorioDesligamento.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório de Desligamento</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/termoDeConvenio.htm"
+							<h:outputLink value="reportPages/termoDeConvenio.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Termo de Convênio</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/termoCompromissoNaoObrigatorio.htm"
+							<h:outputLink value="reportPages/termoCompromissoNaoObrigatorio.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Termo de Compromisso não Obrigatório</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/termoCompromissoObrigatorio.htm"
+							<h:outputLink value="reportPages/termoCompromissoObrigatorio.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Termo de Compromisso Obrigatório</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 1</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 2</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 3</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 4</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 5</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.htm"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 6</span>
