@@ -1,7 +1,23 @@
 package br.com.correntista.util;
 
+import java.util.HashMap;
+
+import br.com.correntista.entidade.TipoInatividade;
+
 public class Utils {
 
+	static HashMap<TipoInatividade, String> mapaTipoInatividade;
+	
+	static {
+		mapaTipoInatividade = new HashMap<>();
+		mapaTipoInatividade.put(TipoInatividade.FINALIZACAO_AUTOMATICA, "Finalização automática do sistema");
+		mapaTipoInatividade.put(TipoInatividade.ESTAGIARIO_EFETIVADO, "Estagiário foi efetivado");
+		mapaTipoInatividade.put(TipoInatividade.DESENTENDIMENTO_EMPRESA, "Desentendimento por parte da unidade concedente");
+		mapaTipoInatividade.put(TipoInatividade.DESENTENDIMENTO_ESTAGIARIO, "Desentendimento pela parte do estagiário");
+		mapaTipoInatividade.put(TipoInatividade.DESENTENDIMENTO_AMBOS, "Desentendimento entre ambas as partes");
+		mapaTipoInatividade.put(TipoInatividade.TRANCAMENTO_MATRICULA, "Trancamento da matrícula do aluno");
+	}
+	
 	/**
 	 * @param cnpj, texto com 14 digitos numéricos para formatar
 	 * @return texto com a mascara de cnpj
@@ -48,6 +64,15 @@ public class Utils {
 			formattedCpf = cpf.replaceAll("(\\d{3})\\.(\\d{3})\\.(\\d{3})\\-(\\d{2})", "$1$2$3$4");
 		}
 		return formattedCpf;
+	}
+	
+	
+	/**
+	 * @param um enum tipoInatividade
+	 * @return texto com uma descrição referente ao valor do enum
+	 * */
+	public static String mapearTipoInatividade(TipoInatividade tipo) {
+		return mapaTipoInatividade.get(tipo);
 	}
 	
 }

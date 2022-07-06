@@ -112,6 +112,8 @@ public class Estagio implements Serializable {
     
     @Column(nullable = false)
     private String planoAtividades;
+    @Enumerated(EnumType.STRING)
+    private TipoInatividade tipoInativacao;
     
     
     @ManyToOne
@@ -130,13 +132,17 @@ public class Estagio implements Serializable {
     public Estagio() {
     }
 
+	
+
 	public Estagio(Long id, String supervisor, String cargoSupervisor, String formacaoAcademica,
 			String tempoExperiencia, String professor, String curso, String anoFase, String turno, String modalidade,
 			String horarioEstagio, Double jornadaSemanal, Double cargaHorariaTotal, Double remuneracao,
 			Double valorValeTransporte, Date dataInicio, Date dataTermino, String setorOuArea, String municipio,
 			String numApoliceSeguro, String tipoEstagio, Boolean temAgenteIntegracao, String nomeAgenteIntegracao,
 			StatusEstagio status, Boolean rQuadrimestral1, Boolean rQuadrimestral2, Boolean rQuadrimestral3,
-			Boolean rQuadrimestral4, Boolean rQuadrimestral5, Boolean rQuadrimestral6, String planoAtividades) {
+			Boolean rQuadrimestral4, Boolean rQuadrimestral5, Boolean rQuadrimestral6, String planoAtividades,
+			TipoInatividade tipoInativacao, Estagiario estagiario, UnidadeConcedente unidadeConcedente,
+			InstituicaoEnsino instituicaoEnsino, InstituicaoEnsino instituicaoEnsinoVinculada) {
 		super();
 		this.id = id;
 		this.supervisor = supervisor;
@@ -169,6 +175,11 @@ public class Estagio implements Serializable {
 		this.rQuadrimestral5 = rQuadrimestral5;
 		this.rQuadrimestral6 = rQuadrimestral6;
 		this.planoAtividades = planoAtividades;
+		this.tipoInativacao = tipoInativacao;
+		this.estagiario = estagiario;
+		this.unidadeConcedente = unidadeConcedente;
+		this.instituicaoEnsino = instituicaoEnsino;
+		this.instituicaoEnsinoVinculada = instituicaoEnsinoVinculada;
 	}
 
 	public Long getId() {
@@ -450,6 +461,14 @@ public class Estagio implements Serializable {
 	public void setPlanoAtividades(String planoAtividades) {
 		this.planoAtividades = planoAtividades;
 	}
+	
+	public TipoInatividade getTipoInativacao() {
+		return tipoInativacao;
+	}
+
+	public void setTipoInativacao(TipoInatividade tipoInativacao) {
+		this.tipoInativacao = tipoInativacao;
+	}
 
 	@Override
 	public int hashCode() {
@@ -457,8 +476,8 @@ public class Estagio implements Serializable {
 				formacaoAcademica, horarioEstagio, id, instituicaoEnsino, instituicaoEnsinoVinculada, jornadaSemanal,
 				modalidade, municipio, nomeAgenteIntegracao, numApoliceSeguro, planoAtividades, professor,
 				rQuadrimestral1, rQuadrimestral2, rQuadrimestral3, rQuadrimestral4, rQuadrimestral5, rQuadrimestral6,
-				remuneracao, setorOuArea, status, supervisor, temAgenteIntegracao, tempoExperiencia, tipoEstagio, turno,
-				unidadeConcedente, valorValeTransporte);
+				remuneracao, setorOuArea, status, supervisor, temAgenteIntegracao, tempoExperiencia, tipoEstagio,
+				tipoInativacao, turno, unidadeConcedente, valorValeTransporte);
 	}
 
 	@Override
@@ -493,8 +512,8 @@ public class Estagio implements Serializable {
 				&& status == other.status && Objects.equals(supervisor, other.supervisor)
 				&& Objects.equals(temAgenteIntegracao, other.temAgenteIntegracao)
 				&& Objects.equals(tempoExperiencia, other.tempoExperiencia)
-				&& Objects.equals(tipoEstagio, other.tipoEstagio) && Objects.equals(turno, other.turno)
-				&& Objects.equals(unidadeConcedente, other.unidadeConcedente)
+				&& Objects.equals(tipoEstagio, other.tipoEstagio) && tipoInativacao == other.tipoInativacao
+				&& Objects.equals(turno, other.turno) && Objects.equals(unidadeConcedente, other.unidadeConcedente)
 				&& Objects.equals(valorValeTransporte, other.valorValeTransporte);
 	}
 
@@ -511,9 +530,9 @@ public class Estagio implements Serializable {
 				+ nomeAgenteIntegracao + ", status=" + status + ", rQuadrimestral1=" + rQuadrimestral1
 				+ ", rQuadrimestral2=" + rQuadrimestral2 + ", rQuadrimestral3=" + rQuadrimestral3 + ", rQuadrimestral4="
 				+ rQuadrimestral4 + ", rQuadrimestral5=" + rQuadrimestral5 + ", rQuadrimestral6=" + rQuadrimestral6
-				+ ", planoAtividades=" + planoAtividades + ", estagiario=" + estagiario + ", unidadeConcedente="
-				+ unidadeConcedente + ", instituicaoEnsino=" + instituicaoEnsino + ", instituicaoEnsinoVinculada="
-				+ instituicaoEnsinoVinculada + "]";
+				+ ", planoAtividades=" + planoAtividades + ", tipoInativacao=" + tipoInativacao + ", estagiario="
+				+ estagiario + ", unidadeConcedente=" + unidadeConcedente + ", instituicaoEnsino=" + instituicaoEnsino
+				+ ", instituicaoEnsinoVinculada=" + instituicaoEnsinoVinculada + "]";
 	}
 	
 	

@@ -28,6 +28,7 @@ import br.com.correntista.dao.UnidadeConcedenteDaoImpl;
 import br.com.correntista.entidade.Estagiario;
 import br.com.correntista.entidade.Estagio;
 import br.com.correntista.entidade.InstituicaoEnsino;
+import br.com.correntista.entidade.TipoInatividade;
 import br.com.correntista.entidade.UnidadeConcedente;
 import br.com.correntista.util.Utils;
 
@@ -73,11 +74,17 @@ public class EstagioControle {
     private List<SelectItem> comboTipoEstagio;
     
     
+    // Infos para a inativação
+    private TipoInatividade tipoInatividade;
+    private List<TipoInatividade> tiposInativ;
+    
+    
     public EstagioControle() {
     	estagioDao = new EstagioDaoImpl();
     	comboModalidade = new ArrayList<>();
     	comboTurno = new ArrayList<>();
     	comboTipoEstagio = new ArrayList<>();
+    	tiposInativ = new ArrayList<>();
     	
     	comboModalidade.add(new SelectItem("Ensino Médio Regular"));
     	comboModalidade.add(new SelectItem("Formação Inicial e Continuada"));
@@ -91,6 +98,13 @@ public class EstagioControle {
     	
     	comboTipoEstagio.add(new SelectItem("Obrigatório"));
     	comboTipoEstagio.add(new SelectItem("Não Obrigatório"));
+    	
+    	tiposInativ.add(TipoInatividade.FINALIZACAO_AUTOMATICA);
+    	tiposInativ.add(TipoInatividade.ESTAGIARIO_EFETIVADO);
+    	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_EMPRESA);
+    	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_ESTAGIARIO);
+    	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_AMBOS);
+    	tiposInativ.add(TipoInatividade.TRANCAMENTO_MATRICULA);
     }
     
     public void pesquisarTodos() {
@@ -255,7 +269,18 @@ public class EstagioControle {
     public String direcinarRelatorioDesligamento() {
     	return "relatorioDesligamento.htm";
     }
+    
+    public String traduzirEnumTipoInatividade(TipoInatividade tipo) {
+    	return Utils.mapearTipoInatividade(tipo);
+    }
 
+    public void inativarEstagio() {
+    	estagio = modelEstagiosAtivos.getRowData();
+    	System.out.println("=============================");
+    	System.out.println("Escolhido enum: " + tipoInatividade);
+    	System.out.println("Em String: " + Utils.mapearTipoInatividade(tipoInatividade));
+    	System.out.println("=============================");
+    }
     
     // getters e setters
     
@@ -365,6 +390,18 @@ public class EstagioControle {
 
 	public List<SelectItem> getComboTipoEstagio() {
 		return comboTipoEstagio;
+	}
+
+	public TipoInatividade getTipoInatividade() {
+		return tipoInatividade;
+	}
+
+	public void setTipoInatividade(TipoInatividade tipoInatividade) {
+		this.tipoInatividade = tipoInatividade;
+	}
+
+	public List<TipoInatividade> getTiposInativ() {
+		return tiposInativ;
 	}
 	
 }

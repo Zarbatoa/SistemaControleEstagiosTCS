@@ -86,14 +86,27 @@
                                                  style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
                                 <p:commandButton icon="pi pi-file" title="Documentos" process="@this"
                                                  actionListener="#{estagioC.prepararAbaDocumentos}" update="@all"
-                                                 styleClass="rounded-button ui-button-secondary ui-button-outlined"/>
+                                                 style="margin-right: 12px" styleClass="rounded-button ui-button-secondary ui-button-outlined"/>
+                                <p:commandButton icon="pi pi-ban" title="Inativar" process="@this" 
+                                                 actionListener="#{estagioC.inativarEstagio}" update="tabela_ativos"
+                                                 styleClass="rounded-button ui-button-outlined ui-button-warning"
+                                                 type="button" onclick="PF('dialogInativacao').show();" />
                             </p:column>
                         </p:dataTable>
                         
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
-                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                        <p:dialog header="Modal Dialog" widgetVar="dialogInativacao" modal="true">
+                        	<h:outputText value="Este estágio será inativado."/>
+                        	<br></br>
+						    <p:outputLabel for="tipoInativacao" value="Selecione o motivo da inativação:" />
+                            <p:selectOneRadio id="tipoInativacao" value="#{estagioC.tipoInatividade}" unselectable="false"
+                                              required="false" requiredMessage="É obrigatório o preenchimento do tipo de inativação!"
+                                              layout="grid" columns="1">
+                                <f:selectItems value="#{estagioC.tiposInativ}" var="tipoIn" itemLabel="#{estagioC.traduzirEnumTipoInatividade(tipoIn)}" itemValue="#{tipoIn}"/>
+                            </p:selectOneRadio>
+                            
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat" />
                             <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
-                        </p:confirmDialog>
+						</p:dialog>
                         
                     </h:form>
                 </p:tab>
