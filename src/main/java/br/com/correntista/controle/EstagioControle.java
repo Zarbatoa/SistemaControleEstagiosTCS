@@ -1,7 +1,10 @@
 package br.com.correntista.controle;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -13,6 +16,8 @@ import javax.faces.model.SelectItem;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.primefaces.PrimeFaces;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 
@@ -77,6 +82,8 @@ public class EstagioControle {
     // Infos para a inativação
     private TipoInatividade tipoInatividade;
     private List<TipoInatividade> tiposInativ;
+    
+    private int rowIndexAtivos = -1;
     
     
     public EstagioControle() {
@@ -275,11 +282,16 @@ public class EstagioControle {
     }
 
     public void inativarEstagio() {
-    	estagio = modelEstagiosAtivos.getRowData();
+    	//estagio = modelEstagiosAtivos.getRowData();
     	System.out.println("=============================");
-    	System.out.println("Escolhido enum: " + tipoInatividade);
-    	System.out.println("Em String: " + Utils.mapearTipoInatividade(tipoInatividade));
+    	System.out.println("Passando por inativarEstagio!!!");
+    	System.out.println("row: " + rowIndexAtivos);
+    	System.out.println("tipo: " + tipoInatividade);
     	System.out.println("=============================");
+    }
+    
+    public void definirRowAtivos() {
+    	rowIndexAtivos = modelEstagiosAtivos.getRowIndex();
     }
     
     // getters e setters
@@ -403,5 +415,14 @@ public class EstagioControle {
 	public List<TipoInatividade> getTiposInativ() {
 		return tiposInativ;
 	}
+
+	public int getRowIndexAtivos() {
+		return rowIndexAtivos;
+	}
+
+	public void setRowIndexAtivos(int rowIndexAtivos) {
+		this.rowIndexAtivos = rowIndexAtivos;
+	}
+	
 	
 }

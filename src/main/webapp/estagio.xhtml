@@ -45,8 +45,29 @@
                         update="tab_view:form_novo"/>
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
                 
+                
                 <!--aba 0, para pesquisa de estagios ativos-->
                 <p:tab title="Ativos">
+                
+                	<p:dialog id="dialogInativacao" header="Modal Dialog" widgetVar="dialogInativacao" modal="true">
+                		<h:form id="form_inativacao">
+							<h:outputText value="Este estágio será inativado."/>
+							<p:outputLabel for="tipoInativacao" value=" Selecione o motivo da inativação:" />
+							<p:selectOneRadio id="tipoInativacao" value="#{estagioC.tipoInatividade}"
+							                  required="true" requiredMessage="É obrigatório o preenchimento do tipo de inativação!"
+							                  layout="grid" columns="1">
+							    <f:selectItems value="#{estagioC.tiposInativ}" var="tipoIn" itemLabel="#{estagioC.traduzirEnumTipoInatividade(tipoIn)}" itemValue="#{tipoIn}"/>
+							</p:selectOneRadio>
+							
+							<p:commandButton id="cancelarInativacao" value="Não" styleClass="ui-button-flat"
+											 actionListener="#{estagioC.inativarEstagio}" process="@this" 
+							                 update="@all"/>
+							<p:commandButton id="aceitarInativacao" value="Sim" 
+											 actionListener="#{estagioC.inativarEstagio}" process="@this" 
+							                 update="@all"/>
+						</h:form>
+					</p:dialog>
+                
                     <h:form id="form_pesquisa_ativos">
                         <p:panelGrid columns="3" layout="flex"
                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
@@ -88,25 +109,12 @@
                                                  actionListener="#{estagioC.prepararAbaDocumentos}" update="@all"
                                                  style="margin-right: 12px" styleClass="rounded-button ui-button-secondary ui-button-outlined"/>
                                 <p:commandButton icon="pi pi-ban" title="Inativar" process="@this" 
-                                                 actionListener="#{estagioC.inativarEstagio}" update="tabela_ativos"
+                                                 update="tabela_ativos" actionListener="#{estagioC.definirRowAtivos}"
                                                  styleClass="rounded-button ui-button-outlined ui-button-warning"
-                                                 type="button" onclick="PF('dialogInativacao').show();" />
+                                                 onclick="PF('dialogInativacao').show();" />
                             </p:column>
                         </p:dataTable>
                         
-                        <p:dialog header="Modal Dialog" widgetVar="dialogInativacao" modal="true">
-                        	<h:outputText value="Este estágio será inativado."/>
-                        	<br></br>
-						    <p:outputLabel for="tipoInativacao" value="Selecione o motivo da inativação:" />
-                            <p:selectOneRadio id="tipoInativacao" value="#{estagioC.tipoInatividade}" unselectable="false"
-                                              required="false" requiredMessage="É obrigatório o preenchimento do tipo de inativação!"
-                                              layout="grid" columns="1">
-                                <f:selectItems value="#{estagioC.tiposInativ}" var="tipoIn" itemLabel="#{estagioC.traduzirEnumTipoInatividade(tipoIn)}" itemValue="#{tipoIn}"/>
-                            </p:selectOneRadio>
-                            
-                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat" />
-                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
-						</p:dialog>
                         
                     </h:form>
                 </p:tab>
@@ -425,7 +433,9 @@
                 <p:tab>
                 	<!-- overrides title on tab-->
 			        <f:facet name="title">
-			            <i id="iconeNotif" class="pi pi-bell" style="color: red;"></i>
+			        	<p:badge value="2" severity="danger" style="font-size: 0.6rem; min-width: 1rem; height: 1rem; line-height: 1rem;">
+			            	<i id="iconeNotif" class="pi pi-bell" style="color: red;"></i>
+			            </p:badge>
 			        </f:facet>
 			
 			        <h:panelGrid>
