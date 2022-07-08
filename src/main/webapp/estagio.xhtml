@@ -133,7 +133,7 @@
 
 
                         <p:dataTable id="tabela_inativos" var="inativo" value="#{estagioC.modelEstagiosInativos}" rows="10"
-                         paginator="true"
+                         paginator="true" paginatorPosition="bottom"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">

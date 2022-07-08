@@ -58,7 +58,7 @@
 
 
                         <p:dataTable id="tabela" var="usuario" value="#{usuarioC.modelUsuarios}" rows="10"
-                         paginator="true"
+                         paginator="true" paginatorPosition="bottom"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
