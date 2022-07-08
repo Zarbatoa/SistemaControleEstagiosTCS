@@ -80,7 +80,7 @@
 
 
                         <p:dataTable id="tabela_ativos" var="ativo" value="#{estagioC.modelEstagiosAtivos}" rows="10"
-                         paginator="true"
+                         paginator="true" paginatorPosition="bottom"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
@@ -355,7 +355,7 @@
                 
                 <!--aba 3, para geracao de documentos / relatorios -->
                 <p:tab title="Documentos" disabled="true">
-                	<h:form id="form_relatorios">
+                	<h:form id="form_documentos">
                 		<p:panelGrid columns="1" layout="flex"
                                     columnClasses="p-col-5"
                                     contentStyleClass="ui-fluid">
@@ -428,19 +428,65 @@
                 	</h:form>
                 </p:tab>
                 
+                <p:tab title="Relatórios">
+                
+                </p:tab>
+                
                 
                 <!--aba 3, para notificações -->
                 <p:tab>
                 	<!-- overrides title on tab-->
 			        <f:facet name="title">
-			        	<p:badge value="2" severity="danger" style="font-size: 0.6rem; min-width: 1rem; height: 1rem; line-height: 1rem;">
+			        	<p:badge value="0" severity="danger" style="font-size: 0.6rem; min-width: 1rem; height: 1rem; line-height: 1rem;">
 			            	<i id="iconeNotif" class="pi pi-bell" style="color: red;"></i>
 			            </p:badge>
 			        </f:facet>
-			
-			        <h:panelGrid>
-			            <!-- tab content -->
-			        </h:panelGrid>
+
+					<h:form id="form_relatorios">
+                        <p:panelGrid columns="3" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
+                                    contentStyleClass="ui-fluid">
+                            
+                            <h:outputText value="Relatórios" />
+                        </p:panelGrid>
+
+
+                        <p:dataTable id="tabela_relatorios" var="relatorio" value="#{estagioC.modelEstagiosAtivos}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
+                         rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
+
+                            <p:column headerText="Nome estagiário">
+                                <h:outputText value="" />
+                            </p:column>
+                            
+                            <p:column headerText="Nome Unidade Concedente:">
+                                <h:outputText value="" />
+                            </p:column>
+                            
+                            <p:column headerText="Data início">
+                                <h:outputText value="" />
+                            </p:column>
+                            
+                            <p:column headerText="Data termino">
+                                <h:outputText value="" />
+                            </p:column>
+                            
+                            <p:column headerText="Relatório Quadrimestral">
+                                <h:outputText value="" />
+                            </p:column>
+                            
+                            <p:column headerText="Ação">
+                                <p:commandButton icon="pi pi-check" title="Alterar" process="@this"
+                                                 update="@all" onclick="alert('Relatório Entregue')"
+                                                 style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
+                            </p:column>
+                        </p:dataTable>
+                        
+                        
+                    </h:form>
+
                 </p:tab>
                 
             </p:tabView>

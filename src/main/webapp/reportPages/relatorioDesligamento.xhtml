@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<head>
+	<h:head>
         <title>::: RELATÓRIO DE DESLIGAMENTO DO ESTÁGIO :::</title>
         <h:outputStylesheet name="./css/cssLayout.css" />
         <h:outputStylesheet library="css" name="default.css" />
@@ -24,7 +24,7 @@
                 color: #000000;
             }
         </style>
-    </head>
+    </h:head>
     <body topmargin="0">
 		<table width="700" cellspacing="0" cellpadding="0" border="0" align="center">
         	<tbody>
@@ -41,6 +41,7 @@
                         <p class="style1" align="center">
                         	Este relatório integra o processo de Acompanhamento de Estágio
                         </p>
+                        <h:outputLabel value="nome estagiario -> #{estagioC.estagio.estagiario.nome}" />
                         <table width="695" cellspacing="0" cellpadding="3" border="1">
                             <tbody>
                             	<tr>

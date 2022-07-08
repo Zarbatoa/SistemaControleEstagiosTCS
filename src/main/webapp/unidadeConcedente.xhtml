@@ -50,7 +50,7 @@
                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
                                     contentStyleClass="ui-fluid">
                             
-                            <p:outputLabel for="unidadeConcedente" value="Razaão social da empresa:" />
+                            <p:outputLabel for="unidadeConcedente" value="Razão social da empresa:" />
                             <p:inputText id="unidadeConcedente" value="#{empresaC.unidadeConcedente.razaoSocial}" required="false"/>
                             <p:commandButton id="pesquisarUnidadesConcedentes" value="Pesquisar" update="tabela"
                                              action="#{empresaC.pesquisarUnidadesConcedentes()}" />
@@ -148,7 +148,7 @@
                                          required="true" requiredMessage="CPF do representante é obrigatório!"/>
                                              
                             <p:outputLabel for="infoRelevantes" value="Informações relevantes:" />
-                            <p:inputText id="infoRelevantes" value="#{empresaC.unidadeConcedente.infoRelevantes}"
+                            <p:inputTextarea id="infoRelevantes" value="#{empresaC.unidadeConcedente.infoRelevantes}"
                                          required="false" />
                             
                             <h:outputLabel value="" />
