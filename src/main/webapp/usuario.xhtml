@@ -67,12 +67,13 @@
                                 <h:outputText value="#{usuario.login}" />
                             </p:column>
 
-                            <p:column headerText="Email">
+                            <p:column headerText="E-mail">
                                 <h:outputText value="#{usuario.email}" />
                             </p:column>
                             
-                            <p:column headerText="Ativo">
-                                <h:outputText value="#{usuario.ativo}" />
+                            <p:column headerText="Ativo" sortBy="#{usuario.ativo}">
+                            	<h:outputLabel class="pi pi-check" rendered="#{usuario.ativo}" style="color: green; font-weight: bold;"></h:outputLabel>
+                                <h:outputLabel class="pi pi-times" rendered="#{not usuario.ativo}" style="color: red; font-weight: bold;"></h:outputLabel>
                             </p:column>
                             
                             <p:column headerText="Ação">
@@ -101,7 +102,7 @@
                                          required="true" requiredMessage="Login é obrigatório!" />
                             
                             
-                            <p:outputLabel for="email" value="Email:" />
+                            <p:outputLabel for="email" value="E-mail:" />
                             <p:inputText id="email" value="#{usuarioC.usuario.email}"
                                          required="true" requiredMessage="Email é obrigatório!"/>
                             
