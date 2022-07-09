@@ -128,8 +128,8 @@ public class EstagioControle {
         }
 	}
     
-    public void pesquisarAtivos() {
-		sessao = HibernateUtil.abrirSessao();
+    public void pesquisarAtivosTodos() {
+    	sessao = HibernateUtil.abrirSessao();
 		try {
 			estagiosAtivos = estagioDao.pesquisarAtivos(sessao);
 			modelEstagiosAtivos = new ListDataModel<>(estagiosAtivos);
@@ -139,10 +139,33 @@ public class EstagioControle {
         } finally {
             sessao.close();
         }
-	}
+    }
     
-    public void pesquisarInativos() {
-		sessao = HibernateUtil.abrirSessao();
+    public void pesquisarAtivosPorEstagiario() {
+        sessao = HibernateUtil.abrirSessao();
+        try {
+        	estagiosAtivos = estagioDao.pesquisarAtivosPorEstagiario(estagiario.getNome(), sessao);
+            modelEstagiosAtivos = new ListDataModel<>(estagiosAtivos);
+            estagiario.setNome(null);
+            aba = 0;
+        } catch (HibernateException e) {
+            System.out.println("Erro ao pesquisar " + e.getMessage());
+        } finally {
+            sessao.close();
+        }
+    }
+    
+    public void pesquisarAtivos() {
+    	if(estagiario == null || estagiario.getNome() == null || "".equals(estagiario.getNome().trim())) {
+    		pesquisarAtivosTodos();
+    	} else {
+    		pesquisarAtivosPorEstagiario();
+    	}
+	}    
+    
+    
+    public void pesquisarInativosTodos() {
+    	sessao = HibernateUtil.abrirSessao();
 		try {
 			estagiosInativos = estagioDao.pesquisarInativos(sessao);
 			modelEstagiosInativos = new ListDataModel<>(estagiosInativos);
@@ -152,6 +175,28 @@ public class EstagioControle {
         } finally {
             sessao.close();
         }
+    }
+    
+    public void pesquisarInativosPorEstagiario() {
+    	sessao = HibernateUtil.abrirSessao();
+        try {
+        	estagiosInativos = estagioDao.pesquisarInativosPorEstagiario(estagiario.getNome(), sessao);
+            modelEstagiosInativos = new ListDataModel<>(estagiosInativos);
+            estagiario.setNome(null);
+            aba = 0;
+        } catch (HibernateException e) {
+            System.out.println("Erro ao pesquisar " + e.getMessage());
+        } finally {
+            sessao.close();
+        }
+    }
+    
+    public void pesquisarInativos() {
+    	if(estagiario == null || estagiario.getNome() == null || "".equals(estagiario.getNome().trim())) {
+    		pesquisarInativosTodos();
+    	} else {
+    		pesquisarInativosPorEstagiario();
+    	}
 	}
     
     public void carregarComboEstagiarios() {

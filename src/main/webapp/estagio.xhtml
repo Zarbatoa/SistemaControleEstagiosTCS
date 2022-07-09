@@ -76,9 +76,10 @@
                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
                                     contentStyleClass="ui-fluid">
                             
+                            <p:outputLabel for="estagioAtivo" value="Nome do estagiário:" />
+                            <p:inputText id="estagioAtivo" value="#{estagioC.estagiario.nome}" required="false"/>
                             <p:commandButton id="pesquisarAtivos" value="Pesquisar" update="tabela_ativos"
-                                             action="#{estagioC.pesquisarAtivos()}"
-                                             style="margin-left: 300%" />
+                                             action="#{estagioC.pesquisarAtivos()}" />
                         </p:panelGrid>
 
 
@@ -137,9 +138,10 @@
                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
                                     contentStyleClass="ui-fluid">
                             
+                            <p:outputLabel for="estagioInativo" value="Nome do estagiário:" />
+                            <p:inputText id="estagioInativo" value="#{estagioC.estagiario.nome}" required="false"/>
                             <p:commandButton id="pesquisarInativos" value="Pesquisar" update="tabela_inativos"
-                                             action="#{estagioC.pesquisarInativos()}"
-                                             style="margin-left: 300%" />
+                                             action="#{estagioC.pesquisarInativos()}" />
                         </p:panelGrid>
 
 
@@ -209,9 +211,9 @@
                             
                             <h:outputLabel value="" />
                             <h:outputLabel value="" />
-                            
-                            <h:outputLabel value="Dados da Unidade Concedente de Estágio" style="font-weight: bold;"/>
+                                                        
                             <h:outputLabel value="" />
+                            <h:outputLabel value="Dados da Unidade Concedente de Estágio" style="font-weight: bold; text-align: center;"/>
                             
                             <h:outputLabel value="" />
                             <h:outputLabel value="" />
@@ -244,8 +246,8 @@
                             <p:inputText id="tempoExperiencia" value="#{estagioC.estagio.tempoExperiencia}"
                                          required="true" requiredMessage="Tempo de Experiência é obrigatória!"/>
                             
-                            <h:outputLabel value="Dados Instituição de Ensino" style="font-weight: bold;"/>
                             <h:outputLabel value="" />
+                            <h:outputLabel value="Dados Instituição de Ensino" style="font-weight: bold;"/>
                             
                             <h:outputLabel value="" />
                             <h:outputLabel value="" />
@@ -262,8 +264,8 @@
                             <p:inputText id="professor" value="#{estagioC.estagio.professor}"
                                          required="true" requiredMessage="Professor é obrigatório!" />
                             
-                            <h:outputLabel value="Informações sobre o estágio" style="font-weight: bold;" />
                             <h:outputLabel value="" />
+                            <h:outputLabel value="Informações sobre o estágio" style="font-weight: bold;" />
                             
                             <h:outputLabel value="" />
                             <h:outputLabel value="" />
