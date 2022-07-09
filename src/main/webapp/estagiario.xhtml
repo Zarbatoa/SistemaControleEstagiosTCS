@@ -64,7 +64,7 @@
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
 
-                            <p:column headerText="Nome">
+                            <p:column headerText="Nome" sortBy="#{estagiario.nome}">
                                 <h:outputText value="#{estagiario.nome}" />
                             </p:column>
 

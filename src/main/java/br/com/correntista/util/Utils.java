@@ -10,11 +10,11 @@ public class Utils {
 	
 	static {
 		mapaTipoInatividade = new HashMap<>();
-		mapaTipoInatividade.put(TipoInatividade.FINALIZACAO_AUTOMATICA, "Finalização automática do sistema");
+		mapaTipoInatividade.put(TipoInatividade.ESTAGIARIO_NAO_EFETIVADO, "Estagiário não foi efetivado");
 		mapaTipoInatividade.put(TipoInatividade.ESTAGIARIO_EFETIVADO, "Estagiário foi efetivado");
-		mapaTipoInatividade.put(TipoInatividade.DESENTENDIMENTO_EMPRESA, "Desentendimento por parte da unidade concedente");
-		mapaTipoInatividade.put(TipoInatividade.DESENTENDIMENTO_ESTAGIARIO, "Desentendimento pela parte do estagiário");
-		mapaTipoInatividade.put(TipoInatividade.DESENTENDIMENTO_AMBOS, "Desentendimento entre ambas as partes");
+		mapaTipoInatividade.put(TipoInatividade.DESAPROVACAO_EMPRESA, "Desaprovação por parte da unidade concedente");
+		mapaTipoInatividade.put(TipoInatividade.DESAPROVACAO_ESTAGIARIO, "Desaprovação pela parte do estagiário");
+		mapaTipoInatividade.put(TipoInatividade.DESAPROVACAO_AMBOS, "Desaprovação entre ambas as partes");
 		mapaTipoInatividade.put(TipoInatividade.TRANCAMENTO_MATRICULA, "Trancamento da matrícula do aluno");
 	}
 	

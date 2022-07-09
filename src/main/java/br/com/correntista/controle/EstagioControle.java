@@ -3,7 +3,6 @@ package br.com.correntista.controle;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -29,6 +28,7 @@ import br.com.correntista.dao.UnidadeConcedenteDaoImpl;
 import br.com.correntista.entidade.Estagiario;
 import br.com.correntista.entidade.Estagio;
 import br.com.correntista.entidade.InstituicaoEnsino;
+import br.com.correntista.entidade.StatusEstagio;
 import br.com.correntista.entidade.TipoInatividade;
 import br.com.correntista.entidade.UnidadeConcedente;
 import br.com.correntista.util.Utils;
@@ -102,11 +102,11 @@ public class EstagioControle {
     	comboTipoEstagio.add(new SelectItem("Obrigatório"));
     	comboTipoEstagio.add(new SelectItem("Não Obrigatório"));
     	
-    	tiposInativ.add(TipoInatividade.FINALIZACAO_AUTOMATICA);
+    	tiposInativ.add(TipoInatividade.ESTAGIARIO_NAO_EFETIVADO);
     	tiposInativ.add(TipoInatividade.ESTAGIARIO_EFETIVADO);
-    	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_EMPRESA);
-    	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_ESTAGIARIO);
-    	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_AMBOS);
+    	tiposInativ.add(TipoInatividade.DESAPROVACAO_EMPRESA);
+    	tiposInativ.add(TipoInatividade.DESAPROVACAO_ESTAGIARIO);
+    	tiposInativ.add(TipoInatividade.DESAPROVACAO_AMBOS);
     	tiposInativ.add(TipoInatividade.TRANCAMENTO_MATRICULA);
     }
     
@@ -289,6 +289,27 @@ public class EstagioControle {
     	System.out.println("row: " + rowIndexAtivos);
     	System.out.println("tipo: " + tipoInatividade);
     	System.out.println("=============================");
+    	
+    	sessao = HibernateUtil.abrirSessao();
+        try {
+        	estagio = estagiosAtivos.get(rowIndexAtivos);
+        	estagio.setTipoInativacao(tipoInatividade);
+        	estagio.setStatus(StatusEstagio.INATIVO);
+        	estagioDao.salvarOuAlterar(estagio, sessao);
+		    estagio = null;
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+		            "Inativado com sucesso", null));
+		    modelEstagiosAtivos = null;
+		    estagiario = null;
+		    unidadeConcedente = null;
+		    instituicaoEnsino = null;
+		    instituicaoEnsinoVinculada = null;
+        } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Erro ao inativar", ""));
+        } finally {
+            sessao.close();
+        }
     }
     
     public void definirRowAtivos() {

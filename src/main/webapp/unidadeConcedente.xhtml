@@ -63,7 +63,7 @@
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
 
-                            <p:column headerText="Razão Social">
+                            <p:column headerText="Razão Social" sortBy="#{unidadeConcedente.razaoSocial}">
                                 <h:outputText value="#{unidadeConcedente.razaoSocial}" />
                             </p:column>
 

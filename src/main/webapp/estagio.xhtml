@@ -49,24 +49,27 @@
                 <!--aba 0, para pesquisa de estagios ativos-->
                 <p:tab title="Ativos">
                 
-                	<p:dialog id="dialogInativacao" header="Modal Dialog" widgetVar="dialogInativacao" modal="true">
+                	
+                	<p:dialog id="dialogInativacao" header="Inativar estágio" widgetVar="dialogInativacao" modal="true"
+                		style="max-width: 600px !important; max-height: 400px !important;">
                 		<h:form id="form_inativacao">
 							<h:outputText value="Este estágio será inativado."/>
 							<p:outputLabel for="tipoInativacao" value=" Selecione o motivo da inativação:" />
 							<p:selectOneRadio id="tipoInativacao" value="#{estagioC.tipoInatividade}"
 							                  required="true" requiredMessage="É obrigatório o preenchimento do tipo de inativação!"
-							                  layout="grid" columns="1">
+							                  layout="grid" columns="1" >
 							    <f:selectItems value="#{estagioC.tiposInativ}" var="tipoIn" itemLabel="#{estagioC.traduzirEnumTipoInatividade(tipoIn)}" itemValue="#{tipoIn}"/>
 							</p:selectOneRadio>
 							
 							<p:commandButton id="cancelarInativacao" value="Não" styleClass="ui-button-flat"
 											 actionListener="#{estagioC.inativarEstagio}" process="@this tipoInativacao" 
-							                 update="@all"/>
+							                 update="@all" style="padding-top: 15px;"/>
 							<p:commandButton id="aceitarInativacao" value="Sim" 
 											 actionListener="#{estagioC.inativarEstagio}" process="@this tipoInativacao" 
 							                 update="@all"/>
 						</h:form>
 					</p:dialog>
+					
                 
                     <h:form id="form_pesquisa_ativos">
                         <p:panelGrid columns="3" layout="flex"
@@ -85,20 +88,28 @@
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
 
-                            <p:column headerText="Nome estagiário">
+                            <p:column headerText="Nome estagiário" sortBy="#{ativo.estagiario.nome}">
                                 <h:outputText value="#{ativo.estagiario.nome}" />
                             </p:column>
                             
-                            <p:column headerText="Empresa">
+                            <p:column headerText="Empresa" sortBy="#{ativo.unidadeConcedente.razaoSocial}">
                                 <h:outputText value="#{ativo.unidadeConcedente.razaoSocial}" />
                             </p:column>
                             
-                            <p:column headerText="Data início">
-                                <h:outputText value="#{ativo.dataInicio}" />
+                            <p:column headerText="Unidade Vinculada" sortBy="#{ativo.instituicaoEnsinoVinculada.razaoSocial}">
+                                <h:outputText value="#{ativo.instituicaoEnsinoVinculada.razaoSocial}" />
                             </p:column>
                             
-                            <p:column headerText="Data termino">
-                                <h:outputText value="#{ativo.dataTermino}" />
+                            <p:column headerText="Data início">
+                                <h:outputText value="#{ativo.dataInicio}">
+                                	<f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column headerText="Data término">
+                                <h:outputText value="#{ativo.dataTermino}">
+                                	<f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
                             </p:column>
                             
                             <p:column headerText="Ação">
@@ -138,20 +149,32 @@
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
 
-                            <p:column headerText="Nome estagiário">
+                            <p:column headerText="Nome estagiário" sortBy="#{inativo.estagiario.nome}">
                                 <h:outputText value="#{inativo.estagiario.nome}" />
                             </p:column>
                             
-                            <p:column headerText="Empresa">
+                            <p:column headerText="Empresa" sortBy="#{inativo.unidadeConcedente.razaoSocial}">
                                 <h:outputText value="#{inativo.unidadeConcedente.razaoSocial}" />
                             </p:column>
                             
-                            <p:column headerText="Data início">
-                                <h:outputText value="#{inativo.dataInicio}" />
+                            <p:column headerText="Unidade" sortBy="#{inativo.instituicaoEnsinoVinculada.razaoSocial}">
+                                <h:outputText value="#{inativo.instituicaoEnsinoVinculada.razaoSocial}" />
                             </p:column>
                             
-                            <p:column headerText="Data termino">
-                                <h:outputText value="#{inativo.dataTermino}" />
+                            <p:column headerText="Data início">
+                                <h:outputText value="#{inativo.dataInicio}">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column headerText="Data término">
+                                <h:outputText value="#{inativo.dataTermino}">
+                                	<f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column headerText="Motivo inativação">
+                                <h:outputText value="#{estagioC.traduzirEnumTipoInatividade(inativo.tipoInativacao)}" />
                             </p:column>
                             
                             <p:column headerText="Ação">
