@@ -33,7 +33,7 @@ public class Estagiario implements Serializable {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dataNascimento;
     @Column(nullable = false, length = 11, unique = true)
     private String cpf;

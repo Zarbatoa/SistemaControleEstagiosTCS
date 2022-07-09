@@ -66,10 +66,10 @@ public class Estagio implements Serializable {
     @Column(nullable = false)
     private Double valorValeTransporte;
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dataInicio;
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dataTermino;
     @Column(nullable = false)
     private String setorOuArea;
