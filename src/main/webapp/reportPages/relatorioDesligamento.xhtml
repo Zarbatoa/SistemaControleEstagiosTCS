@@ -41,7 +41,6 @@
                         <p class="style1" align="center">
                         	Este relatório integra o processo de Acompanhamento de Estágio
                         </p>
-                        <h:outputLabel value="nome estagiario -> #{estagioC.estagio.estagiario.nome}" />
                         <table width="695" cellspacing="0" cellpadding="3" border="1">
                             <tbody>
                             	<tr>
@@ -50,22 +49,22 @@
                                 	</td>
                             	</tr>
                             	<tr>
-                                	<td class="style1">Nome: A FAZER</td>
-                                	<td class="style1">CPF: A FAZER </td>
+                                	<td class="style1">Nome: #{estagioC.estagio.estagiario.nome}</td>
+                                	<td class="style1">CPF: #{estagioC.formatarCpf(estagioC.estagio.estagiario.cpf)} </td>
                             	</tr>
                             	<tr>
-                                	<td class="style1" width="430">Instituição de Ensino: A FAZER</td>
-                                	<td class="style1" width="247">Ano ou Fase: A FAZER</td>
+                                	<td class="style1" width="430">Instituição de Ensino: #{estagioC.estagio.instituicaoEnsino.razaoSocial}</td>
+                                	<td class="style1" width="247">Ano ou Fase: #{estagioC.estagio.anoFase}</td>
                             	</tr>
                             	<tr>
-                                	<td class="style1">Curso: A FAZER </td>
-                                	<td class="style1">Turno: A FAZER</td>
+                                	<td class="style1">Curso: #{estagioC.estagio.curso}</td>
+                                	<td class="style1">Turno: #{estagioC.estagio.turno}</td>
                             	</tr>
                             	<tr>
-                                	<td colspan="2" class="style1">Professor de Curso: A FAZER</td>
+                                	<td colspan="2" class="style1">Professor de Curso: #{estagioC.estagio.professor}</td>
                             	</tr>
                             	<tr>
-                                	<td colspan="2" class="style1">Modalidade: A FAZER</td>
+                                	<td colspan="2" class="style1">Modalidade: #{estagioC.estagio.modalidade}</td>
                             	</tr>
                         	</tbody>
                         </table>
@@ -78,20 +77,20 @@
                                 	</td>
                             	</tr>
                             	<tr>
-                                	<td colspan="2" class="style1">Empresa: A FAZER </td>
+                                	<td colspan="2" class="style1">Empresa: #{estagioC.estagio.unidadeConcedente.razaoSocial} </td>
                             	</tr>
                             	<tr>
-                                	<td colspan="2" class="style1">Setor / Área de atuação: A FAZER</td>
+                                	<td colspan="2" class="style1">Setor / Área de atuação: #{estagioC.estagio.setorOuArea}</td>
                             	</tr>
                             	<tr>
-                                	<td colspan="2" class="style1">Supervisor: A FAZER</td>
+                                	<td colspan="2" class="style1">Supervisor: #{estagioC.estagio.supervisor}</td>
                             	</tr>
                             	<tr>
-                                	<td colspan="2" class="style1">Cargo: A FAZER</td>
+                                	<td colspan="2" class="style1">Cargo: #{estagioC.estagio.cargoSupervisor}</td>
                             	</tr>
                             	<tr>
-                                	<td class="style1" width="336">Início do Estágio: A FAZER</td>
-                                	<td class="style1" width="343">Término Previsto: A FAZER</td>
+                                	<td class="style1" width="336">Início do Estágio: #{estagioC.formatarData(estagioC.estagio.dataInicio)}</td>
+                                	<td class="style1" width="343">Término Previsto: #{estagioC.formatarData(estagioC.estagio.dataTermino)}</td>
                             	</tr>
                         	</tbody>
                         </table>
@@ -136,7 +135,7 @@
 	                                <td width="72" valign="bottom"><p align="center"><strong>*</strong></p></td>
 	                            </tr>
                                 <tr>
-                                    <td width="375" valign="bottom"><p>1) A FAZER. </p></td>
+                                    <td width="375" valign="bottom"><p>1) #{estagioC.estagio.planoAtividades}</p></td>
                                     <td width="72" valign="bottom"><p>&nbsp;</p></td>
                                     <td width="72" valign="bottom"><p>&nbsp;</p></td>
                                     <td width="72" valign="bottom"><p>&nbsp;</p></td>

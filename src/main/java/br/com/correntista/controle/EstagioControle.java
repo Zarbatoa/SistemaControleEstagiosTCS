@@ -1,6 +1,8 @@
 package br.com.correntista.controle;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -326,6 +328,24 @@ public class EstagioControle {
     public String traduzirEnumTipoInatividade(TipoInatividade tipo) {
     	return Utils.mapearTipoInatividade(tipo);
     }
+    
+    public String formatarCpf(String cpf) {
+    	return Utils.formatarCpf(cpf);
+    }
+    
+    public String formatarCnpj(String cnpj) {
+    	return Utils.formatarCnpj(cnpj);
+    }
+    
+    public String formatarData(Date data) {
+    	if(data == null) {
+			return "";
+		}
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(data);
+		String dataFormatted = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
+		return dataFormatted;
+    }
 
     public void inativarEstagio() {
     	//estagio = modelEstagiosAtivos.getRowData();
@@ -360,6 +380,7 @@ public class EstagioControle {
     public void definirRowAtivos() {
     	rowIndexAtivos = modelEstagiosAtivos.getRowIndex();
     }
+    
     
     // getters e setters
     
