@@ -10,5 +10,6 @@ import br.com.correntista.entidade.InstituicaoEnsino;
 public interface InstituicaoEnsinoDao extends BaseDao<InstituicaoEnsino, Long> {
 
 	List<InstituicaoEnsino> pesquisarTodos(Session sessao) throws HibernateException;
+	List<InstituicaoEnsino> pesquisarPorRazaoSocial(String razaoSocial, Session sessao) throws HibernateException;
 	
 }

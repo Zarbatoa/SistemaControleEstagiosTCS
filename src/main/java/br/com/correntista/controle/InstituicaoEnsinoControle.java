@@ -56,6 +56,28 @@ public class InstituicaoEnsinoControle {
         }
 	}
 	
+	public void pesquisarPorRazaoSocial() {
+		sessao = HibernateUtil.abrirSessao();
+        try {
+        	instituicoes = instituicaoEnsionDao.pesquisarPorRazaoSocial(instituicaoEnsino.getRazaoSocial(), sessao);
+            modelInstituicoes = new ListDataModel<>(instituicoes);
+            instituicaoEnsino.setRazaoSocial(null);
+            aba = 0;
+        } catch (HibernateException e) {
+            System.out.println("Erro ao pesquisar " + e.getMessage());
+        } finally {
+            sessao.close();
+        }
+	}
+	
+	public void pesquisarInstituicoesDeEnsino() {
+		if(instituicaoEnsino == null || instituicaoEnsino.getRazaoSocial() == null || "".equals(instituicaoEnsino.getRazaoSocial().trim())) {
+    		pesquisarTodos();
+    	} else {
+    		pesquisarPorRazaoSocial();
+    	}
+	}
+	
 	public void buscarCep() {
         WebServiceEndereco webService = new WebServiceEndereco();
         //se nao encontrar cep retorna null

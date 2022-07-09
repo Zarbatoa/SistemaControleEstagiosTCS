@@ -49,9 +49,10 @@
                         <p:panelGrid columns="3" layout="flex"
                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
                                     contentStyleClass="ui-fluid">
-                            <p:commandButton value="Pesquisar todos" update="tabela"
-                                             action="#{instituciaoC.pesquisarTodos()}"
-                                             style="margin-left: 300%" />
+                            <p:outputLabel for="instituicaoEnsino" value="Razão social da instituição:" />
+                            <p:inputText id="instituicaoEnsino" value="#{instituciaoC.instituicaoEnsino.razaoSocial}" required="false"/>
+                            <p:commandButton value="Pesquisar" update="tabela"
+                                             action="#{instituciaoC.pesquisarInstituicoesDeEnsino()}" />
                         </p:panelGrid>
 
 

@@ -22,4 +22,11 @@ public class InstituicaoEnsinoDaoImpl extends BaseDaoImpl<InstituicaoEnsino, Lon
         return consulta.list();
 	}
 
+	@Override
+	public List<InstituicaoEnsino> pesquisarPorRazaoSocial(String razaoSocial, Session sessao) throws HibernateException {
+		Query consulta = sessao.createQuery("from InstituicaoEnsino i where i.razaoSocial like :razaoSocial");
+        consulta.setParameter("razaoSocial", "%" + razaoSocial + "%");
+        return consulta.list();
+	}
+
 }
