@@ -79,8 +79,10 @@
                                 <h:outputText value="#{instituicao.representante}" />
                             </p:column>
                             
-                            <p:column headerText="Telefone">
-                                <h:outputText value="#{instituicao.telefoneFixo} + #{instituicao.telefoneCel}" />
+                            <p:column headerText="Telefone(s)">
+                                <h:outputText value="#{instituicao.telefoneFixo}" />
+                                <br />
+                                <h:outputText value="#{instituicao.telefoneCel}" />
                             </p:column>
 
                             <p:column headerText="Ação">
