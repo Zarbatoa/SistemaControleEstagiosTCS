@@ -249,7 +249,7 @@ public class EstagioControle {
 	}
     
     public void onTabChange(TabChangeEvent event) {
-        if(event.getTab().getTitle().equals("Novo")) {
+        if(event.getTab().getTitle() != null && event.getTab().getTitle().equals("Novo")) {
         	carregarComboEstagiarios();
         	carregarComboUnidadesConcedentes();
         	carregarComboInstituicoesEnsino();

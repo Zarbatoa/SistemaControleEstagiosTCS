@@ -453,12 +453,7 @@
                 	</h:form>
                 </p:tab>
                 
-                <p:tab title="Relatórios">
-                
-                </p:tab>
-                
-                
-                <!--aba 3, para notificações -->
+                <!--aba 4, para notificações -->
                 <p:tab>
                 	<!-- overrides title on tab-->
 			        <f:facet name="title">
@@ -472,12 +467,12 @@
                                     columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
                                     contentStyleClass="ui-fluid">
                             
-                            <h:outputText value="Relatórios" />
+                            <h:outputText value="Notificações" />
                         </p:panelGrid>
 
 
                         <p:dataTable id="tabela_relatorios" var="relatorio" value="#{estagioC.modelEstagiosAtivos}" rows="10"
-                         paginator="true"
+                         paginator="true" paginatorPosition="bottom"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
