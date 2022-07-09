@@ -346,15 +346,26 @@ public class EstagioControle {
 		String dataFormatted = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
 		return dataFormatted;
     }
+    
+    public String extrairDiaDoMes(Date data) {
+    	Calendar cal = Calendar.getInstance();
+		cal.setTime(data);
+		return cal.get(Calendar.DAY_OF_MONTH) + "";
+    }
+    
+    public String extrairMesExtenso(Date data) {
+    	Calendar cal = Calendar.getInstance();
+		cal.setTime(data);
+		return  Utils.mapearMesExtenso(cal.get(Calendar.MONTH)) ;
+    }
+    
+    public String extrairAno(Date data) {
+    	Calendar cal = Calendar.getInstance();
+		cal.setTime(data);
+		return cal.get(Calendar.YEAR) + "";
+    }
 
     public void inativarEstagio() {
-    	//estagio = modelEstagiosAtivos.getRowData();
-    	System.out.println("=============================");
-    	System.out.println("Passando por inativarEstagio!!!");
-    	System.out.println("row: " + rowIndexAtivos);
-    	System.out.println("tipo: " + tipoInatividade);
-    	System.out.println("=============================");
-    	
     	sessao = HibernateUtil.abrirSessao();
         try {
         	estagio = estagiosAtivos.get(rowIndexAtivos);

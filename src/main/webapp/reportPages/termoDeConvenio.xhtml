@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<head>
+	<h:head>
 		<title>::: TERMO DE CONVÊNIO :::</title>
 		<h:outputStylesheet name="./css/cssLayout.css" />
         <h:outputStylesheet library="css" name="default.css" />
@@ -30,7 +30,7 @@
 				font-weight: bold;
 			}
 		</style>
-	</head>
+	</h:head>
 	<body topmargin="0">
 	<p></p>
 	<table width="700" cellspacing="0" cellpadding="0" border="0" align="center">
@@ -46,8 +46,8 @@
         					<tr>
           						<td>
           							<strong>Convênio que entre si celebram o  SERVIÇO NACIONAL
-											 DE APRENDIZAGEM COMERCIAL de A FAZER e a  
-											empresa A FAZER  respectivamente para concessão  de estágios a 
+											 DE APRENDIZAGEM COMERCIAL de #{estagioC.estagio.instituicaoEnsinoVinculada.razaoSocial} e a  
+											empresa #{estagioC.estagio.unidadeConcedente.razaoSocial} respectivamente para concessão  de estágios a 
 											estudantes.</strong>
 								</td>
         					</tr>
@@ -56,7 +56,7 @@
       				<br></br>
       				<p>&nbsp;</p>
         			<p><strong>&nbsp;</strong></p>
-				    <p>Ao (s) <strong>A FAZER</strong> dias do  mês de<strong> A FAZER </strong>de<strong> A FAZER</strong>, neste ato, de um lado o <strong>SERVIÇO NACIONAL DE APREDIZAGEM COMERCIAL de A FAZER – SENAC</strong> – em Santa Catarina, doravante  denominado Instituição de Ensino, com CNPJ/MF sob o nº <strong>A FAZER</strong>, com  sede a rua <strong>A FAZER</strong>, nº<strong>A FAZER </strong> – bairro <strong>A FAZER</strong>, cidade  de <strong>A FAZER</strong> representado neste ato pelo seu Diretor(a), senhor(a) <strong>A FAZER</strong>,  e outro lado, a empresa <strong>A FAZER </strong>,  doravante denominada Unidade Concedente, com CNPJ sob o nº <strong>A FAZER</strong>  com sede a rua <strong>A FAZER</strong>, nº <strong>A FAZER</strong> - bairro  <strong>A FAZER </strong>, cidade de <strong>A FAZER</strong>, representada nesta por  <strong>A FAZER</strong>, com o cargo de <strong>A FAZER</strong>
+				    <p>Ao (s) <strong>A FAZER</strong> dias do  mês de<strong> #{estagioC.extrairMesExtenso(estagioC.estagio.dataInicio)} </strong>de<strong> #{estagioC.extrairAno(estagioC.estagio.dataInicio)}</strong>, neste ato, de um lado o <strong>SERVIÇO NACIONAL DE APREDIZAGEM COMERCIAL de A FAZER – SENAC</strong> – em Santa Catarina, doravante  denominado Instituição de Ensino, com CNPJ/MF sob o nº <strong>A FAZER</strong>, com  sede a rua <strong>A FAZER</strong>, nº<strong>A FAZER </strong> – bairro <strong>A FAZER</strong>, cidade  de <strong>A FAZER</strong> representado neste ato pelo seu Diretor(a), senhor(a) <strong>A FAZER</strong>,  e outro lado, a empresa <strong>A FAZER </strong>,  doravante denominada Unidade Concedente, com CNPJ sob o nº <strong>A FAZER</strong>  com sede a rua <strong>A FAZER</strong>, nº <strong>A FAZER</strong> - bairro  <strong>A FAZER </strong>, cidade de <strong>A FAZER</strong>, representada nesta por  <strong>A FAZER</strong>, com o cargo de <strong>A FAZER</strong>
 					   tem entre si, certo e ajustado o presente Termo de Convênio para 
 					   concessão de  estágios, nos termos das cláusulas e condições que seguem:</p>
     				<p class="style2">
