@@ -89,11 +89,6 @@
                                 <p:commandButton icon="pi pi-pencil" title="Alterar" process="@this"
                                                  actionListener="#{empresaC.prepararAlterar}" update="@all"
                                                  style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
-                                <p:commandButton icon="pi pi-trash" title="Excluir" process="@this"
-                                                 actionListener="#{empresaC.excluir}" update="tabela"
-                                                 styleClass="rounded-button ui-button-danger ui-button-outlined" >
-                                    <p:confirm header="Confirmação" message="Deseja relamente excluir?" icon="pi pi-info-circle"/>
-                                </p:commandButton>
                             </p:column>
                         </p:dataTable>
                         
