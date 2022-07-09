@@ -60,10 +60,10 @@
 							</p:selectOneRadio>
 							
 							<p:commandButton id="cancelarInativacao" value="Não" styleClass="ui-button-flat"
-											 actionListener="#{estagioC.inativarEstagio}" process="@this" 
+											 actionListener="#{estagioC.inativarEstagio}" process="@this tipoInativacao" 
 							                 update="@all"/>
 							<p:commandButton id="aceitarInativacao" value="Sim" 
-											 actionListener="#{estagioC.inativarEstagio}" process="@this" 
+											 actionListener="#{estagioC.inativarEstagio}" process="@this tipoInativacao" 
 							                 update="@all"/>
 						</h:form>
 					</p:dialog>

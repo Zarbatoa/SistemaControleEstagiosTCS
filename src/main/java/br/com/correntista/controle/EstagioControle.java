@@ -1,14 +1,12 @@
 package br.com.correntista.controle;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -16,8 +14,6 @@ import javax.faces.model.SelectItem;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.primefaces.PrimeFaces;
-import org.primefaces.event.SelectEvent;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 
@@ -42,7 +38,7 @@ import br.com.correntista.util.Utils;
 * @author Lucas Z
 */
 @ManagedBean(name="estagioC")
-@ViewScoped
+@SessionScoped
 public class EstagioControle {
 
 	// Atributos para edicao de estagios novos ou nao
@@ -112,6 +108,11 @@ public class EstagioControle {
     	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_ESTAGIARIO);
     	tiposInativ.add(TipoInatividade.DESENTENDIMENTO_AMBOS);
     	tiposInativ.add(TipoInatividade.TRANCAMENTO_MATRICULA);
+    }
+    
+    public String destruirBean() {
+    	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("estagioC");
+    	return "estagio.xhtml";
     }
     
     public void pesquisarTodos() {
@@ -207,13 +208,13 @@ public class EstagioControle {
         	carregarComboEstagiarios();
         	carregarComboUnidadesConcedentes();
         	carregarComboInstituicoesEnsino();
-        } else {
+        }// else {
         	estagio = null;
         	estagiario = null;
         	unidadeConcedente = null;
         	instituicaoEnsino = null;
         	instituicaoEnsinoVinculada = null;
-        }
+        //}
     }
 
     public void onTabClose(TabCloseEvent event) {
