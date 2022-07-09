@@ -28,7 +28,7 @@ public class UnidadeConcedente {
     
     @Column(nullable = false)
     private String razaoSocial;
-    @Column(nullable = false, length = 14)
+    @Column(nullable = false, length = 14, unique = true)
     private String cnpj;
     @Column(nullable = false)
     private String email;

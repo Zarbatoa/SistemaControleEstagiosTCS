@@ -35,7 +35,7 @@ public class Estagiario implements Serializable {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNascimento;
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 11, unique = true)
     private String cpf;
     @Column(nullable = false)
     private String telefoneFixo;
