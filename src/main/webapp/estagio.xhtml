@@ -38,13 +38,30 @@
     <ui:define name="conteudo">
         
         <p:panel id="painel_conteudo" header="Estágio">
+        
+        	<h:form>
+		        <p:panelGrid columns="3" layout="flex"
+		                            columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
+		                            contentStyleClass="ui-fluid">
+		            <p:outputLabel for="selecaoUnidade" value="Instituição de ensino:" />
+		            <p:selectOneMenu id="selecaoUnidade" value="#{estagioC.instituicaoFiltro.id}"
+		                             filter="true" filterMatchMode="contains" >
+		                
+		                <p:ajax event="change" update="@all" process="@this selecaoUnidade"
+		   		 			listener="#{estagioC.subjectSelectionChanged}" />
+		                
+		                <f:selectItem itemLabel="Escolha uma instituição de ensino..." itemValue=""/>
+		                <f:selectItems value="#{estagioC.comboInstituicoesEnsino}"/>
+		            </p:selectOneMenu>
+		        </p:panelGrid>
+            </h:form>
+        
             <p:tabView id="tab_view" activeIndex="#{estagioC.aba}">
                 
                 <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
                 <p:ajax event="tabChange" listener="#{estagioC.onTabChange}" 
                         update="tab_view:form_novo"/>
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
-                
                 
                 <!--aba 0, para pesquisa de estagios ativos-->
                 <p:tab title="Ativos">
@@ -386,7 +403,7 @@
                                     contentStyleClass="ui-fluid">
                             
                             
-                            <h:outputLabel value="Selecionado o estágio de #{estagioC.estagio.estagiario.nome} na empresa #{estagioC.estagio.unidadeConcedente.razaoSocial}" />
+                            <h:outputLabel>Selecionado o estágio de <strong>#{estagioC.estagio.estagiario.nome}</strong> na empresa <strong>#{estagioC.estagio.unidadeConcedente.razaoSocial}</strong></h:outputLabel>
                             <h:outputLabel value="" />
                             
                            	<h:outputLink value="reportPages/relatorioDesligamento.xhtml"
@@ -458,17 +475,12 @@
                 	<!-- overrides title on tab-->
 			        <f:facet name="title">
 			        	<p:badge value="0" severity="danger" style="font-size: 0.6rem; min-width: 1rem; height: 1rem; line-height: 1rem;">
-			            	<i id="iconeNotif" class="pi pi-bell" style="color: red;"></i>
+			            	<i id="iconeNotif" class="pi pi-bell"></i>
 			            </p:badge>
 			        </f:facet>
 
-					<h:form id="form_relatorios">
-                        <p:panelGrid columns="3" layout="flex"
-                                    columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2"
-                                    contentStyleClass="ui-fluid">
-                            
-                            <h:outputText value="Notificações" />
-                        </p:panelGrid>
+					<h:form id="form_notificacoes">
+                        
 
 
                         <p:dataTable id="tabela_relatorios" var="relatorio" value="#{estagioC.modelEstagiosAtivos}" rows="10"
@@ -481,7 +493,11 @@
                                 <h:outputText value="" />
                             </p:column>
                             
-                            <p:column headerText="Nome Unidade Concedente:">
+                            <p:column headerText="Empresa">
+                                <h:outputText value="" />
+                            </p:column>
+                            
+                            <p:column headerText="Unidade">
                                 <h:outputText value="" />
                             </p:column>
                             
@@ -493,7 +509,7 @@
                                 <h:outputText value="" />
                             </p:column>
                             
-                            <p:column headerText="Relatório Quadrimestral">
+                            <p:column headerText="Notificação">
                                 <h:outputText value="" />
                             </p:column>
                             

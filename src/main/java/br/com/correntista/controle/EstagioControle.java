@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -80,8 +81,10 @@ public class EstagioControle {
     // Infos para a inativação
     private TipoInatividade tipoInatividade;
     private List<TipoInatividade> tiposInativ;
-    
     private int rowIndexAtivos = -1;
+    
+    // Atributo para a pesquisa em todas as abas
+    private InstituicaoEnsino instituicaoFiltro;
     
     
     public EstagioControle() {
@@ -110,6 +113,8 @@ public class EstagioControle {
     	tiposInativ.add(TipoInatividade.DESAPROVACAO_ESTAGIARIO);
     	tiposInativ.add(TipoInatividade.DESAPROVACAO_AMBOS);
     	tiposInativ.add(TipoInatividade.TRANCAMENTO_MATRICULA);
+    	
+    	carregarComboInstituicoesEnsino();
     }
     
     public String destruirBean() {
@@ -265,6 +270,14 @@ public class EstagioControle {
     }
 
     public void onTabClose(TabCloseEvent event) {
+    }
+    
+    public void subjectSelectionChanged(final AjaxBehaviorEvent event) {
+    	if(instituicaoFiltro.getId() == null) {
+    		System.out.println("subjectSelectionChanged -> null...");
+    	} else {
+    		System.out.println("subjectSelectionChanged -> " + instituicaoFiltro.getId());
+    	}
     }
     
     public void salvar(){
@@ -522,6 +535,16 @@ public class EstagioControle {
 	public void setRowIndexAtivos(int rowIndexAtivos) {
 		this.rowIndexAtivos = rowIndexAtivos;
 	}
-	
+
+	public InstituicaoEnsino getInstituicaoFiltro() {
+		if(instituicaoFiltro == null) {
+			instituicaoFiltro = new InstituicaoEnsino();
+		}
+		return instituicaoFiltro;
+	}
+
+	public void setInstituicaoFiltro(InstituicaoEnsino instituicaoFiltro) {
+		this.instituicaoFiltro = instituicaoFiltro;
+	}
 	
 }
