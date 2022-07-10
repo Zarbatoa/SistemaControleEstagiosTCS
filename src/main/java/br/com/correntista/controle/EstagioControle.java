@@ -85,7 +85,7 @@ public class EstagioControle {
     
     // Atributo para a pesquisa em todas as abas
     private InstituicaoEnsino instituicaoFiltro;
-    
+
     
     public EstagioControle() {
     	estagioDao = new EstagioDaoImpl();
@@ -138,7 +138,11 @@ public class EstagioControle {
     public void pesquisarAtivosTodos() {
     	sessao = HibernateUtil.abrirSessao();
 		try {
-			estagiosAtivos = estagioDao.pesquisarAtivos(sessao);
+			if(instituicaoFiltro.getId() == null) {
+				estagiosAtivos = estagioDao.pesquisarAtivos(sessao);
+			} else {
+				estagiosAtivos = estagioDao.pesquisarAtivos(instituicaoFiltro.getId(),sessao);
+			}
 			modelEstagiosAtivos = new ListDataModel<>(estagiosAtivos);
 			aba = 0;
 		} catch (HibernateException e) {
@@ -151,7 +155,11 @@ public class EstagioControle {
     public void pesquisarAtivosPorEstagiario() {
         sessao = HibernateUtil.abrirSessao();
         try {
-        	estagiosAtivos = estagioDao.pesquisarAtivosPorEstagiario(estagiario.getNome(), sessao);
+        	if(instituicaoFiltro.getId() == null) {
+        		estagiosAtivos = estagioDao.pesquisarAtivosPorEstagiario(estagiario.getNome(), sessao);
+        	} else {
+        		estagiosAtivos = estagioDao.pesquisarAtivosPorEstagiario(instituicaoFiltro.getId(), estagiario.getNome(), sessao);
+        	}
             modelEstagiosAtivos = new ListDataModel<>(estagiosAtivos);
             estagiario.setNome(null);
             aba = 0;
@@ -174,7 +182,11 @@ public class EstagioControle {
     public void pesquisarInativosTodos() {
     	sessao = HibernateUtil.abrirSessao();
 		try {
-			estagiosInativos = estagioDao.pesquisarInativos(sessao);
+			if(instituicaoFiltro.getId() == null) {
+				estagiosInativos = estagioDao.pesquisarInativos(sessao);
+			} else {
+				estagiosInativos = estagioDao.pesquisarInativos(instituicaoFiltro.getId(), sessao);
+			}
 			modelEstagiosInativos = new ListDataModel<>(estagiosInativos);
 			aba = 1;
 		} catch (HibernateException e) {
@@ -187,10 +199,14 @@ public class EstagioControle {
     public void pesquisarInativosPorEstagiario() {
     	sessao = HibernateUtil.abrirSessao();
         try {
-        	estagiosInativos = estagioDao.pesquisarInativosPorEstagiario(estagiario.getNome(), sessao);
+        	if(instituicaoFiltro.getId() == null) {
+        		estagiosInativos = estagioDao.pesquisarInativosPorEstagiario(estagiario.getNome(), sessao);
+        	} else {
+        		estagiosInativos = estagioDao.pesquisarInativosPorEstagiario(instituicaoFiltro.getId(), estagiario.getNome(), sessao);
+        	}
             modelEstagiosInativos = new ListDataModel<>(estagiosInativos);
             estagiario.setNome(null);
-            aba = 0;
+            aba = 1;
         } catch (HibernateException e) {
             System.out.println("Erro ao pesquisar " + e.getMessage());
         } finally {
@@ -260,24 +276,23 @@ public class EstagioControle {
         	carregarComboEstagiarios();
         	carregarComboUnidadesConcedentes();
         	carregarComboInstituicoesEnsino();
-        }// else {
-        	estagio = null;
-        	estagiario = null;
-        	unidadeConcedente = null;
-        	instituicaoEnsino = null;
-        	instituicaoEnsinoVinculada = null;
-        //}
+        }
+    	estagio = null;
+    	estagiario = null;
+    	unidadeConcedente = null;
+    	instituicaoEnsino = null;
+       	instituicaoEnsinoVinculada = null;
+
     }
 
     public void onTabClose(TabCloseEvent event) {
     }
     
     public void subjectSelectionChanged(final AjaxBehaviorEvent event) {
-    	if(instituicaoFiltro.getId() == null) {
-    		System.out.println("subjectSelectionChanged -> null...");
-    	} else {
-    		System.out.println("subjectSelectionChanged -> " + instituicaoFiltro.getId());
-    	}
+//    	estagiosAtivos = null;
+//    	modelEstagiosAtivos = null;
+//    	estagiosInativos = null;
+//    	modelEstagiosInativos = null;
     }
     
     public void salvar(){
@@ -408,7 +423,6 @@ public class EstagioControle {
     public void definirRowAtivos() {
     	rowIndexAtivos = modelEstagiosAtivos.getRowIndex();
     }
-    
     
     // getters e setters
     

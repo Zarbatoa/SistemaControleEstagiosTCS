@@ -12,9 +12,14 @@ public interface EstagioDao extends BaseDao<Estagio, Long>{
 	List<Estagio> pesquisarTodos(Session sessao) throws HibernateException;
 	
 	List<Estagio> pesquisarAtivos(Session sessao) throws HibernateException;
-	List<Estagio> pesquisarInativos(Session sessao) throws HibernateException;
-	
 	List<Estagio> pesquisarAtivosPorEstagiario(String nome, Session sessao) throws HibernateException;
+	List<Estagio> pesquisarAtivos(Long idInstituicao, Session sessao) throws HibernateException;
+	List<Estagio> pesquisarAtivosPorEstagiario(Long idInstituicao,String nome, Session sessao) throws HibernateException;
+	
+	
+	List<Estagio> pesquisarInativos(Session sessao) throws HibernateException;
 	List<Estagio> pesquisarInativosPorEstagiario(String nome, Session sessao) throws HibernateException;
+	List<Estagio> pesquisarInativos(Long idInstituicao, Session sessao) throws HibernateException;
+	List<Estagio> pesquisarInativosPorEstagiario(Long idInstituicao, String nome, Session sessao) throws HibernateException;
 	
 }

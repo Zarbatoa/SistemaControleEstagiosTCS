@@ -55,4 +55,42 @@ public class EstagioDaoImpl extends BaseDaoImpl<Estagio, Long> implements Estagi
         return consulta.list();
 	}
 
+	@Override
+	public List<Estagio> pesquisarAtivos(Long idInstituicao, Session sessao) throws HibernateException {
+		Query consulta = sessao.createQuery("from Estagio e where e.status = :status AND e.instituicaoEnsino.id = :idInstituicao");
+        consulta.setParameter("status", StatusEstagio.ATIVO);
+        consulta.setParameter("idInstituicao", idInstituicao);
+        return consulta.list();
+	}
+
+	@Override
+	public List<Estagio> pesquisarAtivosPorEstagiario(Long idInstituicao, String nome, Session sessao)
+			throws HibernateException {
+		Query consulta = sessao.createQuery("from Estagio e where e.estagiario.nome like :nome AND e.status = :status AND e.instituicaoEnsino.id = :idInstituicao");
+        consulta.setParameter("nome", nome + "%");
+        consulta.setParameter("status", StatusEstagio.ATIVO);
+        consulta.setParameter("idInstituicao", idInstituicao);
+        return consulta.list();
+	}
+
+	@Override
+	public List<Estagio> pesquisarInativos(Long idInstituicao, Session sessao) throws HibernateException {
+		Query consulta = sessao.createQuery("from Estagio e where e.status in (:status1, :status2) AND e.instituicaoEnsino.id = :idInstituicao");
+        consulta.setParameter("status1", StatusEstagio.INATIVO);
+        consulta.setParameter("status2", StatusEstagio.RECINDIDO);
+        consulta.setParameter("idInstituicao", idInstituicao);
+        return consulta.list();
+	}
+
+	@Override
+	public List<Estagio> pesquisarInativosPorEstagiario(Long idInstituicao, String nome, Session sessao)
+			throws HibernateException {
+		Query consulta = sessao.createQuery("from Estagio e where e.estagiario.nome like :nome AND e.status in (:status1, :status2) AND e.instituicaoEnsino.id = :idInstituicao");
+        consulta.setParameter("nome", nome + "%");
+        consulta.setParameter("status1", StatusEstagio.INATIVO);
+        consulta.setParameter("status2", StatusEstagio.RECINDIDO);
+        consulta.setParameter("idInstituicao", idInstituicao);
+        return consulta.list();
+	}
+
 }

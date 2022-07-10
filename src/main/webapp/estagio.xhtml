@@ -45,7 +45,7 @@
 		                            contentStyleClass="ui-fluid">
 		            <p:outputLabel for="selecaoUnidade" value="Instituição de ensino:" />
 		            <p:selectOneMenu id="selecaoUnidade" value="#{estagioC.instituicaoFiltro.id}"
-		                             filter="true" filterMatchMode="contains">
+		                             filter="true" filterMatchMode="contains" style="border-width: revert; border-color: #036fab61;">
 		                
 		                <p:ajax event="change" update="@all" process="@this selecaoUnidade"
 		   		 			listener="#{estagioC.subjectSelectionChanged}" />
@@ -114,8 +114,8 @@
                                 <h:outputText value="#{ativo.unidadeConcedente.razaoSocial}" />
                             </p:column>
                             
-                            <p:column headerText="Unidade Vinculada" sortBy="#{ativo.instituicaoEnsinoVinculada.razaoSocial}">
-                                <h:outputText value="#{ativo.instituicaoEnsinoVinculada.razaoSocial}" />
+                            <p:column headerText="Instituição" sortBy="#{ativo.instituicao.razaoSocial}">
+                                <h:outputText value="#{ativo.instituicaoEnsino.razaoSocial}" />
                             </p:column>
                             
                             <p:column headerText="Data início">
@@ -176,8 +176,8 @@
                                 <h:outputText value="#{inativo.unidadeConcedente.razaoSocial}" />
                             </p:column>
                             
-                            <p:column headerText="Unidade" sortBy="#{inativo.instituicaoEnsinoVinculada.razaoSocial}">
-                                <h:outputText value="#{inativo.instituicaoEnsinoVinculada.razaoSocial}" />
+                            <p:column headerText="Instituição" sortBy="#{inativo.instituicaoEnsino.razaoSocial}">
+                                <h:outputText value="#{inativo.instituicaoEnsino.razaoSocial}" />
                             </p:column>
                             
                             <p:column headerText="Data início">
