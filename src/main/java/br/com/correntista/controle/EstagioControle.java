@@ -360,10 +360,10 @@ public class EstagioControle {
 		return dataFormatted;
     }
     
-    public String extrairDiaDoMes(Date data) {
+    public String extrairDiaDoMesExtenso(Date data) {
     	Calendar cal = Calendar.getInstance();
 		cal.setTime(data);
-		return cal.get(Calendar.DAY_OF_MONTH) + "";
+		return Utils.mapearDiaDoMesExtenso(cal.get(Calendar.DAY_OF_MONTH));
     }
     
     public String extrairMesExtenso(Date data) {

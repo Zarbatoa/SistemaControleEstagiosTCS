@@ -45,7 +45,7 @@
 		                            contentStyleClass="ui-fluid">
 		            <p:outputLabel for="selecaoUnidade" value="Instituição de ensino:" />
 		            <p:selectOneMenu id="selecaoUnidade" value="#{estagioC.instituicaoFiltro.id}"
-		                             filter="true" filterMatchMode="contains" >
+		                             filter="true" filterMatchMode="contains">
 		                
 		                <p:ajax event="change" update="@all" process="@this selecaoUnidade"
 		   		 			listener="#{estagioC.subjectSelectionChanged}" />

@@ -14,23 +14,26 @@
 
         <div class="p-grid">
             <div id="top" class="p-col-12">
-                <h:outputText id="logo_texto" value="Sistema Controle de Estágios (BETA)"/>
+            	<p:graphicImage name="imagem/logo_sigla.png" style="vertical-align: middle; height: 70px; padding-right: 50px" />
             </div>
 
             
-            
             <div id="left" class="p-col-2">
                 <h:form id="menu">
-                    <p:menu style="width:220px">
+                    <p:menu style="width:220px" >
                         <p:menuitem value="Home" outcome="principal" icon="pi pi-home"/>
                         
-                        <p:submenu label="Cadastro">
+                        <p:submenu label="Interface">
                         	<p:menuitem value="Usuário" outcome="usuario" icon="pi pi-user"/>
                         	<p:menuitem value="Instituição de Ensino" outcome="instituicaoEnsino" icon="pi pi-compass"/>
                         	<p:menuitem value="Estagiário" outcome="estagiario" icon="pi pi-users"/>
                         	<p:menuitem value="Unidade Concedente" outcome="unidadeConcedente" icon="pi pi-briefcase"/>
                         	<p:menuitem value="Estágio" action="#{estagioC.destruirBean()}" icon="pi pi-th-large"/>
                         	<p:menuitem value="Relatórios" outcome="principal" icon="pi pi-star"/>
+                        </p:submenu>
+                        
+                        <p:submenu label="Sistema">
+                        	<p:menuitem value="Log out" outcome="principal" icon="pi pi-sign-out"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
