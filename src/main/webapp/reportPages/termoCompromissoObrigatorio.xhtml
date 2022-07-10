@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<head>
+	<h:head>
         <title>::: TERMO DE COMPROMISSO DE ESTÁGIO :::</title>
         <h:outputStylesheet name="./css/cssLayout.css" />
         <h:outputStylesheet library="css" name="default.css" />
@@ -25,7 +25,7 @@
                 color: #000000;
             }
         </style>
-    </head>
+    </h:head>
     <body>
         <table width="700" cellspacing="0" cellpadding="0" border="0" align="center">
 	        <tbody>
@@ -34,30 +34,30 @@
 	            </tr>
 	            <tr>
 	            	<td valign="top">
-	            		<p class="tabela" align="center"><b>TERMO DE  COMPROMISSO DO ESTÁGIO OBRIGATÓRIO N° A FAZER/A FAZER</b></p>
-	                    <p>Aos A FAZER dias do mês de A FAZER de A FAZER, na cidade  de A FAZER. Neste ato, as partes a seguir nomeadas:</p>
+	            		<p class="tabela" align="center"><b>TERMO DE  COMPROMISSO DO ESTÁGIO OBRIGATÓRIO N° #{estagioC.estagio.id}/#{estagioC.extrairAno(estagioC.estagio.dataInicio)}</b></p>
+	                    <p>Aos #{estagioC.extrairDiaDoMesExtenso(estagioC.estagio.dataInicio)} dias do mês de #{estagioC.extrairMesExtenso(estagioC.estagio.dataInicio)} de #{estagioC.extrairAno(estagioC.estagio.dataInicio)}, na cidade  de #{estagioC.estagio.municipio}. Neste ato, as partes a seguir nomeadas:</p>
 	                    <table width="695" cellspacing="0" cellpadding="1" border="0">
 	                    	<tbody>
 	                    		<tr>
-	                                <td colspan="2">INSTITUIÇÃO DE ENSINO: A FAZER</td>
+	                                <td colspan="2">INSTITUIÇÃO DE ENSINO: #{estagioC.estagio.instituicaoEnsino.razaoSocial}</td>
 	                            </tr>
 	                            <tr>
-	                                <td width="337">Endereço: A FAZER</td>
-	                                <td width="342">Bairro: A FAZER</td>
+	                                <td width="337">Endereço: #{estagioC.estagio.instituicaoEnsino.endRua}</td>
+	                                <td width="342">Bairro: #{estagioC.estagio.instituicaoEnsino.endBairro}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>CEP: A FAZER </td>
-	                                <td> Cidade: A FAZER</td>
+	                                <td>CEP: #{estagioC.estagio.instituicaoEnsino.endCep}</td>
+	                                <td> Cidade: #{estagioC.estagio.instituicaoEnsino.endCidade}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>Fone: A FAZER </td>
-	                                <td> E-mail: A FAZER</td>
+	                                <td>Fone: #{estagioC.estagio.instituicaoEnsino.telefoneFixo}</td>
+	                                <td> E-mail: #{estagioC.estagio.instituicaoEnsino.email}</td>
 	                            </tr>
 	                            <tr>
-	                                <td colspan="2">Representada  por: A FAZER</td>
+	                                <td colspan="2">Representada  por: #{estagioC.estagio.instituicaoEnsino.representante}</td>
 	                            </tr>
 	                            <tr>
-	                                <td colspan="2">Professor: A FAZER</td>
+	                                <td colspan="2">Professor: #{estagioC.estagio.professor}</td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -67,40 +67,40 @@
 	                    <table width="695" cellspacing="0" cellpadding="1" border="0">
 	                    	<tbody>
 	                    		<tr>
-	                                <td colspan="2">UNIDADE  CONCEDENTE DE ESTÁGIO: A FAZER </td>
+	                                <td colspan="2">UNIDADE  CONCEDENTE DE ESTÁGIO: #{estagioC.estagio.unidadeConcedente.razaoSocial}</td>
 	                            </tr>
 	                            <tr>
-	                                <td width="336">Endereço: A FAZER</td>
-	                                <td width="343">Bairro: A FAZER </td>
+	                                <td width="336">Endereço: #{estagioC.estagio.unidadeConcedente.endRua}</td>
+	                                <td width="343">Bairro: #{estagioC.estagio.unidadeConcedente.endBairro}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>CEP: A FAZER</td>
-	                                <td>Cidade: A FAZER</td>
+	                                <td>CEP: #{estagioC.estagio.unidadeConcedente.endCep}</td>
+	                                <td>Cidade: #{estagioC.estagio.unidadeConcedente.endCidade}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>CNPJ/CPF: A FAZER</td>
-	                                <td>E-mail: A FAZER</td>
+	                                <td>CNPJ/CPF: #{estagioC.formatarCnpj(estagioC.estagio.unidadeConcedente.cnpj)}</td>
+	                                <td>E-mail: #{estagioC.estagio.unidadeConcedente.email}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>Fone: A FAZER</td>
-	                                <td>Celular: A FAZER</td>
-	                            </tr>
-	
-	                            <tr>
-	                                <td colspan="2">Setor / Área de atuação: A FAZER</td>            
+	                                <td>Fone: #{estagioC.estagio.unidadeConcedente.telefoneFixo}</td>
+	                                <td>Celular: #{estagioC.estagio.unidadeConcedente.telefoneCel}</td>
 	                            </tr>
 	
 	                            <tr>
-	                                <td>Representada  por: A FAZER</td>
-	                                <td>Cargo: A FAZER</td>
+	                                <td colspan="2">Setor / Área de atuação: #{estagioC.estagio.setorOuArea}</td>            
+	                            </tr>
+	
+	                            <tr>
+	                                <td>Representada  por: #{estagioC.estagio.unidadeConcedente.representante}</td>
+	                                <td>Cargo: #{estagioC.estagio.unidadeConcedente.cargoDoRepresentante}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>Supervisão do Estágio: A FAZER</td>
-	                                <td>Cargo: A FAZER</td>
+	                                <td>Supervisão do Estágio: #{estagioC.estagio.supervisor}</td>
+	                                <td>Cargo: #{estagioC.estagio.cargoSupervisor}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>Formação Acadêmica: A FAZER</td>
-	                                <td> Tempo  de Experiência Profissional: A FAZER</td>
+	                                <td>Formação Acadêmica: #{estagioC.estagio.formacaoAcademica}</td>
+	                                <td> Tempo  de Experiência Profissional: #{estagioC.estagio.tempoExperiencia}</td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -113,40 +113,40 @@
 	                                <td colspan="2">A  UNIDADE CONCEDENTE, com a interveniência e assinatura da INSTITUIÇÃO DE ENSINO,  e, do outro lado o:</td>
 	                            </tr>
 	                            <tr>
-	                                <td colspan="2">ESTAGIÁRIO: A FAZER</td>
+	                                <td colspan="2">ESTAGIÁRIO: #{estagioC.estagio.estagiario.nome}</td>
 	                            </tr>
 	                            <tr>
-	                                <td width="343">Endereço: A FAZER</td>
-	                                <td width="336"> Bairro: A FAZER </td>
+	                                <td width="343">Endereço: #{estagioC.estagio.estagiario.endRua}</td>
+	                                <td width="336"> Bairro: #{estagioC.estagio.estagiario.endBairro}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>CEP: A FAZER</td>
-	                                <td>Cidade: A FAZER</td>
+	                                <td>CEP: #{estagioC.estagio.estagiario.endCep}</td>
+	                                <td>Cidade: #{estagioC.estagio.estagiario.endCidade}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>CPF: A FAZER </td>
-	                                <td>Data  de Nascimento: A FAZER</td>
+	                                <td>CPF: #{estagioC.formatarCpf(estagioC.estagio.estagiario.cpf)} </td>
+	                                <td>Data  de Nascimento: #{estagioC.formatarData(estagioC.estagio.estagiario.dataNascimento)}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>Fone: A FAZER</td>
-	                                <td> Celular: A FAZER</td>
+	                                <td>Fone: #{estagioC.estagio.estagiario.telefoneFixo}</td>
+	                                <td> Celular: #{estagioC.estagio.estagiario.telefoneCel}</td>
 	                            </tr>
 	                            <tr>
-	                                <td colspan="2">Filiação: A FAZER e A FAZER</td>
+	                                <td colspan="2">Filiação: #{estagioC.estagio.estagiario.nomeDoPai} e #{estagioC.estagio.estagiario.nomeDaMae}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>Regularmente matriculado: A FAZER</td>
-	                                <td>Curso: A FAZER </td>
+	                                <td>Regularmente matriculado: #{estagioC.formatarBoolean(estagioC.estagio.estagiario.matriculado)}</td>
+	                                <td>Curso: #{estagioC.estagio.curso} </td>
 	                            </tr>
 	                            <tr>
-	                                <td>N° Matrícula: A FAZER</td>
-	                                <td>E-mail: A FAZER</td>
+	                                <td>N° Matrícula: #{estagioC.estagio.estagiario.numeroMatricula}</td>
+	                                <td>E-mail: #{estagioC.estagio.estagiario.email}</td>
 	                            </tr>
 	                            <tr>
-	                                <td colspan="2">Nome de Representante Legal (quando menor de 18 anos): A FAZER</td>
+	                                <td colspan="2">Nome de Representante Legal (quando menor de 18 anos): #{estagioC.estagio.estagiario.representanteLegal}</td>
 	                            </tr>
 	                            <tr>
-	                                <td>RG: A FAZER</td>
+	                                <td>RG: #{estagioC.estagio.estagiario.rgRepLegal}</td>
 	                                <td>&nbsp;</td>
 	                            </tr>
 	                        </tbody>
@@ -178,9 +178,9 @@
 	                    <p></p>
 	
 	                    <ol>          
-		                    <li>Vigência do Termo  de Compromisso do Estágio: <b>A FAZER</b>;</li>
-		                    <li>Horário: <b>A FAZER horas, com total de A FAZER horas semanais e carga horária total de A FAZER horas</b>.</li>
-		                    <li>Apólice de Seguro  nº <b>A FAZER</b></li>
+		                    <li>Vigência do Termo  de Compromisso do Estágio: <b>#{estagioC.formatarData(estagioC.estagio.dataInicio)} a #{estagioC.formatarData(estagioC.estagio.dataTermino)}</b>;</li>
+		                    <li>Horário: <b>#{estagioC.estagio.horarioEstagio} horas, com total de #{estagioC.estagio.jornadaSemanal} horas semanais e carga horária total de #{estagioC.estagio.cargaHorariaTotal} horas</b>.</li>
+		                    <li>Apólice de Seguro  nº <b>#{estagioC.estagio.numApoliceSeguro}</b></li>
 		                    <li>
 		                    	O <u>PLANO DE ATIVIDADES DO ESTÁGIO</u> 
 								elaborado conforme as condições estabelecidas pela Instituição de Ensino
@@ -192,7 +192,7 @@
 	                    <table cellspacing="0" cellpadding="0" border="1">
 	                    	<tbody>
 	                    		<tr>
-	                                <td width="671" valign="top">A FAZER</td>
+	                                <td width="671" valign="top">#{estagioC.estagio.planoAtividades}</td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -202,7 +202,7 @@
 	                    <table cellspacing="0" cellpadding="0" border="1">
 	                        <tbody>
 	                        	<tr>
-	                                <td width="669" valign="top"><p>A FAZER</p></td>
+	                                <td width="669" valign="top"><p>#{estagioC.estagio.unidadeConcedente.infoRelevantes}</p></td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -211,7 +211,7 @@
 	                    <table cellspacing="0" cellpadding="0" border="1">
 	                    	<tbody>
 	                    		<tr>
-	                                <td width="669" valign="top"><p>A FAZER</p></td>
+	                                <td width="669" valign="top"><p>#{estagioC.estagio.instituicaoEnsino.infoRelevante}</p></td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -247,7 +247,7 @@
 							                            h) Assegurar que a quantidade de estagiários
 							 está de acordo com a proporção indicada na o Art. 17º da Lei do 
 							Estágio.<br></br>
-							                            i) Fica eleito foro de A FAZER/SC para dirimir quaisquer dúvidas oriundas deste Convênio.
+							                            i) Fica eleito foro de #{estagioC.estagio.municipio}/SC para dirimir quaisquer dúvidas oriundas deste Convênio.
 	                    </p>
 	
 	                    <p><b>CLÁUSULA 6ª - </b>
