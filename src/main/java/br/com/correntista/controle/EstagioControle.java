@@ -369,13 +369,17 @@ public class EstagioControle {
     public String extrairMesExtenso(Date data) {
     	Calendar cal = Calendar.getInstance();
 		cal.setTime(data);
-		return  Utils.mapearMesExtenso(cal.get(Calendar.MONTH)) ;
+		return  Utils.mapearMesExtenso(cal.get(Calendar.MONTH)+1) ;
     }
     
     public String extrairAno(Date data) {
     	Calendar cal = Calendar.getInstance();
 		cal.setTime(data);
 		return cal.get(Calendar.YEAR) + "";
+    }
+    
+    public String formatarBoolean(boolean valor) {
+    	return Utils.formatarBoolean(valor);
     }
 
     public void inativarEstagio() {

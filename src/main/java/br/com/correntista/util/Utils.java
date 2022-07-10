@@ -147,6 +147,14 @@ public class Utils {
 		return mapaNomesDosNumeros.get(dia);
 	}
 	
+	/**
+	 * @param um boolean valor
+	 * @return String 'Sim' se true e 'Não' se false
+	 * */
+	public static String formatarBoolean(boolean valor) {
+		return (valor?"Sim":"Não");
+	}
+	
 	
 	
 }
