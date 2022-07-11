@@ -123,11 +123,11 @@ public class EstagioControle {
     	tiposInativ.add(TipoInatividade.TRANCAMENTO_MATRICULA);
     	
     	carregarComboInstituicoesEnsino();
+    	carregarNotificacoes();
     }
     
     public String destruirBean() {
     	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("estagioC");
-    	carregarNotificacoes();
     	return "estagio.xhtml";
     }
     
