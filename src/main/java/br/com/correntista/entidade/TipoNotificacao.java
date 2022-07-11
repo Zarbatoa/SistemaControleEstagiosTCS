@@ -1,0 +1,13 @@
+package br.com.correntista.entidade;
+
+public enum TipoNotificacao {
+
+	DESLIGAMENTO,
+	RQUADRIMESTAL1,
+	RQUADRIMESTAL2,
+	RQUADRIMESTAL3,
+	RQUADRIMESTAL4,
+	RQUADRIMESTAL5,
+	RQUADRIMESTAL6,
+	
+}

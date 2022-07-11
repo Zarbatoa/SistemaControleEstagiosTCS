@@ -3,17 +3,20 @@ package br.com.correntista.util;
 import java.util.HashMap;
 
 import br.com.correntista.entidade.TipoInatividade;
+import br.com.correntista.entidade.TipoNotificacao;
 
 public class Utils {
 
 	static HashMap<TipoInatividade, String> mapaTipoInatividade;
 	static HashMap<Integer, String> mapaNomesDosMeses;
 	static HashMap<Integer, String> mapaNomesDosNumeros;
+	static HashMap<TipoNotificacao, String> mapaTipoNotificacoes;
 	
 	static {
 		mapaTipoInatividade = new HashMap<>();
 		mapaNomesDosMeses = new HashMap<>();
 		mapaNomesDosNumeros = new HashMap<>();
+		mapaTipoNotificacoes = new HashMap<>();
 		
 		mapaTipoInatividade.put(TipoInatividade.ESTAGIARIO_NAO_EFETIVADO, "Estagiário não foi efetivado");
 		mapaTipoInatividade.put(TipoInatividade.ESTAGIARIO_EFETIVADO, "Estagiário foi efetivado");
@@ -71,6 +74,15 @@ public class Utils {
 		
 		mapaNomesDosNumeros.put(31, "Trinta e Um");
 		mapaNomesDosNumeros.put(32, "Trinta e Dois");
+		
+		
+		mapaTipoNotificacoes.put(TipoNotificacao.DESLIGAMENTO, "Próximo a data de desligamento");
+		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL1, "Mês para entrega do relatóriorio quadrimestral #1");
+		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL2, "Mês para entrega do relatóriorio quadrimestral #2");
+		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL3, "Mês para entrega do relatóriorio quadrimestral #3");
+		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL4, "Mês para entrega do relatóriorio quadrimestral #4");
+		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL5, "Mês para entrega do relatóriorio quadrimestral #5");
+		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL6, "Mês para entrega do relatóriorio quadrimestral #6");
 	}
 	
 	/**
@@ -155,6 +167,13 @@ public class Utils {
 		return (valor?"Sim":"Não");
 	}
 	
+	/**
+	 * @param um enum tipoNotificacao
+	 * @return texto com uma descrição referente ao valor do enum
+	 * */
+	public static String mapearTipoNotificacao(TipoNotificacao tipo) {
+		return mapaTipoNotificacoes.get(tipo);
+	}
 	
 	
 }

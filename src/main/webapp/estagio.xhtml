@@ -47,7 +47,7 @@
 		            <p:selectOneMenu id="selecaoUnidade" value="#{estagioC.instituicaoFiltro.id}"
 		                             filter="true" filterMatchMode="contains" style="border-width: revert; border-color: #036fab61;">
 		                
-		                <p:ajax event="change" update="@all" process="@this selecaoUnidade"
+		                <p:ajax event="change" update="@all tab_view:form_notificacoes:tabela_notificacoes tab_view:iconeNotif" process="@this selecaoUnidade"
 		   		 			listener="#{estagioC.subjectSelectionChanged}" />
 		                
 		                <f:selectItem itemLabel="Escolha uma instituição de ensino..." itemValue=""/>
@@ -60,7 +60,8 @@
                 
                 <!-- Eventos ajax para mudanca de abas, para atualizacao de comboboxs -->
                 <p:ajax event="tabChange" listener="#{estagioC.onTabChange}" 
-                        update="tab_view:form_novo"/>
+                        update="tab_view:form_novo tab_view:form_notificacoes"/>
+
                 <!-- <p:ajax event="tabClose" listener="#{cachorroC.onTabClose}"/> -->
                 
                 <!--aba 0, para pesquisa de estagios ativos-->
@@ -430,37 +431,37 @@
 							    <span class="ui-button-text">Termo de Compromisso Obrigatório</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral1.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 1</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral2.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 2</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral3.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 3</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral4.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 4</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral5.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 5</span>
 							</h:outputLink>
 							
-							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral.xhtml"
+							<h:outputLink value="reportPages/relatorioEstagioQuadrimestral6.xhtml"
 							    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 							    target="_blank">
 							    <span class="ui-button-text">Relatório Quadrimestral 6</span>
@@ -474,8 +475,9 @@
                 <p:tab>
                 	<!-- overrides title on tab-->
 			        <f:facet name="title">
-			        	<p:badge value="0" severity="danger" style="font-size: 0.6rem; min-width: 1rem; height: 1rem; line-height: 1rem;">
-			            	<i id="iconeNotif" class="pi pi-bell"></i>
+			        	<p:badge id="iconeNotif" value="#{estagioC.notificacoes.size()}"
+			        			 severity="danger" style="font-size: 0.6rem; min-width: 1rem; height: 1rem; line-height: 1rem;">
+			            	<i class="pi pi-bell"></i>
 			            </p:badge>
 			        </f:facet>
 
@@ -483,34 +485,34 @@
                         
 
 
-                        <p:dataTable id="tabela_relatorios" var="relatorio" value="#{estagioC.modelEstagiosAtivos}" rows="10"
+                        <p:dataTable id="tabela_notificacoes" var="notificacao" value="#{estagioC.modelNotificacoes}" rows="10"
                          paginator="true" paginatorPosition="bottom"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros "
                          rowsPerPageTemplate="5,10,15,{ShowAll|'All'}">
 
                             <p:column headerText="Nome estagiário">
-                                <h:outputText value="" />
+                                <h:outputText value="#{notificacao.estagio.estagiario.nome}" />
                             </p:column>
                             
                             <p:column headerText="Empresa">
-                                <h:outputText value="" />
+                                <h:outputText value="#{notificacao.estagio.unidadeConcedente.razaoSocial}" />
                             </p:column>
                             
                             <p:column headerText="Unidade">
-                                <h:outputText value="" />
+                                <h:outputText value="#{notificacao.estagio.instituicaoEnsino.razaoSocial}" />
                             </p:column>
                             
                             <p:column headerText="Data início">
-                                <h:outputText value="" />
+                                <h:outputText value="#{notificacao.estagio.dataInicio}" />
                             </p:column>
                             
                             <p:column headerText="Data termino">
-                                <h:outputText value="" />
+                                <h:outputText value="#{notificacao.estagio.dataTermino}" />
                             </p:column>
                             
                             <p:column headerText="Notificação">
-                                <h:outputText value="" />
+                                <h:outputText value="#{estagioC.traduzirEnumTipoNotificacao(notificacao.tipoNotificacao)}" />
                             </p:column>
                             
                             <p:column headerText="Ação">

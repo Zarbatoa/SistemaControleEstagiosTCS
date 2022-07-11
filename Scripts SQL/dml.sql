@@ -544,7 +544,7 @@ INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEX
     rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
     ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
 	VALUES (1, 'Felipe', 'Administrador setorial', 'Engenheiro de Software', '5 anos', 'Osvaldo Rank', 'Análise e Desenvolvimento de Sistemas', '4', 'Vespertino', 'Educação Superior',
-			'8h as 12h', 30, 400, 1200, 200, '2022-06-15', '2022-12-15', 'TIC', 'Florianópolis',
+			'8:00 as 12:00', 30, 400, 1200, 200, '2022-06-15', '2022-12-15', 'TIC', 'Florianópolis',
             '15866753', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
             0, 0, 0, 'Desenvolver sistemas em .NET e Cobol. Além da integração com hibernate.', NULL, 1, 1,
             1, 1);

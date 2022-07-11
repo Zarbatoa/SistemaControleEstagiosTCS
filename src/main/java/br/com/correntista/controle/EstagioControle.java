@@ -31,8 +31,10 @@ import br.com.correntista.dao.UnidadeConcedenteDaoImpl;
 import br.com.correntista.entidade.Estagiario;
 import br.com.correntista.entidade.Estagio;
 import br.com.correntista.entidade.InstituicaoEnsino;
+import br.com.correntista.entidade.Notificacao;
 import br.com.correntista.entidade.StatusEstagio;
 import br.com.correntista.entidade.TipoInatividade;
+import br.com.correntista.entidade.TipoNotificacao;
 import br.com.correntista.entidade.UnidadeConcedente;
 import br.com.correntista.util.Utils;
 
@@ -85,6 +87,12 @@ public class EstagioControle {
     
     // Atributo para a pesquisa em todas as abas
     private InstituicaoEnsino instituicaoFiltro;
+    
+    // Atributos para a aba de notificações
+    private Notificacao notificacao;
+    private List<Notificacao> notificacoes;
+    private DataModel<Notificacao> modelNotificacoes;
+    
 
     
     public EstagioControle() {
@@ -119,6 +127,7 @@ public class EstagioControle {
     
     public String destruirBean() {
     	FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("estagioC");
+    	carregarNotificacoes();
     	return "estagio.xhtml";
     }
     
@@ -276,6 +285,8 @@ public class EstagioControle {
         	carregarComboEstagiarios();
         	carregarComboUnidadesConcedentes();
         	carregarComboInstituicoesEnsino();
+        } else if(event.getTab().getTitle() == null) {
+        	carregarNotificacoes();
         }
     	estagio = null;
     	estagiario = null;
@@ -293,6 +304,25 @@ public class EstagioControle {
 //    	modelEstagiosAtivos = null;
 //    	estagiosInativos = null;
 //    	modelEstagiosInativos = null;
+    	carregarNotificacoes();
+    }
+    
+    public void carregarNotificacoes() {
+    	sessao = HibernateUtil.abrirSessao();
+		try {
+			if(this.getInstituicaoFiltro().getId() == null) {
+				estagios = estagioDao.pesquisarAtivos(sessao);
+			} else {
+				estagios = estagioDao.pesquisarAtivos(instituicaoFiltro.getId(),sessao);
+			}
+			notificacoes = Notificacao.gerarNotificacoes(estagios);
+			modelNotificacoes = new ListDataModel<>(notificacoes);
+		} catch (HibernateException e) {
+            System.out.println("Erro ao pesquisar " + e.getMessage());
+        } finally {
+            sessao.close();
+        }
+    	
     }
     
     public void salvar(){
@@ -355,6 +385,10 @@ public class EstagioControle {
     
     public String traduzirEnumTipoInatividade(TipoInatividade tipo) {
     	return Utils.mapearTipoInatividade(tipo);
+    }
+    
+    public String traduzirEnumTipoNotificacao(TipoNotificacao tipo) {
+    	return Utils.mapearTipoNotificacao(tipo);
     }
     
     public String formatarCpf(String cpf) {
@@ -563,6 +597,14 @@ public class EstagioControle {
 
 	public void setInstituicaoFiltro(InstituicaoEnsino instituicaoFiltro) {
 		this.instituicaoFiltro = instituicaoFiltro;
+	}
+
+	public List<Notificacao> getNotificacoes() {
+		return notificacoes;
+	}
+
+	public DataModel<Notificacao> getModelNotificacoes() {
+		return modelNotificacoes;
 	}
 	
 }
