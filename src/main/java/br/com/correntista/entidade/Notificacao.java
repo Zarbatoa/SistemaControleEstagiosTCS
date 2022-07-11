@@ -61,23 +61,23 @@ public class Notificacao {
 		int mesRQ1 = cal.get(Calendar.MONTH);
 		int anoRQ1 = cal.get(Calendar.YEAR);
 		cal.setTime(estagio.getDataInicio());
-		cal.add(Calendar.MONTH, 4);
+		cal.add(Calendar.MONTH, 3+4);
 		int mesRQ2 = cal.get(Calendar.MONTH);
 		int anoRQ2 = cal.get(Calendar.YEAR);
 		cal.setTime(estagio.getDataInicio());
-		cal.add(Calendar.MONTH, 4);
+		cal.add(Calendar.MONTH, 3+8);
 		int mesRQ3 = cal.get(Calendar.MONTH);
 		int anoRQ3 = cal.get(Calendar.YEAR);
 		cal.setTime(estagio.getDataInicio());
-		cal.add(Calendar.MONTH, 4);
+		cal.add(Calendar.MONTH, 3+12);
 		int mesRQ4 = cal.get(Calendar.MONTH);
 		int anoRQ4 = cal.get(Calendar.YEAR);
 		cal.setTime(estagio.getDataInicio());
-		cal.add(Calendar.MONTH, 4);
+		cal.add(Calendar.MONTH, 3+16);
 		int mesRQ5 = cal.get(Calendar.MONTH);
 		int anoRQ5 = cal.get(Calendar.YEAR);
 		cal.setTime(estagio.getDataInicio());
-		cal.add(Calendar.MONTH, 4);
+		cal.add(Calendar.MONTH, 3+20);
 		int mesRQ6 = cal.get(Calendar.MONTH);
 		int anoRQ6 = cal.get(Calendar.YEAR);
 		
