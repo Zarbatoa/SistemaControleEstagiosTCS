@@ -124,7 +124,7 @@ INSERT INTO INSTITUICAO_ENSINO (ID, RAZAOSOCIAL, CNPJ, EMAIL, REPRESENTANTE, TEL
 
 
 INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)
-	VALUES (1, 'lucas@lucas.com', 'lucas',  'lucas');
+	VALUES (1, 'lucas@lucas.com', 'lucas', 'lucas');
 INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)
 	VALUES (2, 'matheus@matheus.com', 'matheus', 'matheus');
 INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)
@@ -550,6 +550,220 @@ INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEX
             1, 1);
 
 
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (2, 'Galeano', 'Administrador Dados', 'Analista de Dados', '7 anos', 'Flávio Mello', 'Ciências da Computação', '3', 'Matutino', 'Educação Superior',
+			'13:00 as 19:00', 30, 400, 1300, 150, '2021-01-05', '2022-08-06', 'Tecnologia da Informação', 'Florianópolis',
+            '13625874', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Analisar dados no banco SQL.', NULL, 2, 2,
+            2, 2);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (3, 'Maílson', 'Scrum Master', 'Sistemas de Informações', '10 anos', 'Gastón Fernandez', 'Análise e Desenvolvimento de Sistemas', '4', 'Vespertino', 'Ensino Regular',
+			'8:00 as 12:00', 30, 300, 1300, 180, '2022-04-02', '2022-12-02', 'TIC', 'Florianópolis',
+            '18255304', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Testes Manuais e Automatizados de Software', 'DESAPROVACAO_EMPRESA', 3, 3,
+            3, 3);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (4, 'Yuri', 'Programador', 'Sistemas de Informações', '06 anos', 'Getúlio Vargas', 'Análise e Desenvolvimento de Sistemas', '2', 'Vespertino', 'Educação Superior',
+			'8:00 as 12:00', 30, 300, 1300, 180, '2021-03-12', '2022-03-13', 'TIC', 'Florianópolis',
+            '12352058', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Programar na linguagem Java e manipular dados pelo Mysql', 'DESAPROVACAO_ESTAGIARIO', 4, 4,
+            4, 4);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (5, 'Mauro', 'Tecnico Redes', 'Redes de computadores', '08 anos', 'Alexandre Frota', 'Análise e Desenvolvimento de Sistemas', '5', 'Vespertino', 'Educação Tecnica',
+			'8:00 as 12:00', 24, 96, 900, 100, '2021-03-12', '2022-03-13', 'TIC', 'Florianópolis',
+            '10120156', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Instalar e configurar redes de acesso a internet', 'TRANCAMENTO_MATRICULA', 5, 5,
+            5, 5);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (6, 'Arlindo', 'Administrador DBA', 'Análise e Desenvolvimento em Sistemas', '09 anos', 'Tarcísio Meira', 'Análise e Desenvolvimento de Sistemas', '3', 'Vespertino', 'Educação Superior',
+			'8:00 as 12:00', 30, 300, 1250, 200, '2021-09-10', '2022-09-12', 'TIC', 'Palhoça',
+            '11132502', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Manipular dados do banco Mysql', null, 6, 6,
+            6, 6);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (7, 'Agenor', 'Gestor', 'Engenheiro de Software', '10 anos', 'Afonso Alves', 'Tecnologia da Informação', '3', 'Vespertino', 'Educação Tecnica',
+			'8:00 as 12:00', 30, 120, 1000, 120, '2021-05-12', '2021-10-06', 'TIC', 'Florianópolis',
+            '15256987', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Suporte a clientes na parte de hardware e software', 'TRANCAMENTO_MATRICULA', 7, 7,
+            7, 7);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (8, 'Adilson', 'Gerente Executivo', 'Administrador', '12 anos', 'Hélio Cury', 'Gestão da Informação', '2', 'Vespertino', 'Educação Superior',
+			'8:00 as 12:00', 24, 96, 1300, 200, '2021-05-03', '2022-05-03', 'TIC', 'Florianópolis',
+            '11254785', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Acompanhar detecção de erros na utilização de equipamentos e desenvolvimento de programas de software', 'DESAPROVACAO_AMBOS', 8, 8,
+            8, 8);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (9, 'Susane', 'Consultora de Serviços', 'Secretariado Executivo', '09 anos', 'Guido Mantega', 'Análise e Desenvolvimento em Sistemas', '4', 'Vespertino', 'Educação Superior',
+			'8:00 as 12:00', 30, 300, 1100, 170, '2021-03-21', '2022-03-21', 'TIC', 'Florianópolis',
+            '10147495', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Ajudar na parte de Programação em C', 'ESTAGIARIO_NAO_EFETIVADO', 9, 9,
+            9, 9);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (10, 'Melissa', 'Gestor de Testes', 'Qualidade de Software', '06 anos', 'Marcelo Ramos', 'Análise e Desenvolvimento em Sistemas', '4', 'Vespertino', 'Educação Tecnica',
+			'8:00 as 12:00', 30, 300, 1200, 180, '2021-04-06', '2022-12-06', 'TIC', 'Florianópolis',
+            '13325026', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Ajudar a manipular dados e testes de software', NULL, 10, 10,
+            10, 10);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (11, 'Luan', 'Desenvolvedor FullStack', 'Administrador', '10 anos', 'Juca Albieri', 'Análise e Desenvolvimento em Sistemas', '3', 'Vespertino', 'Educação Superior',
+			'8:00 as 12:00', 30, 300, 1300, 220, '2021-08-10', '2022-06-10', 'TIC', 'Florianópolis',
+            '13569521', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Auxiliar na manutenção de desktop,implementar programas', 'ESTAGIARIO_EFETIVADO', 11, 11,
+            11, 11);
+
+
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (12, 'Diogo Breno Ribeiro', 'Cientista de dados', ' Engenharia da Computação', '9 anos', 'Osvaldo de Oliveira', 'Análise e Desenvolvimento de Sistemas', '3', 
+			'Matutino', 'Educação Superior',
+			'19:00 as 22:00', 30, 350, 1100, 200, '2022-06-15', '2023-06-15', 'TI', 'Florianópolis',
+            '158667883', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolver sistemas em Java. Além da integração com hibernate.', NULL, 12, 3,
+            2, 2);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (13, 'Enzo Nathan Ricardo Almada', 'Gerente de Tecnologia da Informação', 'Sistemas de Informação', '10 anos', 'Gustavo Lucca Assunção', 'Análise e Desenvolvimento de Sistemas', '5', 
+			'Notuno', 'Educação Superior',
+			'7:00 as 12:00', 30, 350, 1100, 200, '2020-06-15', '2021-06-15', 'TI', 'Florianópolis',
+            '15866776883', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolver sistemas em Python e usar Django', 'ESTAGIARIO_EFETIVADO', 13, 4,
+            3, 3);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (14, 'Rosângela Liz Isis Silveira', 'Gerente de Tecnologia da Informação', 'Sistemas de Informação', '9 anos', 'João Vicente André Martins', 'Análise e Desenvolvimento de Sistemas', '5', 
+			'Matutino', 'Educação Superior',
+			'14:00 as 17:00', 30, 350, 800, 150, '2020-06-23', '2021-06-23', 'TI', 'Florianópolis',
+            '158667654676883', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolvimento front-end em HTML/CSS e JavaScript', 'ESTAGIARIO_EFETIVADO', 14, 4,
+            3, 3);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (15, 'Rosângela Liz Isis Silveira', 'Gerente de Tecnologia da Informação', 'Sistemas de Informação', '9 anos', 'João Vicente André Martins', 'Análise e Desenvolvimento de Sistemas', '5', 
+			'Matutino', 'Educação Superior',
+			'14:00 as 17:00', 30, 350, 800, 150, '2020-06-23', '2021-06-23', 'TI', 'Florianópolis',
+            '75477777564', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolvimento front-end em HTML/CSS e JavaScript', 'ESTAGIARIO_EFETIVADO', 15, 4,
+            3, 3);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (16, 'Rodrigo Sebastião Souza', 'Supervisor de Tecnologia', 'Ciência da computação', '7 anos', 'Felipe Eduardo Castro', 'Análise e Desenvolvimento de Sistemas', '5', 
+			'Matutino', 'Educação Superior',
+			'14:00 as 17:00', 30, 350, 900, 100, '2020-03-23', '2021-03-23', 'TI', 'Florianópolis',
+            '158667654676883', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolvimento Java com Spring boot', 'TRANCAMENTO_MATRICULA', 16, 4,
+            2, 2);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (17, 'Isaac Pietro João Farias', 'Supervisor de Tecnologia', 'Engenharia de Computação', '9 anos', 'Vanessa Cláudia Cardoso', 'Análise e Desenvolvimento de Sistemas', '2', 
+			'Matutino', 'Educação Superior',
+			'14:00 as 17:00', 30, 350, 900, 100, '2020-03-23', '2021-03-23', 'TI', 'Florianópolis',
+            '15866676654883', 'Não Obrigatório', 0, NULL, 'INATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolvimento Web com Angular', 'DESAPROVACAO_EMPRESA', 17, 8,
+            5, 5);
+INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (18, 'Ricardo Nicolas Manuel Castro', 'Supervisor de Tecnologia', ' Engenharia da Computação', '9 anos', 'Calebe Anderson Márcio Fernandes', 'Análise e Desenvolvimento de Sistemas', '1', 
+			'Matutino', 'Educação Superior',
+			'19:00 as 22:00', 30, 350, 1100, 200, '2022-02-15', '2023-02-15', 'TI', 'Florianópolis',
+            '158677767883', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolver sistemas em React.', NULL, 18, 6,
+            5, 5);
+ INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (19, 'Lucca Ruan da Mata', 'Supervisor de Tecnologia', 'Análise e Desenvolvimento de Sistemas', '6 anos', 'Enrico Kevin Ferreira', 'Análise e Desenvolvimento de Sistemas', '2', 
+			'Noturno', 'Educação Superior',
+			'9:00 as 12:00', 30, 350, 1100, 200, '2022-06-15', '2023-12-15', 'TI', 'Florianópolis',
+            '7887686764', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolver em C++.', NULL, 19, 1,
+            7, 7);
+ INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (20, 'Victor João Peixoto', 'Supervisor de Tecnologia', 'Análise e Desenvolvimento de Sistemas', '5 anos', 'Renan Murilo Cauã Brito', 'Análise e Desenvolvimento de Sistemas', '2', 
+			'Noturno', 'Educação Superior',
+			'9:00 as 12:00', 30, 350, 1100, 200, '2022-06-19', '2023-12-19', 'TI', 'Florianópolis',
+            '5345346', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolver em C++.', NULL, 20, 1,
+            9, 9);
+ INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEXPERIENCIA, PROFESSOR, CURSO, ANOFASE, TURNO, MODALIDADE,
+	HORARIOESTAGIO, JORNADASEMANAL, CARGAHORARIATOTAL, REMUNERACAO, VALORVALETRANSPORTE, DATAINICIO, DATATERMINO, SETOROUAREA, MUNICIPIO,
+    NUMAPOLICESEGURO, TIPOESTAGIO, TEMAGENTEINTEGRACAO, NOMEAGENTEINTEGRACAO, STATUS, rQuadrimestral1, rQuadrimestral2, rQuadrimestral3,
+    rQuadrimestral4, rQuadrimestral5, rQuadrimestral6, PLANOATIVIDADES, TIPOINATIVACAO, ID_ESTAGIARIO, ID_UNIDADE_CONCEDENTE,
+    ID_INSTITUICAO_ENSINO, ID_INSTITUICAO_ENSINO_VINCULADA)
+	VALUES (21, 'Igor Felipe Francisco Lopes', 'Supervisor de Tecnologia', 'Ciência da computação', '9 anos', 'Rafaela Lúcia Natália dos Santos', 'Análise e Desenvolvimento de Sistemas', '3', 
+			'Noturno', 'Educação Superior',
+			'9:00 as 12:00', 30, 400, 1100, 200, '2021-06-19', '2022-12-19', 'TI', 'Florianópolis',
+            '88800005432', 'Não Obrigatório', 0, NULL, 'ATIVO', 0, 0, 0,
+            0, 0, 0, 'Desenvolvimento front-end em HTML/CSS e JavaScript', NULL, 21, 5,
+            11, 11);
+
+
 
 
 
@@ -560,4 +774,4 @@ INSERT INTO ESTAGIO (ID, SUPERVISOR, CARGOSUPERVISOR, FORMACAOACADEMICA, TEMPOEX
 -- SELECT * FROM INSTITUICAO_ENSINO;
 -- SELECT * FROM UNIDADE_CONCEDENTE;
  
- SELECT * FROM ESTAGIO;
+ -- SELECT * FROM ESTAGIO;
