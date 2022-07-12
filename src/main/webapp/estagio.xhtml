@@ -115,7 +115,7 @@
                                 <h:outputText value="#{ativo.unidadeConcedente.razaoSocial}" />
                             </p:column>
                             
-                            <p:column headerText="Instituição" sortBy="#{ativo.instituicao.razaoSocial}">
+                            <p:column headerText="Instituição" sortBy="#{ativo.instituicaoEnsino.razaoSocial}">
                                 <h:outputText value="#{ativo.instituicaoEnsino.razaoSocial}" />
                             </p:column>
                             
@@ -512,13 +512,14 @@
                             </p:column>
                             
                             <p:column headerText="Notificação">
-                                <h:outputText value="#{estagioC.traduzirEnumTipoNotificacao(notificacao.tipoNotificacao)}" />
+                            	<span class="pi pi-circle-fill" style="color:#D32F2F; margin-right: 10px;"/>
+                                <h:outputText value="#{estagioC.traduzirEnumTipoNotificacao(notificacao.tipoNotificacao)}" style="font-weight: 600;" />
                             </p:column>
                             
                             <p:column headerText="Ação">
-                                <p:commandButton icon="pi pi-check" title="Alterar" process="@this"
-                                                 update="@all" onclick="alert('Relatório Entregue')"
-                                                 style="margin-right: 12px" styleClass="rounded-button ui-button-outlined"/>
+                            	<p:commandButton icon="pi pi-file" title="Documentos" process="@this"
+                                                 actionListener="#{estagioC.prepararAbaDocumentosNotif}" update="@all"
+                                                 style="margin-right: 12px" styleClass="rounded-button ui-button-secondary ui-button-outlined"/>
                             </p:column>
                         </p:dataTable>
                         

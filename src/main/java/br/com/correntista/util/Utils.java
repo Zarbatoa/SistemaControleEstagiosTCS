@@ -11,12 +11,14 @@ public class Utils {
 	static HashMap<Integer, String> mapaNomesDosMeses;
 	static HashMap<Integer, String> mapaNomesDosNumeros;
 	static HashMap<TipoNotificacao, String> mapaTipoNotificacoes;
+	static HashMap<TipoNotificacao, String> mapaNotificacoesDocumento;
 	
 	static {
 		mapaTipoInatividade = new HashMap<>();
 		mapaNomesDosMeses = new HashMap<>();
 		mapaNomesDosNumeros = new HashMap<>();
 		mapaTipoNotificacoes = new HashMap<>();
+		mapaNotificacoesDocumento = new HashMap<>();
 		
 		mapaTipoInatividade.put(TipoInatividade.ESTAGIARIO_NAO_EFETIVADO, "Estagiário não foi efetivado");
 		mapaTipoInatividade.put(TipoInatividade.ESTAGIARIO_EFETIVADO, "Estagiário foi efetivado");
@@ -83,6 +85,14 @@ public class Utils {
 		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL4, "Mês para entrega do relatóriorio quadrimestral #4");
 		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL5, "Mês para entrega do relatóriorio quadrimestral #5");
 		mapaTipoNotificacoes.put(TipoNotificacao.RQUADRIMESTAL6, "Mês para entrega do relatóriorio quadrimestral #6");
+		
+		mapaNotificacoesDocumento.put(TipoNotificacao.DESLIGAMENTO, "reportPages/relatorioDesligamento.xhtml");
+		mapaNotificacoesDocumento.put(TipoNotificacao.RQUADRIMESTAL1, "reportPages/relatorioEstagioQuadrimestral1.xhtml");
+		mapaNotificacoesDocumento.put(TipoNotificacao.RQUADRIMESTAL2, "reportPages/relatorioEstagioQuadrimestral2.xhtml");
+		mapaNotificacoesDocumento.put(TipoNotificacao.RQUADRIMESTAL3, "reportPages/relatorioEstagioQuadrimestral3.xhtml");
+		mapaNotificacoesDocumento.put(TipoNotificacao.RQUADRIMESTAL4, "reportPages/relatorioEstagioQuadrimestral4.xhtml");
+		mapaNotificacoesDocumento.put(TipoNotificacao.RQUADRIMESTAL5, "reportPages/relatorioEstagioQuadrimestral5.xhtml");
+		mapaNotificacoesDocumento.put(TipoNotificacao.RQUADRIMESTAL6, "reportPages/relatorioEstagioQuadrimestral6.xhtml");
 	}
 	
 	/**
@@ -173,6 +183,14 @@ public class Utils {
 	 * */
 	public static String mapearTipoNotificacao(TipoNotificacao tipo) {
 		return mapaTipoNotificacoes.get(tipo);
+	}
+
+	/**
+	 * @param um enum tipoNotificacao
+	 * @return a url do documento referente ao valor do enum
+	 * */
+	public static String mapearNotificacaoDocumento(TipoNotificacao tipoNotificacao) {
+		return mapaNotificacoesDocumento.get(tipoNotificacao);
 	}
 	
 	

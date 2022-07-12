@@ -124,7 +124,7 @@ INSERT INTO INSTITUICAO_ENSINO (ID, RAZAOSOCIAL, CNPJ, EMAIL, REPRESENTANTE, TEL
 
 
 INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)
-	VALUES (1, 'lucas@lucas.com', 'lucas', 'lucas');
+	VALUES (1, 'lucas@lucas.com', 'lucas',  'lucas');
 INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)
 	VALUES (2, 'matheus@matheus.com', 'matheus', 'matheus');
 INSERT INTO USUARIO (ID, EMAIL, LOGIN, SENHA)

@@ -379,6 +379,34 @@ public class EstagioControle {
     }
     
     
+    public void prepararAbaDocumentosNotif() {
+    	notificacao = modelNotificacoes.getRowData();
+    	estagio = notificacao.getEstagio();
+    	aba = 3;
+    }
+    
+    public String gerarDocNotificacao() {
+    	//teste
+    	System.out.println("pasosu em gerarDocNotificacao...");
+    	return "www.google.com";
+    	
+//    	notificacao = modelNotificacoes.getRowData();
+//    	estagio = notificacao.getEstagio();
+//    	return Utils.mapearNotificacaoDocumento(notificacao.getTipoNotificacao());
+    	
+    	/*
+    	 
+    	 <p:linkButton icon="pi pi-file" title="Documentos"
+        	outcome="#{estagioC.gerarDocNotificacao()}" 
+		    styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+		    target="_blank"
+		    onclick="#{estagioC.setEstagio(estagioC.modelNotificacoes.getRowData().getEstagio())}">
+		</p:linkButton>
+    	 
+    	  */
+    }
+    
+    
     public String direcinarRelatorioDesligamento() {
     	return "relatorioDesligamento.htm";
     }
