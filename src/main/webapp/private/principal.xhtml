@@ -14,7 +14,7 @@
 
         <div class="p-grid">
             <div id="top" class="p-col-12">
-            	<p:graphicImage name="imagem/logo_sigla.png" style="vertical-align: middle; height: 70px; padding-right: 50px" />
+            	<p:graphicImage name="./imagem/logo_sigla.png" style="vertical-align: middle; height: 70px; padding-right: 50px" />
             </div>
 
             
@@ -33,7 +33,7 @@
                         </p:submenu>
                         
                         <p:submenu label="Sistema">
-                        	<p:menuitem value="Log out" outcome="principal" icon="pi pi-sign-out"/>
+                        	<p:menuitem value="Log out" action="#{loginC.logout()}" icon="pi pi-sign-out"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>

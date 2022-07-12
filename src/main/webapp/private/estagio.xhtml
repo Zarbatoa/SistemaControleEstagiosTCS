@@ -504,11 +504,15 @@
                             </p:column>
                             
                             <p:column headerText="Data início">
-                                <h:outputText value="#{notificacao.estagio.dataInicio}" />
+                                <h:outputText value="#{notificacao.estagio.dataInicio}">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
                             </p:column>
                             
                             <p:column headerText="Data termino">
-                                <h:outputText value="#{notificacao.estagio.dataTermino}" />
+                                <h:outputText value="#{notificacao.estagio.dataTermino}">
+                                	<f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
                             </p:column>
                             
                             <p:column headerText="Notificação">

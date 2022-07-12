@@ -1,34 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	dir="ltr">
-  <h:head>
-    <meta charset="utf-8"/>
-    <title>Login Form</title>
-    <h:outputStylesheet library="css" name="login.css" />
-  </h:head>
-  <body>
-    <div class="center">
-      <h1>Login</h1>
-      <form method="post">
-        <div class="txt_field">
-          <input type="text" required="required"/>
-          <span></span>
-          <label>Nome</label>
-        </div>
-        <div class="txt_field">
-          <input type="password" required="required"/>
-          <span></span>
-          <label>Senha</label>
-        </div>
-        <div class="pass">Esqueceu a senha?</div>
-        <input type="submit" value="Login"/>
-        <div class="signup_link">
-        </div>
-      </form>
-    </div>
-
-  </body>
+<html lang="en" 
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  dir="ltr">
+	<h:head>
+		<meta charset="utf-8"/>
+		<title>Login Form</title>
+		<h:outputStylesheet library="css" name="login.css" />
+	</h:head>
+	<h:body>
+		<div class="center">
+			<h1>Login</h1>
+			
+			<h:form id="formLogin" method="post">
+			
+				<p:growl id="growl" showDetail="true" />
+			
+				<span class="ui-float-label txt_field">
+					<p:inputText id="inputLogin" value="#{loginC.usuario.login}" 
+								 style="font-family: 'Poppins', sans-serif; border: none"/>
+					<p:outputLabel for="@previous" value="Usuário"/>
+				</span>
+				<span class="ui-float-label txt_field">
+					<p:inputText id="inputSenha" type="password" value="#{loginC.usuario.senha}"
+								 style="font-family: 'Poppins', sans-serif; border: none"/>
+					<p:outputLabel for="@previous" value="Senha"/>
+				</span>
+				<div class="pass"></div>
+				<!--  <input type="submit" value="Login" onclick="#{loginC.testarRedirecionar()}"/> -->
+				<p:commandButton id="loginButton" action="#{loginC.logar()}" value="Entrar" 
+					style="width: 100%; height: 50px; border: 1px solid; border-radius: 25px;
+						   font-size: 18px; color: #e9f4fb; font-weight: 700; cursor: pointer; outline: none;" 
+					process="@this formLogin:inputLogin formLogin:inputSenha"
+					update="growl"/> 
+				<div class="signup_link">
+				</div>
+			</h:form>
+		</div>
+	</h:body>
 </html>

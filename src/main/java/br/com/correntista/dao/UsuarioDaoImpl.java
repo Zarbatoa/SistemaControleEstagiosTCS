@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import br.com.correntista.entidade.Estagiario;
 import br.com.correntista.entidade.Usuario;
 
 public class UsuarioDaoImpl extends BaseDaoImpl<Usuario, Long> implements UsuarioDao, Serializable{
@@ -20,6 +21,13 @@ public class UsuarioDaoImpl extends BaseDaoImpl<Usuario, Long> implements Usuari
 	public List<Usuario> pesquisarTodos(Session sessao) throws HibernateException {
 		Query consulta = sessao.createQuery("from Usuario");
         return consulta.list();
+	}
+
+	@Override
+	public Usuario pesquisarPorLogin(String login, Session sessao) throws HibernateException {
+		Query consulta = sessao.createQuery("from Usuario u where u.login = :login");
+        consulta.setParameter("login", login);
+        return (Usuario) consulta.uniqueResult();
 	}
 
 }
