@@ -55,7 +55,7 @@ public class LoginControle implements Serializable {
             
             if(usuarioLogado != null) {
 	            if (true == usuarioLogado.getAtivo() && usuario.getLogin().equals(usuarioLogado.getLogin())
-	                    && HashFunction.sha256(usuario.getSenha()).equals(usuarioLogado.getSenha())) {
+	                    && (usuario.getSenha()).equals(usuarioLogado.getSenha())) { // usar HashFunction.sha256
 	                return "/private/principal.xhtml?faces-redirect=true";
 	
 	            } else {
