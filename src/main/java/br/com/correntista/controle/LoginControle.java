@@ -23,14 +23,6 @@ import br.com.correntista.seguranca.HashFunction;
 @SessionScoped
 public class LoginControle implements Serializable {
 
-	public String testarRedirecionar() {
-		return  "/private/principal.xhtml?faces-redirect=true";
-	}
-	
-	
-	
-	//TODO Em construção...
-	
     private static final long serialVersionUID = 1L;
 
     private static Usuario usuarioLogado;
@@ -56,7 +48,7 @@ public class LoginControle implements Serializable {
             if(usuarioLogado != null) {
 	            if (true == usuarioLogado.getAtivo() && usuario.getLogin().equals(usuarioLogado.getLogin())
 	                    && (usuario.getSenha()).equals(usuarioLogado.getSenha())) { // usar HashFunction.sha256
-	                return "/private/principal.xhtml?faces-redirect=true";
+	                return "/private/home.xhtml?faces-redirect=true";
 	
 	            } else {
 	                String mensagem = usuarioLogado.getAtivo() ? "Usuário e/ou Senha incorretos(s)" : "Usuário desativado!";
@@ -100,6 +92,9 @@ public class LoginControle implements Serializable {
         }
     }
 
+    public String testarRedirecionar() {
+		return  "/private/principal.xhtml?faces-redirect=true";
+	}
     
     // Getters e Setters
     

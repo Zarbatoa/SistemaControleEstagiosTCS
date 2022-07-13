@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="aw-menu">
+        <h:form>
+            <p:menu toggleable="true" style="width: 98%; margin-left: 3px; box-sizing: content-box;">
+	            <p:menuitem value="Home" outcome="home" icon="pi pi-home"/>
+	            
+	            <p:submenu label="Interface">
+	            	<p:menuitem value="Usuário" outcome="usuario" icon="pi pi-user"/>
+	            	<p:menuitem value="Instituição de Ensino" outcome="instituicaoEnsino" icon="pi pi-compass"/>
+	            	<p:menuitem value="Estagiário" outcome="estagiario" icon="pi pi-users"/>
+	            	<p:menuitem value="Unidade Concedente" outcome="unidadeConcedente" icon="pi pi-briefcase"/>
+	            	<p:menuitem value="Estágio" action="#{estagioC.destruirBean()}" icon="pi pi-th-large"/>
+	            </p:submenu>
+	            
+	            <p:submenu label="Sistema">
+	            	<p:menuitem value="Log out" action="#{loginC.logout()}" icon="pi pi-sign-out"/>
+	            </p:submenu>
+            </p:menu>
+
+        </h:form>
+    </div>
+
+</ui:composition>

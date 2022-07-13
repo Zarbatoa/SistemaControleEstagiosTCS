@@ -486,6 +486,12 @@ public class EstagioControle {
     	rowIndexAtivos = modelEstagiosAtivos.getRowIndex();
     }
     
+    
+
+    public boolean verificarStatusEstagio() {
+    	return estagio == null || getEstagio().getStatus() != StatusEstagio.INATIVO;
+    }
+    
     // getters e setters
     
     public Estagio getEstagio() {
